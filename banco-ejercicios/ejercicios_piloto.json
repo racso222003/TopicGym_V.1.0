@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "proyecto": "TopicGym v1.0",
+    "acta": "Acta 02",
+    "compromiso": "03 · Banco piloto de ejercicios",
+    "asignatura": "Lógica de Programación",
+    "semestre": 1,
+    "total_ejercicios": 5,
+    "puntos_totales": 120
+  },
+  "videos": [
+    {
+      "tema": "Variables y tipos de datos",
+      "titulo": "Variables y tipos de datos desde cero",
+      "url_youtube": "https://www.youtube.com/results?search_query=variables+y+tipos+de+datos+en+programacion+para+principiantes",
+      "duracion_seg": 620
+    },
+    {
+      "tema": "Operadores y precedencia",
+      "titulo": "Jerarquía y precedencia de operadores",
+      "url_youtube": "https://www.youtube.com/results?search_query=jerarquia+de+operadores+aritmeticos+en+programacion",
+      "duracion_seg": 725
+    },
+    {
+      "tema": "Condicionales",
+      "titulo": "Condicionales si / si no explicados",
+      "url_youtube": "https://www.youtube.com/results?search_query=condicionales+if+else+explicados+programacion",
+      "duracion_seg": 880
+    },
+    {
+      "tema": "Ciclos",
+      "titulo": "Ciclos: mientras y para",
+      "url_youtube": "https://www.youtube.com/results?search_query=ciclos+while+y+for+programacion+ejemplos",
+      "duracion_seg": 1085
+    },
+    {
+      "tema": "Arreglos y acumuladores",
+      "titulo": "Arreglos y ejercicios resueltos",
+      "url_youtube": "https://www.youtube.com/results?search_query=arreglos+arrays+ejercicios+resueltos+programacion",
+      "duracion_seg": 922
+    }
+  ],
+  "ejercicios": [
+    {
+      "orden": 1,
+      "tema": "Variables y tipos de datos",
+      "nivel": "FACIL",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Variables y tipos de datos",
+      "enunciado": "Si la variable entera edad = 17, ¿qué se muestra con mostrar(edad + 1)?",
+      "codigo_referencia": "entero edad = 17\nmostrar(edad + 1)",
+      "explicacion": "Al ser un dato entero, el operador + realiza suma aritmética: 17 + 1 = 18. Si la variable fuera texto (\"17\"), el + concatenaría y daría \"171\".",
+      "pista": "Revisa el tipo de dato de la variable.",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "171", "es_correcta": false, "orden": 1 },
+        { "texto": "18", "es_correcta": true, "orden": 2 },
+        { "texto": "17 + 1", "es_correcta": false, "orden": 3 },
+        { "texto": "Error de tipos", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 2,
+      "tema": "Operadores y precedencia",
+      "nivel": "FACIL",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Operadores y precedencia",
+      "enunciado": "¿Cuál es el valor de resultado?",
+      "codigo_referencia": "resultado = 2 + 3 * 4 - 6 / 3",
+      "explicacion": "La multiplicación y la división se evalúan antes: 3 * 4 = 12 y 6 / 3 = 2. Luego, de izquierda a derecha: 2 + 12 - 2 = 12.",
+      "pista": "Multiplicación y división tienen mayor precedencia que suma y resta.",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "12", "es_correcta": true, "orden": 1 },
+        { "texto": "10", "es_correcta": false, "orden": 2 },
+        { "texto": "20", "es_correcta": false, "orden": 3 },
+        { "texto": "8", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 3,
+      "tema": "Condicionales",
+      "nivel": "MEDIO",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Condicionales: primera rama verdadera",
+      "enunciado": "Con nota = 3.0, ¿qué mensaje se muestra?",
+      "codigo_referencia": "si (nota >= 4.0) entonces\n    mostrar(\"Aprobado\")\nsi no si (nota >= 3.0) entonces\n    mostrar(\"Aprobado con seguimiento\")\nsi no\n    mostrar(\"Reprobado\")\nfin si",
+      "explicacion": "La primera condición (3.0 >= 4.0) es falsa. La segunda (3.0 >= 3.0) es verdadera, así que se ejecuta su bloque y el resto se omite: \"Aprobado con seguimiento\".",
+      "pista": "El programa se detiene en la primera condición verdadera.",
+      "puntos": 25,
+      "opciones": [
+        { "texto": "Aprobado", "es_correcta": false, "orden": 1 },
+        { "texto": "Aprobado con seguimiento", "es_correcta": true, "orden": 2 },
+        { "texto": "Reprobado", "es_correcta": false, "orden": 3 },
+        { "texto": "No muestra nada", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 4,
+      "tema": "Ciclos",
+      "nivel": "MEDIO",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Ciclos: número de iteraciones",
+      "enunciado": "¿Cuántas veces se ejecuta el cuerpo del ciclo?",
+      "codigo_referencia": "contador = 0\nmientras (contador < 5) hacer\n    mostrar(contador)\n    contador = contador + 2\nfin mientras",
+      "explicacion": "contador toma los valores 0, 2 y 4 (tres iteraciones). Al llegar a 6 la condición 6 < 5 es falsa y el ciclo termina: 3 veces.",
+      "pista": "Anota el valor de contador en cada vuelta.",
+      "puntos": 25,
+      "opciones": [
+        { "texto": "2 veces", "es_correcta": false, "orden": 1 },
+        { "texto": "3 veces", "es_correcta": true, "orden": 2 },
+        { "texto": "5 veces", "es_correcta": false, "orden": 3 },
+        { "texto": "Infinitas veces", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 5,
+      "tema": "Arreglos y acumuladores",
+      "nivel": "DIFICIL",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Arreglos y acumulador",
+      "enunciado": "¿Cuál es el valor de suma al terminar el recorrido?",
+      "codigo_referencia": "numeros = [4, 8, 1, 6]\nsuma = 0\npara cada n en numeros hacer\n    suma = suma + n\nfin para",
+      "explicacion": "El acumulador empieza en 0 y suma cada elemento: 4 + 8 + 1 + 6 = 19.",
+      "pista": "Suma todos los elementos del arreglo partiendo de 0.",
+      "puntos": 50,
+      "opciones": [
+        { "texto": "4", "es_correcta": false, "orden": 1 },
+        { "texto": "19", "es_correcta": true, "orden": 2 },
+        { "texto": "10", "es_correcta": false, "orden": 3 },
+        { "texto": "20", "es_correcta": false, "orden": 4 }
+      ]
+    }
+  ],
+  "logros": [
+    { "codigo": "PRIMER_ACIERTO", "nombre": "Primer acierto", "descripcion": "Resuelve correctamente tu primer ejercicio.", "condicion": { "aciertos_min": 1 }, "puntos": 5 },
+    { "codigo": "PRIMERA_SERIE", "nombre": "Primera serie", "descripcion": "Resuelve 10 ejercicios correctamente.", "condicion": { "aciertos_min": 10 }, "puntos": 20 },
+    { "codigo": "RACHA_INICIAL", "nombre": "Racha inicial", "descripcion": "Mantén una racha de 3 días consecutivos.", "condicion": { "racha_dias": 3 }, "puntos": 15 },
+    { "codigo": "MAESTRO_LOGICA", "nombre": "Maestro de lógica", "descripcion": "Acierta los 5 ejercicios del piloto de Lógica.", "condicion": { "tema_id": 1, "aciertos": 5 }, "puntos": 50 }
+  ]
+}
