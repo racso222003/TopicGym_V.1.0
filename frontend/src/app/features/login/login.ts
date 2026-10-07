@@ -23,7 +23,7 @@ import { CREDENCIALES_DEMO } from '../../core/api.config';
           </p>
 
           @if (error()) {
-            <div class="alert alert-error">{{ error() }}</div>
+            <div class="alert alert-error" role="alert">{{ error() }}</div>
           }
 
           <form [formGroup]="form" (ngSubmit)="enviar()">

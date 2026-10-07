@@ -36,6 +36,8 @@ const config = {
   },
 
   rateLimit: {
+    apiMax: toInt(process.env.API_RATE_MAX, 300),
+    apiWindowMs: toInt(process.env.API_RATE_WINDOW_MS, 600000),
     authMax: toInt(process.env.AUTH_RATE_MAX, 10),
     authWindowMs: toInt(process.env.AUTH_RATE_WINDOW_MS, 600000),
   },

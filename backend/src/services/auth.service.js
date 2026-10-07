@@ -47,7 +47,9 @@ async function perfil(usuarioId) {
     err.status = 404;
     throw err;
   }
-  return usuario;
+  // Normaliza el nombre de campo para que coincida con el contrato de la API
+  // (login devuelve `correo`; el repositorio expone `correo_institucional`).
+  return { ...usuario, correo: usuario.correo_institucional };
 }
 
 module.exports = { login, perfil };

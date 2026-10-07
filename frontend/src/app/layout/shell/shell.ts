@@ -6,6 +6,7 @@ import { AuthService } from '../../core/services/auth.service';
   selector: 'app-shell',
   imports: [RouterOutlet, RouterLink, RouterLinkActive],
   template: `
+    <a href="#contenido" class="skip-link">Saltar al contenido</a>
     <div class="shell">
       <div class="brand">
         <span class="brand-logo">TG</span>
@@ -15,8 +16,8 @@ import { AuthService } from '../../core/services/auth.service';
       <header class="topbar">
         <div class="small muted">Lógica de Programación</div>
         <div class="topbar-user">
-          <div class="avatar">{{ inicial() }}</div>
-          <div>
+          <div class="avatar" aria-hidden="true">{{ inicial() }}</div>
+          <div class="usuario-info">
             <div class="small"><strong>{{ usuario()?.nombre }}</strong></div>
             <div class="small muted">{{ etiquetaRol() }}</div>
           </div>
@@ -24,7 +25,7 @@ import { AuthService } from '../../core/services/auth.service';
         </div>
       </header>
 
-      <nav class="sidebar">
+      <nav class="sidebar" aria-label="Menú principal">
         <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Inicio</a>
         <a class="nav-link" routerLink="/catalogo" routerLinkActive="active">Catálogo</a>
         <a class="nav-link" routerLink="/progreso" routerLinkActive="active">Mi progreso</a>
@@ -32,7 +33,7 @@ import { AuthService } from '../../core/services/auth.service';
         <a class="nav-link" routerLink="/perfil" routerLinkActive="active">Mi perfil</a>
       </nav>
 
-      <main class="content">
+      <main class="content" id="contenido" tabindex="-1">
         <router-outlet />
       </main>
     </div>

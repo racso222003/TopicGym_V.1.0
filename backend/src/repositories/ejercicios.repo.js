@@ -143,14 +143,14 @@ async function listLogros(usuarioId) {
   return rows;
 }
 
-/** Aciertos en un tema concreto (para el logro "Maestro de lógica"). */
-async function contarAciertosPorTema(usuarioId, temaId) {
+/** Ejercicios distintos acertados en todo el banco (logro "Maestro de lógica"). */
+async function contarAciertosDistintos(usuarioId) {
   const { rows } = await query(
     `SELECT count(DISTINCT r.ejercicio_id)::int AS aciertos
        FROM respuestas_estudiante r
        JOIN ejercicios e ON e.id = r.ejercicio_id
-      WHERE r.usuario_id = $1 AND r.correcta AND e.tema_id = $2`,
-    [usuarioId, temaId],
+      WHERE r.usuario_id = $1 AND r.correcta`,
+    [usuarioId],
   );
   return rows[0].aciertos;
 }
@@ -186,7 +186,7 @@ module.exports = {
   getResumen,
   listDiasActivos,
   listLogros,
-  contarAciertosPorTema,
+  contarAciertosDistintos,
   otorgarLogro,
   findLogroPorCodigo,
 };

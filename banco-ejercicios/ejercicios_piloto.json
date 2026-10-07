@@ -1,12 +1,13 @@
 {
   "meta": {
     "proyecto": "TopicGym v1.0",
-    "acta": "Acta 02",
-    "compromiso": "03 · Banco piloto de ejercicios",
+    "acta": "Acta 06",
+    "compromiso": "04 · Banco de ejercicios ampliado",
     "asignatura": "Lógica de Programación",
     "semestre": 1,
-    "total_ejercicios": 5,
-    "puntos_totales": 120
+    "total_ejercicios": 15,
+    "temas": 5,
+    "puntos_totales": 425
   },
   "videos": [
     {
@@ -61,6 +62,42 @@
     },
     {
       "orden": 2,
+      "tema": "Variables y tipos de datos",
+      "nivel": "MEDIO",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Conversión real a entero (truncamiento)",
+      "enunciado": "Si precio = 19.99, ¿qué muestra mostrar(entero(precio))?",
+      "codigo_referencia": "real precio = 19.99\nmostrar(entero(precio))",
+      "explicacion": "Convertir un real a entero elimina la parte decimal (truncamiento hacia cero): 19.99 se convierte en 19. No redondea a 20.",
+      "pista": "La conversión no redondea: corta la parte decimal.",
+      "puntos": 25,
+      "opciones": [
+        { "texto": "19", "es_correcta": true, "orden": 1 },
+        { "texto": "20", "es_correcta": false, "orden": 2 },
+        { "texto": "19.99", "es_correcta": false, "orden": 3 },
+        { "texto": "Error de tipos", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 3,
+      "tema": "Variables y tipos de datos",
+      "nivel": "DIFICIL",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Conversión de texto a número",
+      "enunciado": "¿Qué valor muestra el programa?",
+      "codigo_referencia": "texto = \"6\"\nnumero = entero(texto)\nmostrar(numero + 4)",
+      "explicacion": "Se convierte el texto \"6\" al número entero 6 y luego se suma: 6 + 4 = 10. Sin la conversión, la suma de textos daría \"64\".",
+      "pista": "El texto se convierte a número antes de sumar.",
+      "puntos": 50,
+      "opciones": [
+        { "texto": "10", "es_correcta": true, "orden": 1 },
+        { "texto": "\"64\"", "es_correcta": false, "orden": 2 },
+        { "texto": "6 + 4", "es_correcta": false, "orden": 3 },
+        { "texto": "Error de tipos", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 4,
       "tema": "Operadores y precedencia",
       "nivel": "FACIL",
       "tipo": "OPCION_MULTIPLE",
@@ -78,7 +115,61 @@
       ]
     },
     {
-      "orden": 3,
+      "orden": 5,
+      "tema": "Operadores y precedencia",
+      "nivel": "MEDIO",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Operador módulo (residuo)",
+      "enunciado": "¿Cuál es el valor de resto?",
+      "codigo_referencia": "resto = 15 % 4\nmostrar(resto)",
+      "explicacion": "El módulo (%) devuelve el residuo de la división entera: 15 ÷ 4 = 3 con residuo 3, por lo que resto = 3.",
+      "pista": "Divide 15 entre 4 y quédate con el residuo.",
+      "puntos": 25,
+      "opciones": [
+        { "texto": "3", "es_correcta": true, "orden": 1 },
+        { "texto": "4", "es_correcta": false, "orden": 2 },
+        { "texto": "11", "es_correcta": false, "orden": 3 },
+        { "texto": "0", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 6,
+      "tema": "Operadores y precedencia",
+      "nivel": "DIFICIL",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Precedencia combinada con módulo",
+      "enunciado": "¿Cuál es el valor de resultado?",
+      "codigo_referencia": "resultado = 10 % 3 * 2 + 8 / 4",
+      "explicacion": "Módulo, multiplicación y división se evalúan antes de la suma: 10 % 3 = 1; 1 * 2 = 2; 8 / 4 = 2. Luego 2 + 2 = 4.",
+      "pista": "Agrupa primero %, * y /.",
+      "puntos": 50,
+      "opciones": [
+        { "texto": "4", "es_correcta": true, "orden": 1 },
+        { "texto": "7", "es_correcta": false, "orden": 2 },
+        { "texto": "10", "es_correcta": false, "orden": 3 },
+        { "texto": "3", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 7,
+      "tema": "Condicionales",
+      "nivel": "FACIL",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Condicional simple",
+      "enunciado": "Con edad = 17, ¿qué mensaje se muestra?",
+      "codigo_referencia": "si (edad >= 18) entonces\n    mostrar(\"Mayor de edad\")\nsi no\n    mostrar(\"Menor de edad\")\nfin si",
+      "explicacion": "La condición 17 >= 18 es falsa, así que se ejecuta la rama si no: \"Menor de edad\".",
+      "pista": "Compara la edad con 18.",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "Menor de edad", "es_correcta": true, "orden": 1 },
+        { "texto": "Mayor de edad", "es_correcta": false, "orden": 2 },
+        { "texto": "No muestra nada", "es_correcta": false, "orden": 3 },
+        { "texto": "Error de sintaxis", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 8,
       "tema": "Condicionales",
       "nivel": "MEDIO",
       "tipo": "OPCION_MULTIPLE",
@@ -96,7 +187,43 @@
       ]
     },
     {
-      "orden": 4,
+      "orden": 9,
+      "tema": "Condicionales",
+      "nivel": "DIFICIL",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Condición compuesta con operadores lógicos",
+      "enunciado": "Con nota = 4.1, ¿qué mensaje se muestra?",
+      "codigo_referencia": "nota = 4.1\nsi (nota >= 0 && nota <= 5 && nota >= 4.0) entonces\n    mostrar(\"Excelente\")\nsi no\n    mostrar(\"Rango inválido\")\nfin si",
+      "explicacion": "Las tres condiciones son verdaderas: nota está en el rango 0-5 y además es 4.1 >= 4.0, por lo que se muestra \"Excelente\".",
+      "pista": "Evalúa cada parte del && (todas deben ser verdaderas).",
+      "puntos": 50,
+      "opciones": [
+        { "texto": "Excelente", "es_correcta": true, "orden": 1 },
+        { "texto": "Rango inválido", "es_correcta": false, "orden": 2 },
+        { "texto": "No muestra nada", "es_correcta": false, "orden": 3 },
+        { "texto": "Error de sintaxis", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 10,
+      "tema": "Ciclos",
+      "nivel": "FACIL",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Ciclo para: suma de 1 a 3",
+      "enunciado": "¿Cuál es el valor de suma al finalizar?",
+      "codigo_referencia": "suma = 0\npara (i = 1; i <= 3; i = i + 1) hacer\n    suma = suma + i\nfin para",
+      "explicacion": "El ciclo suma 1, 2 y 3 en cada vuelta: 0 + 1 + 2 + 3 = 6.",
+      "pista": "Suma los números del 1 al 3.",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "6", "es_correcta": true, "orden": 1 },
+        { "texto": "3", "es_correcta": false, "orden": 2 },
+        { "texto": "7", "es_correcta": false, "orden": 3 },
+        { "texto": "9", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 11,
       "tema": "Ciclos",
       "nivel": "MEDIO",
       "tipo": "OPCION_MULTIPLE",
@@ -114,7 +241,61 @@
       ]
     },
     {
-      "orden": 5,
+      "orden": 12,
+      "tema": "Ciclos",
+      "nivel": "DIFICIL",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Ciclo con condición de corte",
+      "enunciado": "¿Cuántas veces se ejecuta el cuerpo del ciclo?",
+      "codigo_referencia": "acumulado = 0\nveces = 0\nmientras (acumulado < 10) hacer\n    acumulado = acumulado + 4\n    veces = veces + 1\nfin mientras",
+      "explicacion": "acumulado toma los valores 4, 8 y luego 12 (que ya no es menor que 10), por lo que el cuerpo se ejecuta 3 veces.",
+      "pista": "Suma de 4 en 4 hasta alcanzar o superar 10.",
+      "puntos": 50,
+      "opciones": [
+        { "texto": "3 veces", "es_correcta": true, "orden": 1 },
+        { "texto": "2 veces", "es_correcta": false, "orden": 2 },
+        { "texto": "4 veces", "es_correcta": false, "orden": 3 },
+        { "texto": "No termina nunca", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 13,
+      "tema": "Arreglos y acumuladores",
+      "nivel": "FACIL",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Contar pares en un arreglo",
+      "enunciado": "¿Cuántos números pares hay en el arreglo?",
+      "codigo_referencia": "numeros = [3, 8, 5, 2]\ncuantos = 0\npara cada n en numeros hacer\n    si (n % 2 == 0) entonces\n        cuantos = cuantos + 1\n    fin si\nfin para",
+      "explicacion": "8 y 2 son pares (al dividirlos entre 2 el residuo es 0): cuantos = 2.",
+      "pista": "Un número es par si n % 2 == 0.",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "2", "es_correcta": true, "orden": 1 },
+        { "texto": "1", "es_correcta": false, "orden": 2 },
+        { "texto": "3", "es_correcta": false, "orden": 3 },
+        { "texto": "4", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 14,
+      "tema": "Arreglos y acumuladores",
+      "nivel": "MEDIO",
+      "tipo": "OPCION_MULTIPLE",
+      "titulo": "Actualizar un elemento del arreglo",
+      "enunciado": "¿Cuál es el valor final en la posición 1 (segunda posición)?",
+      "codigo_referencia": "numeros = [10, 20, 30]\nnumeros[1] = numeros[1] * 2\nmostrar(numeros[1])",
+      "explicacion": "Se duplica el valor de la posición 1 (la segunda del arreglo): 20 * 2 = 40.",
+      "pista": "En la mayoría de lenguajes el primer elemento está en la posición 0.",
+      "puntos": 25,
+      "opciones": [
+        { "texto": "40", "es_correcta": true, "orden": 1 },
+        { "texto": "20", "es_correcta": false, "orden": 2 },
+        { "texto": "60", "es_correcta": false, "orden": 3 },
+        { "texto": "10", "es_correcta": false, "orden": 4 }
+      ]
+    },
+    {
+      "orden": 15,
       "tema": "Arreglos y acumuladores",
       "nivel": "DIFICIL",
       "tipo": "OPCION_MULTIPLE",
@@ -136,6 +317,6 @@
     { "codigo": "PRIMER_ACIERTO", "nombre": "Primer acierto", "descripcion": "Resuelve correctamente tu primer ejercicio.", "condicion": { "aciertos_min": 1 }, "puntos": 5 },
     { "codigo": "PRIMERA_SERIE", "nombre": "Primera serie", "descripcion": "Resuelve 10 ejercicios correctamente.", "condicion": { "aciertos_min": 10 }, "puntos": 20 },
     { "codigo": "RACHA_INICIAL", "nombre": "Racha inicial", "descripcion": "Mantén una racha de 3 días consecutivos.", "condicion": { "racha_dias": 3 }, "puntos": 15 },
-    { "codigo": "MAESTRO_LOGICA", "nombre": "Maestro de lógica", "descripcion": "Acierta los 5 ejercicios del piloto de Lógica.", "condicion": { "tema_id": 1, "aciertos": 5 }, "puntos": 50 }
+    { "codigo": "MAESTRO_LOGICA", "nombre": "Maestro de lógica", "descripcion": "Acierta los 15 ejercicios del banco de Lógica.", "condicion": { "aciertos_min": 15 }, "puntos": 50 }
   ]
 }

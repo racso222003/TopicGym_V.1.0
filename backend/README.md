@@ -1,7 +1,9 @@
-# TopicGym v1.0 · Backend (Compromiso 02)
+# TopicGym v1.0 · Backend (Compromisos 02–04 · Acta 06)
 
-API inicial del piloto de **Lógica de Programación** (1.º semestre).
+API del piloto de **Lógica de Programación** (1.º semestre).
 Node.js + Express + PostgreSQL, sin ORM (SQL parametrizado con `pg`).
+
+> Documentación detallada y ejemplos de la API: **[docs/API.md](docs/API.md)**.
 
 ## Requisitos
 
@@ -51,7 +53,7 @@ npm run dev      # http://localhost:3000
 
 `npm run seed` es idempotente: si las tablas no existen, aplica `../database/schema.sql` y
 `../database/seed.sql`; luego crea los usuarios demo con hash **bcrypt** y comprueba que los
-5 ejercicios coincidan con `../banco-ejercicios/ejercicios_piloto.json`.
+15 ejercicios (Acta 06 · Banco ampliado) coincidan con `../banco-ejercicios/ejercicios_piloto.json`.
 
 Reiniciar desde cero:
 
@@ -106,13 +108,18 @@ Invoke-RestMethod -Uri "http://localhost:3000/api/exercises?temaId=1" -Headers @
 
 ## Reglas de negocio del piloto
 
-- Puntos solo en el **primer intento correcto** (ejercicio 1 y 2: 10 pts; 3 y 4: 25 pts; 5: 50 pts).
+- Puntos solo en el **primer intento correcto** (FÁCIL 10 pts, MEDIO 25 pts, DIFÍCIL 50 pts).
 - La **respuesta correcta nunca viaja al cliente**: la validación ocurre en el servidor.
 - Tipo `PSEUDOCODIGO`: se almacena para revisión manual (no se autocalifica en esta iteración).
 - Logros: `PRIMER_ACIERTO`, `PRIMERA_SERIE`, `RACHA_INICIAL`, `MAESTRO_LOGICA`.
 
-## Seguridad
+## Seguridad (Compromiso 04 · Acta 06)
 
 - El archivo `.env` **no se versiona** (ver `.gitignore`); solo se comparte `.env.example`.
 - Contraseñas con `bcryptjs`. Token JWT en cookie `httpOnly` y también en el cuerpo de la respuesta.
-- `helmet` para cabeceras de seguridad y `express-rate-limit` en `/auth/login`.
+- `helmet` para cabeceras de seguridad.
+- `express-rate-limit` global en `/api` (`API_RATE_MAX`) y un límite estricto en `/auth/login`.
+- CORS restringido a `CORS_ORIGINS` con métodos y cabeceras permitidas.
+- Validación de entrada con **Zod** en todos los endpoints (params, query y body).
+
+Pruebas de regresión end-to-end: `node scripts/smoke.js` (ver [docs/API.md](docs/API.md)).

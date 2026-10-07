@@ -70,7 +70,7 @@ async function validar({ usuarioId, ejercicioId, opcionId, textoRespuesta }) {
     return { intento, esPrimerIntento, puntos };
   });
 
-  const logrosOtorgados = await evaluarLogros(usuarioId, ejercicio.tema_id);
+  const logrosOtorgados = await evaluarLogros(usuarioId);
 
   return {
     correcta,
@@ -126,7 +126,7 @@ function calcularRachaMaxima(dias) {
 }
 
 /** Evalúa y otorga los logros que correspondan tras responder. */
-async function evaluarLogros(usuarioId, temaId) {
+async function evaluarLogros(usuarioId) {
   const resumen = await repo.getResumen(usuarioId);
   const dias = await repo.listDiasActivos(usuarioId);
 
@@ -135,8 +135,8 @@ async function evaluarLogros(usuarioId, temaId) {
   if (resumen.aciertos >= 10) candidatos.push('PRIMERA_SERIE');
   if (calcularRacha(dias) >= 3) candidatos.push('RACHA_INICIAL');
 
-  const aciertosTema = await repo.contarAciertosPorTema(usuarioId, temaId);
-  if (aciertosTema >= 5) candidatos.push('MAESTRO_LOGICA');
+  const aciertosDistintos = await repo.contarAciertosDistintos(usuarioId);
+  if (aciertosDistintos >= 15) candidatos.push('MAESTRO_LOGICA');
 
   const otorgados = [];
   for (const codigo of candidatos) {

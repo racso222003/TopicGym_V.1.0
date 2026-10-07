@@ -17,7 +17,7 @@ import { Ejercicio, ResultadoValidacion, TemaDetalle } from '../../core/models';
     </div>
 
     @if (error()) {
-      <div class="alert alert-error">{{ error() }}</div>
+      <div class="alert alert-error" role="alert">{{ error() }}</div>
     }
 
     @if (cargando()) {
@@ -98,7 +98,12 @@ import { Ejercicio, ResultadoValidacion, TemaDetalle } from '../../core/models';
             </div>
 
             @if (resultados()[ej.id]; as r) {
-              <div class="result-panel" [class.result-ok]="r.correcta" [class.result-bad]="!r.correcta">
+              <div
+                class="result-panel"
+                [class.result-ok]="r.correcta"
+                [class.result-bad]="!r.correcta"
+                role="status"
+              >
                 <strong>
                   {{ r.correcta ? 'Correcto' : 'Incorrecto' }} ·
                   {{ r.puntos }} puntos (intento {{ r.intento }})

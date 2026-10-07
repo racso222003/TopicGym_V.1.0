@@ -120,25 +120,33 @@ export class Catalogo implements OnInit {
     this.semestreSel.set(s);
     this.asignaturaSel.set(null);
     this.temas.set([]);
+    this.error.set(null);
     this.cargandoHijos.set(true);
     this.service.asignaturas(s.id).subscribe({
       next: (asignaturas) => {
         this.asignaturas.set(asignaturas);
         this.cargandoHijos.set(false);
       },
-      error: () => this.cargandoHijos.set(false),
+      error: (err) => {
+        this.cargandoHijos.set(false);
+        this.error.set(err?.error?.error ?? 'No se pudieron cargar las asignaturas.');
+      },
     });
   }
 
   elegirAsignatura(a: Asignatura): void {
     this.asignaturaSel.set(a);
+    this.error.set(null);
     this.cargandoHijos.set(true);
     this.service.temas(a.id).subscribe({
       next: (temas) => {
         this.temas.set(temas);
         this.cargandoHijos.set(false);
       },
-      error: () => this.cargandoHijos.set(false),
+      error: (err) => {
+        this.cargandoHijos.set(false);
+        this.error.set(err?.error?.error ?? 'No se pudieron cargar los temas.');
+      },
     });
   }
 
