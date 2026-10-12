@@ -1,0 +1,77 @@
+.tema-hero-card {
+  box-shadow: var(--shadow-md);
+}
+
+.tema-hero-card .card-body {
+  padding: 24px;
+}
+
+.tema-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.tema-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.tema-main h1 {
+  font-size: 28px;
+}
+
+.tema-main p {
+  color: var(--text-muted);
+  max-width: 680px;
+}
+
+.tema-main .badge {
+  margin-bottom: 4px;
+}
+
+.tema-actions {
+  flex-shrink: 0;
+}
+
+.video-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.video-item:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+
+.video-thumb {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: radial-gradient(120% 120% at 100% 0%, rgba(225, 225, 0, 0.25), transparent 55%),
+    linear-gradient(150deg, var(--accent-dark), var(--cta));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.video-thumb .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.video-meta {
+  flex: 1;
+  min-width: 0;
+}

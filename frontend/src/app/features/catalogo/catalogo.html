@@ -1,0 +1,97 @@
+<div class="page-head">
+  <h1>Catálogo</h1>
+  <p>Explora por semestre, asignatura y tema.</p>
+</div>
+
+@if (cargando()) {
+  <div class="spinner"></div>
+} @else if (error()) {
+  <div class="alert alert-error">{{ error() }}</div>
+} @else {
+  <div class="grid-cards" style="align-items: start">
+    <div class="card">
+      <div class="card-head">
+        <span>Semestres</span>
+        <span class="badge badge-active">{{ semestres().length }}</span>
+      </div>
+      <div class="card-body stack">
+        @for (s of semestres(); track s.id) {
+          <button
+            class="select-row"
+            type="button"
+            [class.selected]="semestreSel()?.id === s.id"
+            (click)="elegirSemestre(s)"
+          >
+            <span>
+              <strong>{{ s.nombre }}</strong>
+              <span class="badge badge-active">{{ s.estado }}</span>
+            </span>
+            <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9 6 6 6-6 6" />
+            </svg>
+          </button>
+        }
+      </div>
+    </div>
+
+    @if (semestreSel()) {
+      <div class="card">
+        <div class="card-head">
+          <span>Asignaturas</span>
+          <span class="badge badge-active">{{ asignaturas().length }}</span>
+        </div>
+        <div class="card-body stack">
+          @if (cargandoHijos()) {
+            <div class="spinner"></div>
+          } @else if (asignaturas().length === 0) {
+            <p class="muted small">Sin asignaturas registradas.</p>
+          } @else {
+            @for (a of asignaturas(); track a.id) {
+              <button
+                class="select-row"
+                type="button"
+                [class.selected]="asignaturaSel()?.id === a.id"
+                (click)="elegirAsignatura(a)"
+              >
+                <span>{{ a.nombre }}</span>
+                <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 6 6 6-6 6" />
+                </svg>
+              </button>
+            }
+          }
+        </div>
+      </div>
+    }
+
+    @if (asignaturaSel()) {
+      <div class="card">
+        <div class="card-head">
+          <span>Temas</span>
+          <span class="badge badge-active">{{ temas().length }}</span>
+        </div>
+        <div class="card-body stack">
+          @if (temas().length === 0) {
+            <p class="muted small">Sin temas registrados.</p>
+          } @else {
+            @for (t of temas(); track t.id) {
+              <button class="select-row" type="button" (click)="abrirTema(t)">
+                <span>
+                  <strong>{{ t.titulo }}</strong>
+                  <span [class]="'badge badge-' + t.dificultad_base.toLowerCase()">
+                    {{ t.dificultad_base }}
+                  </span>
+                  <br />
+                  <span class="small muted">{{ t.descripcion }}</span>
+                </span>
+                <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m9 6 6 6-6 6" />
+                </svg>
+              </button>
+            }
+          }
+        </div>
+      </div>
+    }
+  </div>
+}

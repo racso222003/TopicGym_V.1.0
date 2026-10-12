@@ -1,0 +1,61 @@
+<div class="page-head">
+  <h1>Mi perfil</h1>
+  <p>Datos de tu cuenta institucional.</p>
+</div>
+
+@if (usuario(); as u) {
+  <div class="card perfil-card">
+    <div class="perfil-head">
+      <div class="avatar" aria-hidden="true">{{ inicial() }}</div>
+      <div>
+        <strong class="perfil-nombre">{{ u.nombre }}</strong>
+        <div class="small muted">{{ u.correo }}</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="perfil-row">
+        <span class="perfil-label">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+          </svg>
+          Rol
+        </span>
+        <span class="badge badge-active">{{ u.rol }}</span>
+      </div>
+      <div class="perfil-row">
+        <span class="perfil-label">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+          Estado
+        </span>
+        <span>{{ u.activo === false ? 'Inactivo' : 'Activo' }}</span>
+      </div>
+      @if (u.creado_en) {
+        <div class="perfil-row">
+          <span class="perfil-label">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2" />
+              <path d="M3 10h18" />
+              <path d="M8 3v4" />
+              <path d="M16 3v4" />
+            </svg>
+            Miembro desde
+          </span>
+          <span>{{ u.creado_en | slice: 0 : 10 }}</span>
+        </div>
+      }
+      <div class="perfil-actions">
+        <button class="btn btn-ghost" type="button" (click)="salir()">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 12H3" />
+            <path d="m6 8-4 4 4 4" />
+            <path d="M8 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8" />
+          </svg>
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </div>
+}

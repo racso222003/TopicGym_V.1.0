@@ -1,0 +1,43 @@
+.select-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.select-row:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.select-row.selected {
+  border-color: var(--highlight);
+  background: var(--highlight-soft);
+  box-shadow: inset 3px 0 0 var(--highlight), var(--shadow-sm);
+}
+
+.chevron {
+  color: var(--text-muted);
+  width: 18px;
+  height: 18px;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.select-row:hover .chevron,
+.select-row.selected .chevron {
+  color: var(--accent-dark);
+  transform: translateX(2px);
+}

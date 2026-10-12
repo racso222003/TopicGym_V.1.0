@@ -1,0 +1,36 @@
+<div class="page-head">
+  <h1>Logros</h1>
+  <p>Desbloquea insignias resolviendo ejercicios correctamente.</p>
+</div>
+
+@if (cargando()) {
+  <div class="spinner"></div>
+} @else if (error()) {
+  <div class="alert alert-error">{{ error() }}</div>
+} @else {
+  <div class="achievement-grid">
+    @for (l of logros(); track l.id) {
+      <div class="achievement" [class.locked]="!l.obtenido">
+        <div class="achievement-medal" aria-hidden="true">{{ l.obtenido ? '★' : '☆' }}</div>
+        <div class="achievement-body">
+          <div class="spread">
+            <strong>{{ l.nombre }}</strong>
+            <span class="badge badge-active">{{ l.puntos }} pts</span>
+          </div>
+          <p class="small muted" style="margin: 6px 0 0">{{ l.descripcion }}</p>
+          @if (l.obtenido) {
+            <div class="achievement-state state-ok">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+              Obtenido
+            </div>
+          } @else {
+            <div class="achievement-state state-locked">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
+              Bloqueado
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+}

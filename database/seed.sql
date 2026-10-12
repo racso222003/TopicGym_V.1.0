@@ -64,131 +64,170 @@ INSERT INTO videos (tema_id, titulo, url_youtube, duracion_seg, orden) VALUES
 INSERT INTO ejercicios
   (tema_id, nivel, tipo, titulo, enunciado, codigo_referencia, explicacion, pista, puntos_ponderados, orden) VALUES
   (1, 'FACIL', 'OPCION_MULTIPLE', 'Variables y tipos de datos',
-      'Si la variable entera edad = 17, ¿qué se muestra con mostrar(edad + 1)?',
-      'entero edad = 17\nmostrar(edad + 1)',
+      'Si la variable entera edad es 17, ¿qué se muestra al ejecutar Escribir edad + 1?',
+      'Definir edad Como Entero
+edad <- 17
+Escribir edad + 1',
       'Al ser un dato entero, el operador + realiza suma aritmética: 17 + 1 = 18. Si la variable fuera texto ("17"), el + concatenaría y daría "171".',
       'Revisa el tipo de dato de la variable.', 10, 1),
 
   (1, 'MEDIO', 'OPCION_MULTIPLE', 'Conversión real a entero (truncamiento)',
-      'Si precio = 19.99, ¿qué muestra mostrar(entero(precio))?',
-      'real precio = 19.99\nmostrar(entero(precio))',
+      'Si precio es 19.99, ¿qué muestra al ejecutar Escribir Trunc(precio)?',
+      'Definir precio Como Real
+precio <- 19.99
+Escribir Trunc(precio)',
       'Convertir un real a entero elimina la parte decimal (truncamiento hacia cero): 19.99 se convierte en 19. No redondea a 20.',
       'La conversión no redondea: corta la parte decimal.', 25, 2),
 
   (1, 'DIFICIL', 'OPCION_MULTIPLE', 'Conversión de texto a número',
       '¿Qué valor muestra el programa?',
-      'texto = "6"\nnumero = entero(texto)\nmostrar(numero + 4)',
+      'Definir texto Como Cadena
+Definir numero Como Entero
+texto <- "6"
+numero <- ConvertirANumero(texto)
+Escribir numero + 4',
       'Se convierte el texto "6" al número entero 6 y luego se suma: 6 + 4 = 10. Sin la conversión, la suma de textos daría "64".',
       'El texto se convierte a número antes de sumar.', 50, 3),
 
   (2, 'FACIL', 'OPCION_MULTIPLE', 'Operadores y precedencia',
       '¿Cuál es el valor de resultado?',
-      'resultado = 2 + 3 * 4 - 6 / 3',
+      'Definir resultado Como Real
+resultado <- 2 + 3 * 4 - 6 / 3
+Escribir resultado',
       'La multiplicación y la división se evalúan antes: 3 * 4 = 12 y 6 / 3 = 2. Luego, de izquierda a derecha: 2 + 12 - 2 = 12.',
       'Multiplicación y división tienen mayor precedencia que suma y resta.', 10, 4),
 
   (2, 'MEDIO', 'OPCION_MULTIPLE', 'Operador módulo (residuo)',
       '¿Cuál es el valor de resto?',
-      'resto = 15 % 4\nmostrar(resto)',
-      'El módulo (%) devuelve el residuo de la división entera: 15 ÷ 4 = 3 con residuo 3, por lo que resto = 3.',
+      'Definir resto Como Entero
+resto <- 15 mod 4
+Escribir resto',
+      'El módulo (mod) devuelve el residuo de la división entera: 15 ÷ 4 = 3 con residuo 3, por lo que resto = 3.',
       'Divide 15 entre 4 y quédate con el residuo.', 25, 5),
 
   (2, 'DIFICIL', 'OPCION_MULTIPLE', 'Precedencia combinada con módulo',
       '¿Cuál es el valor de resultado?',
-      'resultado = 10 % 3 * 2 + 8 / 4',
-      'Módulo, multiplicación y división se evalúan antes de la suma: 10 % 3 = 1; 1 * 2 = 2; 8 / 4 = 2. Luego 2 + 2 = 4.',
-      'Agrupa primero %, * y /.', 50, 6),
+      'Definir resultado Como Real
+resultado <- 10 mod 3 * 2 + 8 / 4
+Escribir resultado',
+      'Módulo, multiplicación y división se evalúan antes de la suma: 10 mod 3 = 1; 1 * 2 = 2; 8 / 4 = 2. Luego 2 + 2 = 4.',
+      'Agrupa primero mod, * y /.', 50, 6),
 
   (3, 'FACIL', 'OPCION_MULTIPLE', 'Condicional simple',
       'Con edad = 17, ¿qué mensaje se muestra?',
-      'si (edad >= 18) entonces
-    mostrar("Mayor de edad")
-si no
-    mostrar("Menor de edad")
-fin si',
+      'Si edad >= 18 Entonces
+    Escribir "Mayor de edad"
+SiNo
+    Escribir "Menor de edad"
+FinSi',
       'La condición 17 >= 18 es falsa, así que se ejecuta la rama si no: "Menor de edad".',
       'Compara la edad con 18.', 10, 7),
 
   (3, 'MEDIO', 'OPCION_MULTIPLE', 'Condicionales: primera rama verdadera',
       'Con nota = 3.0, ¿qué mensaje se muestra?',
-      'si (nota >= 4.0) entonces
-    mostrar("Aprobado")
-si no si (nota >= 3.0) entonces
-    mostrar("Aprobado con seguimiento")
-si no
-    mostrar("Reprobado")
-fin si',
+      'Si nota >= 4.0 Entonces
+    Escribir "Aprobado"
+SiNo
+    Si nota >= 3.0 Entonces
+        Escribir "Aprobado con seguimiento"
+    SiNo
+        Escribir "Reprobado"
+    FinSi
+FinSi',
       'La primera condición (3.0 >= 4.0) es falsa. La segunda (3.0 >= 3.0) es verdadera, así que se ejecuta su bloque y el resto se omite: "Aprobado con seguimiento".',
       'El programa se detiene en la primera condición verdadera.', 25, 8),
 
   (3, 'DIFICIL', 'OPCION_MULTIPLE', 'Condición compuesta con operadores lógicos',
       'Con nota = 4.1, ¿qué mensaje se muestra?',
-      'nota = 4.1
-si (nota >= 0 && nota <= 5 && nota >= 4.0) entonces
-    mostrar("Excelente")
-si no
-    mostrar("Rango inválido")
-fin si',
+      'Definir nota Como Real
+nota <- 4.1
+Si nota >= 0 Y nota <= 5 Y nota >= 4.0 Entonces
+    Escribir "Excelente"
+SiNo
+    Escribir "Rango inválido"
+FinSi',
       'Las tres condiciones son verdaderas: nota está en el rango 0-5 y además es 4.1 >= 4.0, por lo que se muestra "Excelente".',
-      'Evalúa cada parte del && (todas deben ser verdaderas).', 50, 9),
+      'Evalúa cada parte del Y (todas deben ser verdaderas).', 50, 9),
 
   (4, 'FACIL', 'OPCION_MULTIPLE', 'Ciclo para: suma de 1 a 3',
       '¿Cuál es el valor de suma al finalizar?',
-      'suma = 0
-para (i = 1; i <= 3; i = i + 1) hacer
-    suma = suma + i
-fin para',
+      'Definir suma, i Como Entero
+suma <- 0
+Para i <- 1 Hasta 3 Con Paso 1 Hacer
+    suma <- suma + i
+FinPara
+Escribir suma',
       'El ciclo suma 1, 2 y 3 en cada vuelta: 0 + 1 + 2 + 3 = 6.',
       'Suma los números del 1 al 3.', 10, 10),
 
   (4, 'MEDIO', 'OPCION_MULTIPLE', 'Ciclos: número de iteraciones',
       '¿Cuántas veces se ejecuta el cuerpo del ciclo?',
-      'contador = 0
-mientras (contador < 5) hacer
-    mostrar(contador)
-    contador = contador + 2
-fin mientras',
+      'Definir contador Como Entero
+contador <- 0
+Mientras contador < 5 Hacer
+    Escribir contador
+    contador <- contador + 2
+FinMientras',
       'contador toma los valores 0, 2 y 4 (tres iteraciones). Al llegar a 6 la condición 6 < 5 es falsa y el ciclo termina: 3 veces.',
       'Anota el valor de contador en cada vuelta.', 25, 11),
 
   (4, 'DIFICIL', 'OPCION_MULTIPLE', 'Ciclo con condición de corte',
       '¿Cuántas veces se ejecuta el cuerpo del ciclo?',
-      'acumulado = 0
-veces = 0
-mientras (acumulado < 10) hacer
-    acumulado = acumulado + 4
-    veces = veces + 1
-fin mientras',
+      'Definir acumulado, veces Como Entero
+acumulado <- 0
+veces <- 0
+Mientras acumulado < 10 Hacer
+    acumulado <- acumulado + 4
+    veces <- veces + 1
+FinMientras',
       'acumulado toma los valores 4, 8 y luego 12 (que ya no es menor que 10), por lo que el cuerpo se ejecuta 3 veces.',
       'Suma de 4 en 4 hasta alcanzar o superar 10.', 50, 12),
 
   (5, 'FACIL', 'OPCION_MULTIPLE', 'Contar pares en un arreglo',
       '¿Cuántos números pares hay en el arreglo?',
-      'numeros = [3, 8, 5, 2]
-cuantos = 0
-para cada n en numeros hacer
-    si (n % 2 == 0) entonces
-        cuantos = cuantos + 1
-    fin si
-fin para',
+      'Definir numeros Como Entero
+Dimension numeros[4]
+numeros[1] <- 3
+numeros[2] <- 8
+numeros[3] <- 5
+numeros[4] <- 2
+Definir cuantos Como Entero
+cuantos <- 0
+Para Cada n De numeros Hacer
+    Si n mod 2 = 0 Entonces
+        cuantos <- cuantos + 1
+    FinSi
+FinPara
+Escribir cuantos',
       '8 y 2 son pares (al dividirlos entre 2 el residuo es 0): cuantos = 2.',
-      'Un número es par si n % 2 == 0.', 10, 13),
+      'Un número es par si n mod 2 = 0.', 10, 13),
 
   (5, 'MEDIO', 'OPCION_MULTIPLE', 'Actualizar un elemento del arreglo',
-      '¿Cuál es el valor final en la posición 1 (segunda posición)?',
-      'numeros = [10, 20, 30]
-numeros[1] = numeros[1] * 2
-mostrar(numeros[1])',
-      'Se duplica el valor de la posición 1 (la segunda del arreglo): 20 * 2 = 40.',
-      'En la mayoría de lenguajes el primer elemento está en la posición 0.', 25, 14),
+      '¿Cuál es el valor final en la segunda posición del arreglo?',
+      'Definir numeros Como Entero
+Dimension numeros[3]
+numeros[1] <- 10
+numeros[2] <- 20
+numeros[3] <- 30
+numeros[2] <- numeros[2] * 2
+Escribir numeros[2]',
+      'Se duplica el valor de la segunda posición del arreglo: 20 * 2 = 40.',
+      'En PSeInt el primer elemento del arreglo ocupa la posición 1.', 25, 14),
 
   (5, 'DIFICIL', 'OPCION_MULTIPLE', 'Arreglos y acumulador',
       '¿Cuál es el valor de suma al terminar el recorrido?',
-      'numeros = [4, 8, 1, 6]
-suma = 0
-para cada n en numeros hacer
-    suma = suma + n
-fin para',
+      'Definir numeros Como Entero
+Dimension numeros[4]
+numeros[1] <- 4
+numeros[2] <- 8
+numeros[3] <- 1
+numeros[4] <- 6
+Definir suma, n Como Entero
+suma <- 0
+Para Cada n De numeros Hacer
+    suma <- suma + n
+FinPara
+Escribir suma',
       'El acumulador empieza en 0 y suma cada elemento: 4 + 8 + 1 + 6 = 19.',
       'Suma todos los elementos del arreglo partiendo de 0.', 50, 15);
 

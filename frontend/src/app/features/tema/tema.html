@@ -1,0 +1,66 @@
+<div class="page-head">
+  <a routerLink="/catalogo" class="small">← Volver al catálogo</a>
+</div>
+
+@if (cargando()) {
+  <div class="spinner"></div>
+} @else if (error()) {
+  <div class="alert alert-error">{{ error() }}</div>
+} @else if (tema(); as t) {
+  <div class="card tema-hero-card">
+    <div class="card-body tema-hero">
+      <div class="tema-main">
+        <span [class]="'badge badge-' + t.dificultad_base.toLowerCase()">
+          {{ t.dificultad_base }}
+        </span>
+        <h1 style="margin: 8px 0 0">{{ t.titulo }}</h1>
+        <div class="small muted">{{ t.asignatura }} · Semestre {{ t.semestre_numero }}</div>
+        <p style="margin: 12px 0 0">{{ t.descripcion }}</p>
+      </div>
+      <div class="tema-actions">
+        <a class="btn btn-accent" [routerLink]="['/logica', t.id]">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 3l14 9-14 9V3z" />
+          </svg>
+          Practicar ejercicios
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 18px">
+    <div class="card-head">
+      <span>Videos de apoyo</span>
+      <span class="badge badge-active">{{ t.videos.length }}</span>
+    </div>
+    <div class="card-body">
+      @if (t.videos.length === 0) {
+        <p class="muted small">Este tema aún no tiene videos.</p>
+      } @else {
+        <div class="stack">
+          @for (v of t.videos; track v.id) {
+            <div class="video-item">
+              <div class="video-thumb" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M6 3l14 9-14 9V3z" />
+                </svg>
+              </div>
+              <div class="video-meta">
+                <strong>{{ v.titulo }}</strong>
+                <div class="small muted">Duración {{ duracion(v.duracion_seg) }}</div>
+              </div>
+              <a
+                class="btn btn-ghost btn-sm"
+                [href]="v.url_youtube"
+                target="_blank"
+                rel="noopener"
+              >
+                Ver video
+              </a>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+}

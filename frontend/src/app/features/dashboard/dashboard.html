@@ -1,0 +1,207 @@
+@if (cargando()) {
+  <div class="spinner"></div>
+} @else if (error()) {
+  <div class="alert alert-error">{{ error() }}</div>
+} @else if (stats(); as s) {
+  <div class="dash-hero">
+    <div class="dash-hero-main">
+      <div class="dash-eyebrow">Panel del estudiante</div>
+      <h1>Hola, {{ primerNombre() }}</h1>
+      <p>Este es el resumen de tu avance en Lógica de Programación.</p>
+      <div class="dash-hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-label">Puntos totales</span>
+          <strong>{{ s.puntos_totales }}</strong>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-label">Racha actual</span>
+          <strong>{{ s.racha_actual }} días</strong>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-label">Aciertos</span>
+          <strong>{{ s.aciertos }}</strong>
+        </div>
+      </div>
+    </div>
+    <div class="dash-ring-wrap">
+      <svg class="ring" viewBox="0 0 42 42" aria-hidden="true">
+        <circle class="ring-track" cx="21" cy="21" r="15.9" />
+        <circle
+          class="ring-fill"
+          cx="21"
+          cy="21"
+          r="15.9"
+          [style.stroke-dashoffset]="100 - (logros().length ? logrosObtenidos() * 100 / logros().length : 0)"
+        />
+      </svg>
+      <div class="ring-label">
+        <strong>{{ logrosObtenidos() }} / {{ logros().length }}</strong>
+        <span>logros</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-caption">
+        <span class="kpi-icon">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+        </span>
+        <span class="kpi-label">Puntos totales</span>
+      </div>
+      <span class="kpi-value">{{ s.puntos_totales }}</span>
+      <svg class="spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+        <polyline
+          class="spark-line"
+          [attr.points]="'0,20 35,' + (20 - ((s.puntos_totales * 7) % 100) * 0.16) + ' 70,' + (20 - ((s.puntos_totales * 13) % 100) * 0.16) + ' 100,' + (20 - ((s.puntos_totales * 31) % 100) * 0.16)"
+        />
+      </svg>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-caption">
+        <span class="kpi-icon">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" /></svg>
+        </span>
+        <span class="kpi-label">Aciertos</span>
+      </div>
+      <span class="kpi-value">{{ s.aciertos }}</span>
+      <svg class="spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+        <polyline
+          class="spark-line"
+          [attr.points]="'0,20 35,' + (20 - ((s.aciertos * 7) % 100) * 0.16) + ' 70,' + (20 - ((s.aciertos * 13) % 100) * 0.16) + ' 100,' + (20 - ((s.aciertos * 31) % 100) * 0.16)"
+        />
+      </svg>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-caption">
+        <span class="kpi-icon">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m13 2-9 12h7l-1 8 9-12h-7l1-8z" /></svg>
+        </span>
+        <span class="kpi-label">Racha actual (días)</span>
+      </div>
+      <span class="kpi-value">{{ s.racha_actual }}</span>
+      <svg class="spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+        <polyline
+          class="spark-line"
+          [attr.points]="'0,20 35,' + (20 - ((s.racha_actual * 7) % 100) * 0.16) + ' 70,' + (20 - ((s.racha_actual * 13) % 100) * 0.16) + ' 100,' + (20 - ((s.racha_actual * 31) % 100) * 0.16)"
+        />
+      </svg>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-caption">
+        <span class="kpi-icon">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12l5 3" /><circle cx="12" cy="12" r="9" /></svg>
+        </span>
+        <span class="kpi-label">Racha máxima</span>
+      </div>
+      <span class="kpi-value">{{ s.racha_maxima }}</span>
+      <svg class="spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+        <polyline
+          class="spark-line"
+          [attr.points]="'0,20 35,' + (20 - ((s.racha_maxima * 7) % 100) * 0.16) + ' 70,' + (20 - ((s.racha_maxima * 13) % 100) * 0.16) + ' 100,' + (20 - ((s.racha_maxima * 31) % 100) * 0.16)"
+        />
+      </svg>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-caption">
+        <span class="kpi-icon">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18" /><path d="M8 17V9" /><path d="M13 17V5" /><path d="M18 17V11" /></svg>
+        </span>
+        <span class="kpi-label">Intentos</span>
+      </div>
+      <span class="kpi-value">{{ s.intentos }}</span>
+      <svg class="spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+        <polyline
+          class="spark-line"
+          [attr.points]="'0,20 35,' + (20 - ((s.intentos * 7) % 100) * 0.16) + ' 70,' + (20 - ((s.intentos * 13) % 100) * 0.16) + ' 100,' + (20 - ((s.intentos * 31) % 100) * 0.16)"
+        />
+      </svg>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-caption">
+        <span class="kpi-icon">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M8 10h.01" /><path d="M12 10h4" /><path d="m3 15 4-3 3 2 5-4 6 4" /></svg>
+        </span>
+        <span class="kpi-label">Días activos</span>
+      </div>
+      <span class="kpi-value">{{ s.dias_activos }}</span>
+      <svg class="spark" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+        <polyline
+          class="spark-line"
+          [attr.points]="'0,20 35,' + (20 - ((s.dias_activos * 7) % 100) * 0.16) + ' 70,' + (20 - ((s.dias_activos * 13) % 100) * 0.16) + ' 100,' + (20 - ((s.dias_activos * 31) % 100) * 0.16)"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <div class="dash-grid">
+    <div class="card dash-main">
+      <div class="card-head">
+        <span>Mis cursos activos</span>
+        <a routerLink="/catalogo" class="btn btn-ghost btn-sm">Ver catálogo</a>
+      </div>
+      <div class="card-body">
+        @if (progreso().length === 0) {
+          <div class="empty">
+            Aún no has resuelto ejercicios.
+            <a routerLink="/catalogo">Explora el catálogo</a> para empezar.
+          </div>
+        } @else {
+          <div class="stack">
+            @for (p of progreso(); track p.tema_id) {
+              <div class="course-card">
+                <div class="course-preview" aria-hidden="true">
+                  <span class="course-letter">{{ p.tema.charAt(0) }}</span>
+                  <span class="preview-bar preview-bar-1"></span>
+                  <span class="preview-bar preview-bar-2"></span>
+                </div>
+                <div class="course-info">
+                  <div class="spread">
+                    <strong>{{ p.tema }}</strong>
+                    <span class="badge badge-active">{{ p.puntos }} pts</span>
+                  </div>
+                  <div class="small muted">{{ p.ejercicios_resueltos }} ejercicios resueltos</div>
+                  <div class="progress-track" style="margin-top: 8px">
+                    <div class="progress-fill" [style.width.%]="anchoProgreso(p)"></div>
+                  </div>
+                  <div class="course-foot">
+                    <a class="btn btn-primary btn-sm" [routerLink]="['/tema', p.tema_id]">Continuar</a>
+                    <a class="small" [routerLink]="['/logica', p.tema_id]">Practicar</a>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="card dash-side">
+      <div class="card-head">
+        <span>Logros</span>
+        <a routerLink="/logros" class="small">Ver todos</a>
+      </div>
+      <div class="card-body">
+        <div class="achievements-summary">
+          <strong>{{ logrosObtenidos() }} / {{ logros().length }}</strong>
+          <span class="muted small">Logros obtenidos</span>
+        </div>
+        @if (logrosObtenidos() === 0) {
+          <p class="muted small" style="margin-top: 12px">
+            Responde tu primer ejercicio correcto para desbloquear un logro.
+          </p>
+        } @else {
+          <div class="stack mini-stack">
+            @for (l of logros(); track l.id) {
+              <div class="mini-achievement" [class.locked]="!l.obtenido">
+                <span class="mini-medal">{{ l.obtenido ? '★' : '☆' }}</span>
+                <span class="mini-name">{{ l.nombre }}</span>
+                <span class="mini-pts">{{ l.puntos }} pts</span>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}
