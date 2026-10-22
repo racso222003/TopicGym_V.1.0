@@ -34,4 +34,54 @@ function logout(_req, res) {
   res.json({ ok: true });
 }
 
-module.exports = { login, me, logout };
+async function register(req, res, next) {
+  try {
+    const result = await service.register(req.body);
+    res.status(201).json(result);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function verify(req, res, next) {
+  try {
+    const { token } = req.params;
+    const result = await service.verifyEmail(token);
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function updateMe(req, res, next) {
+  try {
+    const usuarioId = req.usuario.sub;
+    const resultado = await service.updateProfile(usuarioId, req.body || {});
+    res.json(resultado);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function vincularCodigo(req, res, next) {
+  try {
+    const usuarioId = req.usuario.sub;
+    const { codigo } = req.body || {};
+    const resultado = await service.linkCode(usuarioId, codigo);
+    res.status(201).json(resultado);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function listarMisCodigos(req, res, next) {
+  try {
+    const usuarioId = req.usuario.sub;
+    const resultado = await service.misCodigos(usuarioId);
+    res.json(resultado);
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { login, me, logout, register, verify, updateMe, vincularCodigo, listarMisCodigos };

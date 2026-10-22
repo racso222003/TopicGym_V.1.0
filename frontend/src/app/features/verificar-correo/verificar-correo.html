@@ -1,0 +1,16 @@
+<section class="vc">
+  <div class="vc-card">
+    <h1>Verificación de correo</h1>
+    @if (estado() === 'cargando') {
+      <p>Verificando tu correo electrónico...</p>
+    }
+    @if (estado() === 'ok') {
+      <p class="ok">{{ mensaje() }}</p>
+      <p class="hint">Redirigiendo al inicio de sesión...</p>
+    }
+    @if (estado() === 'error') {
+      <p class="error">{{ mensaje() }}</p>
+      <a routerLink="/login">Ir a iniciar sesión</a>
+    }
+  </div>
+</section>

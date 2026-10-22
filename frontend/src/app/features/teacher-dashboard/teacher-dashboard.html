@@ -1,0 +1,260 @@
+<div class="teacher-dashboard">
+  <header class="dashboard-header">
+    <div>
+      <h1>Panel del Docente</h1>
+      <p class="muted">Seguimiento y trazabilidad de tus alumnos</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-ghost btn-sm" type="button" (click)="refrescarTodo()" [disabled]="cargandoCodigos() || cargandoAlumnos()">
+        Actualizar
+      </button>
+      <button class="btn btn-outline btn-sm" type="button" (click)="cerrarSesion()">
+        Cerrar sesión
+      </button>
+    </div>
+  </header>
+
+  @if (error()) {
+    <div class="alert alert-error" role="alert">{{ error() }}</div>
+  }
+  @if (exito()) {
+    <div class="alert alert-success" role="alert">{{ exito() }}</div>
+  }
+
+  <nav class="tabs">
+    <button class="tab-btn" [class.active]="vistaActiva() === 'seguimiento'" type="button" (click)="setVista('seguimiento')">
+      Seguimiento de alumnos
+    </button>
+    <button class="tab-btn" [class.active]="vistaActiva() === 'codigos'" type="button" (click)="setVista('codigos')">
+      Mis códigos de clase
+    </button>
+  </nav>
+
+  @if (vistaActiva() === 'seguimiento') {
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <h2>Avance de alumnos</h2>
+          <p class="muted small">Trazabilidad por alumno con base en los ejercicios del sistema.</p>
+        </div>
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <span class="mini-value">{{ totalAlumnos() }}</span>
+            <span class="mini-label">Alumnos</span>
+          </div>
+          <div class="mini-stat">
+            <span class="mini-value">{{ totalEjercicios() }}</span>
+            <span class="mini-label">Ejercicios resueltos</span>
+          </div>
+          <div class="mini-stat">
+            <span class="mini-value">{{ totalPuntos() }}</span>
+            <span class="mini-label">Puntos totales</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        @if (cargandoAlumnos()) {
+          <p class="muted">Cargando avance de alumnos…</p>
+        } @else if (alumnos().length === 0) {
+          <div class="empty-state">
+            <p class="muted">Aún no hay estudiantes vinculados con tus códigos activos.</p>
+            <p class="muted small">Genera un código desde "Mis códigos de clase" y compártelo con tus estudiantes.</p>
+            <button class="btn btn-primary btn-sm" type="button" (click)="setVista('codigos')">Ir a códigos</button>
+          </div>
+        } @else {
+          <div class="alumnos-grid">
+            @for (alumno of alumnos(); track alumno.id) {
+              <article class="alumno-card">
+                <header class="alumno-card-header">
+                  <div class="alumno-identity">
+                    <div class="alumno-avatar">{{ inicialAlumno(alumno.nombre) }}</div>
+                    <div>
+                      <div class="alumno-nombre">{{ alumno.nombre }}</div>
+                      <div class="alumno-correo muted small">{{ alumno.correo }}</div>
+                    </div>
+                  </div>
+                  <span class="code-pill">{{ alumno.codigo_usado }}</span>
+                </header>
+
+                <div class="alumno-metrics">
+                  <div class="alumno-metric">
+                    <span class="alumno-metric-value">{{ alumno.ejercicios_resueltos }}</span>
+                    <span class="alumno-metric-label">Ejercicios resueltos</span>
+                  </div>
+                  <div class="alumno-metric">
+                    <span class="alumno-metric-value alumno-metric-points">{{ alumno.puntos_totales }}</span>
+                    <span class="alumno-metric-label">Puntos</span>
+                  </div>
+                  <div class="alumno-metric">
+                    <span class="alumno-metric-value">{{ alumno.logros?.length || 0 }}</span>
+                    <span class="alumno-metric-label">Logros</span>
+                  </div>
+                </div>
+
+                <div class="alumno-footer">
+                  <div class="muted small">
+                    @if (alumno.logros?.length) {
+                      Último logro: <strong>{{ alumno.logros[0].nombre }}</strong>
+                    } @else {
+                      Sin logros obtenidos aún
+                    }
+                  </div>
+                  <button class="btn btn-ghost btn-sm" type="button" (click)="verDetalle(alumno)">Ver trazabilidad</button>
+                </div>
+              </article>
+            }
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+  @if (vistaActiva() === 'codigos') {
+    <section class="card">
+      <div class="card-header">
+        <div>
+          <h2>Códigos de Clase</h2>
+          <p class="muted small">Genera códigos para que tus estudiantes se vinculen a tu grupo al registrarse.</p>
+        </div>
+        <button class="btn btn-primary" type="button" (click)="generarCodigo()" [disabled]="generandoCodigo()">
+          {{ generandoCodigo() ? 'Generando…' : 'Generar Nuevo Código' }}
+        </button>
+      </div>
+
+      <div class="card-body">
+        <div class="code-gen-row">
+          <select class="input" [value]="asignaturaSeleccionada()" (change)="asignaturaSeleccionada.set(+$any($event.target).value || null)">
+            <option [value]="null">Sin asignatura específica</option>
+            @for (a of asignaturas(); track a.id) {
+              <option [value]="a.id">{{ a.nombre }} @if (a.semestre_numero) { - Semestre {{ a.semestre_numero }} }</option>
+            }
+          </select>
+          <button class="btn btn-primary" type="button" (click)="generarCodigo()" [disabled]="generandoCodigo()">
+            {{ generandoCodigo() ? 'Generando…' : 'Generar Nuevo Código' }}
+          </button>
+        </div>
+        <p class="muted small">Asocia el código a la asignatura para que solo se muestren los avances de esa materia a este grupo.</p>
+
+        @if (cargandoCodigos()) {
+          <p class="muted">Cargando códigos…</p>
+        } @else if (codigosActivos().length === 0) {
+          <p class="muted">Aún no has generado ningún código activo.</p>
+        } @else {
+          <div class="codes-grid">
+            @for (codigo of codigosActivos(); track codigo.id) {
+              <article class="code-card">
+                <div class="code-header">
+                  <span class="code-label">Código</span>
+                  <span class="badge badge-active">ACTIVO</span>
+                </div>
+                <div class="code-value">{{ codigo.codigo }}</div>
+                <div class="code-footer muted small">
+                  {{ codigo.asignatura_nombre || 'Sin asignatura' }} · Creado el {{ codigo.fecha_creacion | date: 'dd/MM/yyyy HH:mm' }}
+                </div>
+              </article>
+            }
+          </div>
+        }
+
+        @if (codigos().length > codigosActivos().length) {
+          <details class="inactive-codes">
+            <summary class="muted small">Ver códigos inactivos</summary>
+            <ul class="inactive-list">
+              @for (codigo of codigos(); track codigo.id) {
+                @if (!codigo.activo) {
+                  <li>
+                    <span class="code-text">{{ codigo.codigo }}</span>
+                    <span class="muted small">Creado el {{ codigo.fecha_creacion | date: 'dd/MM/yyyy' }}</span>
+                  </li>
+                }
+              }
+            </ul>
+          </details>
+        }
+      </div>
+    </section>
+  }
+</div>
+
+@if (drawerAbierto() && alumnoSeleccionado(); as alumno) {
+  <div class="drawer-backdrop" (click)="cerrarDetalle()"></div>
+  <aside class="drawer">
+    <header class="drawer-header">
+      <div class="drawer-identity">
+        <div class="alumno-avatar">{{ inicialAlumno(alumno.nombre) }}</div>
+        <div>
+          <div class="drawer-title">{{ alumno.nombre }}</div>
+          <div class="muted small">{{ alumno.correo }} · Código {{ alumno.codigo_usado }}</div>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-sm" type="button" (click)="cerrarDetalle()">Cerrar</button>
+    </header>
+
+    <section class="drawer-body">
+      <div class="drawer-kpis">
+        <div class="drawer-kpi">
+          <span class="drawer-kpi-value">{{ alumno.ejercicios_resueltos }}</span>
+          <span class="drawer-kpi-label">Ejercicios resueltos</span>
+        </div>
+        <div class="drawer-kpi">
+          <span class="drawer-kpi-value drawer-kpi-points">{{ alumno.puntos_totales }}</span>
+          <span class="drawer-kpi-label">Puntos totales</span>
+        </div>
+        <div class="drawer-kpi">
+          <span class="drawer-kpi-value">{{ alumno.logros?.length || 0 }}</span>
+          <span class="drawer-kpi-label">Logros obtenidos</span>
+        </div>
+      </div>
+
+      <article class="drawer-card">
+        <header class="drawer-card-header">
+          <h3>Avance por tema</h3>
+          <p class="muted small">Desglose con base en ejercicios intentados y resueltos.</p>
+        </header>
+        <div class="drawer-card-body">
+          <div class="empty-state">
+            <p class="muted">Detalle por tema disponible próximamente con trazabilidad completa.</p>
+            <p class="muted small">Se alimentará desde <code>respuestas_estudiante</code> por tema/ejercicio.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="drawer-card">
+        <header class="drawer-card-header">
+          <h3>Historial de intentos</h3>
+          <p class="muted small">Últimos intentos del alumno para acompañamiento.</p>
+        </header>
+        <div class="drawer-card-body">
+          <div class="empty-state">
+            <p class="muted">Historial de intentos disponible próximamente.</p>
+            <p class="muted small">Mostrará fecha, ejercicio, correcto/incorrecto y puntos.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="drawer-card">
+        <header class="drawer-card-header">
+          <h3>Logros obtenidos</h3>
+        </header>
+        <div class="drawer-card-body">
+          @if (!alumno.logros?.length) {
+            <p class="muted small">Sin logros obtenidos.</p>
+          } @else {
+            <div class="drawer-achievements">
+              @for (logro of alumno.logros; track logro.codigo) {
+                <div class="drawer-achievement">
+                  <div>
+                    <div class="drawer-achievement-name">{{ logro.nombre }}</div>
+                    <div class="muted small">{{ logro.descripcion }}</div>
+                  </div>
+                  <span class="achievement-points">+{{ logro.puntos }}</span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </article>
+    </section>
+  </aside>
+}

@@ -60,12 +60,13 @@ async function crearUsuarios() {
   for (const u of USUARIOS_DEMO) {
     const hash = await bcrypt.hash(u.password, 10);
     const { rows } = await pool.query(
-      `INSERT INTO usuarios (rol_id, nombre, correo_institucional, password_hash)
-       VALUES ((SELECT id FROM roles WHERE codigo = $1), $2, $3, $4)
+      `INSERT INTO usuarios (rol_id, nombre, correo_institucional, password_hash, email_verificado)
+       VALUES ((SELECT id FROM roles WHERE codigo = $1), $2, $3, $4, TRUE)
        ON CONFLICT (correo_institucional) DO UPDATE
          SET nombre = EXCLUDED.nombre,
              password_hash = EXCLUDED.password_hash,
-             rol_id = EXCLUDED.rol_id
+             rol_id = EXCLUDED.rol_id,
+             email_verificado = TRUE
        RETURNING correo_institucional`,
       [u.rol, u.nombre, u.correo, hash],
     );

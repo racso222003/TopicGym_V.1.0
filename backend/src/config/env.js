@@ -42,6 +42,20 @@ const config = {
     authWindowMs: toInt(process.env.AUTH_RATE_WINDOW_MS, 600000),
   },
 
+  // Envío de correo (verificación de registro). Ethereal/Mailtrap en desarrollo.
+  email: {
+    host: process.env.EMAIL_HOST || 'smtp.ethereal.email',
+    port: toInt(process.env.EMAIL_PORT, 587),
+    secure: process.env.EMAIL_SECURE === 'true',
+    user: process.env.EMAIL_USER || '',
+    pass: process.env.EMAIL_PASS || '',
+    from: process.env.EMAIL_FROM || 'TopicGym <no-reply@topicgym.local>',
+  },
+
+  app: {
+    baseUrl: process.env.APP_BASE_URL || 'http://localhost:4200',
+  },
+
   oauth: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID || '',

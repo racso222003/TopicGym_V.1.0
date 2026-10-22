@@ -1,61 +1,122 @@
 <div class="page-head">
   <h1>Mi perfil</h1>
-  <p>Datos de tu cuenta institucional.</p>
+  <p>Datos personales, contacto y vinculación con docentes.</p>
 </div>
 
-@if (usuario(); as u) {
-  <div class="card perfil-card">
-    <div class="perfil-head">
-      <div class="avatar" aria-hidden="true">{{ inicial() }}</div>
-      <div>
-        <strong class="perfil-nombre">{{ u.nombre }}</strong>
-        <div class="small muted">{{ u.correo }}</div>
+@if (mensaje()) {
+  <div class="alert alert-success">{{ mensaje() }}</div>
+}
+@if (error()) {
+  <div class="alert alert-error">{{ error() }}</div>
+}
+
+<div class="perfil-grid">
+  @if (usuario(); as u) {
+    <div class="card perfil-card">
+      <div class="card-header">
+        <div class="perfil-head">
+          <div class="avatar" aria-hidden="true">{{ inicial() }}</div>
+          <div>
+            <strong class="perfil-nombre">{{ u.nombre }}</strong>
+            <div class="small muted">{{ u.correo }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="perfil-row">
+          <span class="perfil-label">Rol</span>
+          <span class="badge badge-active">{{ u.rol }}</span>
+        </div>
+        <div class="perfil-row">
+          <span class="perfil-label">Estado</span>
+          <span>{{ u.activo === false ? 'Inactivo' : 'Activo' }}</span>
+        </div>
+        @if (u.creado_en) {
+          <div class="perfil-row">
+            <span class="perfil-label">Miembro desde</span>
+            <span>{{ u.creado_en | slice: 0 : 10 }}</span>
+          </div>
+        }
+        <div class="perfil-actions">
+          <button class="btn btn-ghost" type="button" (click)="salir()">
+            Cerrar sesión
+          </button>
+        </div>
       </div>
     </div>
-    <div class="card-body">
-      <div class="perfil-row">
-        <span class="perfil-label">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="8" r="4" />
-            <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
-          </svg>
-          Rol
-        </span>
-        <span class="badge badge-active">{{ u.rol }}</span>
+  }
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <h2>Datos personales</h2>
+        <p class="muted small">El correo institucional no se puede modificar.</p>
       </div>
-      <div class="perfil-row">
-        <span class="perfil-label">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20 6 9 17l-5-5" />
-          </svg>
-          Estado
-        </span>
-        <span>{{ u.activo === false ? 'Inactivo' : 'Activo' }}</span>
+    </div>
+    <div class="card-body form-grid">
+      <div class="field">
+        <label>Nombre completo</label>
+        <input class="input" [(ngModel)]="nombre">
       </div>
-      @if (u.creado_en) {
-        <div class="perfil-row">
-          <span class="perfil-label">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="5" width="18" height="16" rx="2" />
-              <path d="M3 10h18" />
-              <path d="M8 3v4" />
-              <path d="M16 3v4" />
-            </svg>
-            Miembro desde
-          </span>
-          <span>{{ u.creado_en | slice: 0 : 10 }}</span>
-        </div>
-      }
-      <div class="perfil-actions">
-        <button class="btn btn-ghost" type="button" (click)="salir()">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M15 12H3" />
-            <path d="m6 8-4 4 4 4" />
-            <path d="M8 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8" />
-          </svg>
-          Cerrar sesión
+      <div class="field">
+        <label>Correo institucional</label>
+        <input class="input" [value]="usuario()?.correo" disabled>
+      </div>
+      <div class="field">
+        <label>Número de contacto / Teléfono</label>
+        <input class="input" [(ngModel)]="telefono" placeholder="Ej: 3001234567">
+      </div>
+      <div class="field">
+        <label>Ciudad</label>
+        <input class="input" [(ngModel)]="ciudad" placeholder="Ej: Bogotá">
+      </div>
+      <div class="field field-full">
+        <label>Dirección</label>
+        <input class="input" [(ngModel)]="direccion" placeholder="Ej: Cra 123 #45-67">
+      </div>
+      <div class="field-full">
+        <button class="btn btn-primary" type="button" (click)="guardarPerfil()" [disabled]="guardando()">
+          {{ guardando() ? 'Guardando...' : 'Guardar cambios' }}
         </button>
       </div>
     </div>
   </div>
-}
+
+  @if (usuario()?.rol === 'ESTUDIANTE') {
+    <div class="card card-full">
+      <div class="card-header">
+        <div>
+          <h2>Mis docentes y códigos</h2>
+          <p class="muted small">Puedes vincularte a múltiples códigos. Cada docente verá solo los avances de su asignatura.</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="link-row">
+          <input class="input" [(ngModel)]="codigoVincular" placeholder="Ingresa código PROG-XXXXXX">
+          <button class="btn btn-primary" type="button" (click)="vincular()" [disabled]="vinculando() || !codigoVincular.trim()">
+            {{ vinculando() ? 'Vinculando...' : 'Vincular código' }}
+          </button>
+        </div>
+
+        <div class="codes-list">
+          @if (cargandoCodigos()) {
+            <p class="muted small">Cargando...</p>
+          } @else if (misCodigos().length === 0) {
+            <p class="muted small">Aún no estás vinculado a ningún código. Pega el código que te dio tu docente aquí.</p>
+          } @else {
+            @for (item of misCodigos(); track item.codigo_id) {
+              <article class="code-item">
+                <div>
+                  <div class="code-item-title">{{ item.codigo }}</div>
+                  <div class="muted small">Docente: {{ item.docente_nombre }} · {{ item.docente_correo }}</div>
+                  <div class="muted small">Asignatura: {{ item.asignatura_nombre || 'Sin asignar' }}</div>
+                </div>
+                <span class="badge badge-active">{{ item.activo ? 'ACTIVO' : 'INACTIVO' }}</span>
+              </article>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

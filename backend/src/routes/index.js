@@ -6,6 +6,8 @@ const authRoutes = require('./auth.routes');
 const catalogoRoutes = require('./catalogo.routes');
 const ejerciciosRoutes = require('./ejercicios.routes');
 const progresoRoutes = require('./progreso.routes');
+const teachersRoutes = require('./teachers.routes');
+const studentsRoutes = require('./students.routes');
 
 const router = Router();
 
@@ -19,6 +21,8 @@ router.get('/health', async (_req, res, next) => {
 });
 
 router.use('/auth', authRoutes);
+router.use('/teachers', teachersRoutes);
+router.use('/students', studentsRoutes);
 router.use('/', catalogoRoutes);
 router.use('/exercises', ejerciciosRoutes);
 router.use('/', progresoRoutes);

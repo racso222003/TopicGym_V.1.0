@@ -3,12 +3,16 @@ export type Nivel = 'FACIL' | 'MEDIO' | 'DIFICIL';
 export type TipoEjercicio = 'OPCION_MULTIPLE' | 'PSEUDOCODIGO';
 
 export interface Usuario {
-  id: number;
+  id: string | number;
   nombre: string;
-  correo: string;
-  rol: Rol;
+  correo?: string;
+  correo_institucional?: string;
+  rol?: Rol;
+  rol_codigo?: Rol;
+  rol_id?: number;
   activo?: boolean;
   creado_en?: string;
+  email_verificado?: boolean;
 }
 
 export interface Semestre {

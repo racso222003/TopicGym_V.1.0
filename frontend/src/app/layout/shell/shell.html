@@ -10,15 +10,18 @@
 
   <header class="topbar">
     <nav class="crumbs" aria-label="Ruta de navegación">
-      <a class="crumb" routerLink="/dashboard">Lógica de Programación</a>
+      <a class="crumb" [routerLink]="(usuario()?.rol === 'DOCENTE' || usuario()?.rol === 'ADMIN') ? '/teacher-dashboard' : '/dashboard'">Lógica de Programación</a>
       <span class="crumb-sep">›</span>
-      <a class="crumb crumb-route" routerLink="/dashboard" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Inicio</a>
-      <a class="crumb crumb-route" routerLink="/catalogo" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Catálogo</a>
-      <a class="crumb crumb-route" routerLink="/progreso" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Mi progreso</a>
-      <a class="crumb crumb-route" routerLink="/logros" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Logros</a>
-      <a class="crumb crumb-route" routerLink="/perfil" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Mi perfil</a>
-      <a class="crumb crumb-route" routerLink="/tema" routerLinkActive="on">Tema</a>
-      <a class="crumb crumb-route" routerLink="/logica" routerLinkActive="on">Práctica</a>
+      @if (usuario()?.rol === 'DOCENTE' || usuario()?.rol === 'ADMIN') {
+        <a class="crumb crumb-route" routerLink="/teacher-dashboard" routerLinkActive="on">Panel Docente</a>
+        <a class="crumb crumb-route" routerLink="/perfil" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Mi perfil</a>
+      } @else {
+        <a class="crumb crumb-route" routerLink="/dashboard" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Inicio</a>
+        <a class="crumb crumb-route" routerLink="/catalogo" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Catálogo</a>
+        <a class="crumb crumb-route" routerLink="/progreso" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Mi progreso</a>
+        <a class="crumb crumb-route" routerLink="/logros" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Logros</a>
+        <a class="crumb crumb-route" routerLink="/perfil" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="on">Mi perfil</a>
+      }
     </nav>
 
     <div class="topbar-search" role="search">
@@ -47,45 +50,64 @@
   </header>
 
   <nav class="sidebar" aria-label="Menú principal">
-    <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M3 10.5 12 3l9 7.5" />
-        <path d="M5 9.5V21h14V9.5" />
-      </svg>
-      <span>Inicio</span>
-    </a>
-    <a class="nav-link" routerLink="/catalogo" routerLinkActive="active">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="3" y="3" width="7" height="7" rx="1" />
-        <rect x="14" y="3" width="7" height="7" rx="1" />
-        <rect x="3" y="14" width="7" height="7" rx="1" />
-        <rect x="14" y="14" width="7" height="7" rx="1" />
-      </svg>
-      <span>Catálogo</span>
-    </a>
-    <a class="nav-link" routerLink="/progreso" routerLinkActive="active">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M3 3v18h18" />
-        <path d="M8 17v-5" />
-        <path d="M13 17V7" />
-        <path d="M18 17v-3" />
-      </svg>
-      <span>Mi progreso</span>
-    </a>
-    <a class="nav-link" routerLink="/logros" routerLinkActive="active">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="9" r="6" />
-        <path d="m8.5 13.5-1.5 7.5 5-3 5 3-1.5-7.5" />
-      </svg>
-      <span>Logros</span>
-    </a>
-    <a class="nav-link" routerLink="/perfil" routerLinkActive="active">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="8" r="4" />
-        <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
-      </svg>
-      <span>Mi perfil</span>
-    </a>
+    @if (usuario()?.rol === 'DOCENTE' || usuario()?.rol === 'ADMIN') {
+      <a class="nav-link" routerLink="/teacher-dashboard" routerLinkActive="active">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+        <span>Panel Docente</span>
+      </a>
+      <a class="nav-link" routerLink="/perfil" routerLinkActive="active">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+        </svg>
+        <span>Mi perfil</span>
+      </a>
+    } @else {
+      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 10.5 12 3l9 7.5" />
+          <path d="M5 9.5V21h14V9.5" />
+        </svg>
+        <span>Inicio</span>
+      </a>
+      <a class="nav-link" routerLink="/catalogo" routerLinkActive="active">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+        <span>Catálogo</span>
+      </a>
+      <a class="nav-link" routerLink="/progreso" routerLinkActive="active">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 3v18h18" />
+          <path d="M8 17v-5" />
+          <path d="M13 17V7" />
+          <path d="M18 17v-3" />
+        </svg>
+        <span>Mi progreso</span>
+      </a>
+      <a class="nav-link" routerLink="/logros" routerLinkActive="active">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="9" r="6" />
+          <path d="m8.5 13.5-1.5 7.5 5-3 5 3-1.5-7.5" />
+        </svg>
+        <span>Logros</span>
+      </a>
+      <a class="nav-link" routerLink="/perfil" routerLinkActive="active">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 4-6 8-6s8 2 8 6" />
+        </svg>
+        <span>Mi perfil</span>
+      </a>
+    }
   </nav>
 
   <main class="content" id="contenido" tabindex="-1">

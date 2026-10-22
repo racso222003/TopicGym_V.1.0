@@ -1,10 +1,26 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
+import { publicGuard } from './core/guards/public.guard';
 
 export const routes: Routes = [
   {
+    path: 'auth/verify/:token',
+    loadComponent: () => import('./features/verificar-correo/verificar-correo').then((m) => m.VerificarCorreo),
+  },
+  {
     path: 'login',
+    canActivate: [publicGuard],
     loadComponent: () => import('./features/login/login').then((m) => m.Login),
+  },
+  {
+    path: 'registro',
+    canActivate: [publicGuard],
+    loadComponent: () => import('./features/registro/registro').then((m) => m.Registro),
+  },
+  {
+    path: 'teacher-dashboard',
+    canActivate: [authGuard],
+    loadComponent: () => import('./features/teacher-dashboard/teacher-dashboard').then((m) => m.TeacherDashboard),
   },
   {
     path: '',

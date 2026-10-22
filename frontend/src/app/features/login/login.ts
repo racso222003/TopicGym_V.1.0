@@ -1,12 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
-import { CREDENCIALES_DEMO } from '../../core/api.config';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -17,6 +16,7 @@ export class Login {
 
   readonly cargando = signal(false);
   readonly error = signal<string | null>(null);
+  readonly mostrarPass = signal(false);
 
   readonly form = this.fb.nonNullable.group({
     correo: ['', [Validators.required, Validators.email]],
@@ -31,10 +31,8 @@ export class Login {
     return this.form.controls.password;
   }
 
-  usarDemo(tipo: 'estudiante' | 'docente'): void {
-    const cred = tipo === 'docente' ? CREDENCIALES_DEMO.docente : CREDENCIALES_DEMO.estudiante;
-    this.form.setValue({ correo: cred.correo, password: cred.password });
-    this.error.set(null);
+  togglePassword(): void {
+    this.mostrarPass.update((v) => !v);
   }
 
   enviar(): void {
@@ -46,7 +44,14 @@ export class Login {
     this.error.set(null);
     const { correo, password } = this.form.getRawValue();
     this.auth.login(correo, password).subscribe({
-      next: () => this.router.navigateByUrl('/dashboard'),
+      next: (usuario) => {
+        const rol = usuario.rol ?? (usuario as any).rol_codigo;
+        if (rol === 'DOCENTE' || rol === 'ADMIN') {
+          this.router.navigateByUrl('/teacher-dashboard');
+        } else {
+          this.router.navigateByUrl('/catalogo');
+        }
+      },
       error: (err) => {
         this.cargando.set(false);
         this.error.set(err?.error?.error ?? 'No se pudo iniciar sesión. Verifica tus datos.');
