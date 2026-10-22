@@ -2,6 +2,7 @@
 
 const repo = require('../repositories/ejercicios.repo');
 const { withTransaction } = require('../config/db');
+const { calcularRacha, calcularRachaMaxima } = require('../utils/racha');
 
 const NIVELES = ['FACIL', 'MEDIO', 'DIFICIL'];
 
@@ -83,71 +84,68 @@ async function validar({ usuarioId, ejercicioId, opcionId, textoRespuesta }) {
   };
 }
 
-function toISODate(value) {
-  const d = value instanceof Date ? value : new Date(value);
-  return d.toISOString().slice(0, 10);
+/** Interpreta las condiciones JSONB de logros sin acoplar el motor a sus códigos. */
+function cumpleCondicion(condicion, metricas, codigo = '') {
+  if (!condicion || typeof condicion !== 'object') return false;
+
+  // Compatibilidad temporal con filas antiguas que aún no hayan pasado por la migración.
+  let tipo = condicion.tipo;
+  if (!tipo && Object.hasOwn(condicion, 'aciertos_min')) {
+    tipo = codigo === 'MAESTRO_LOGICA' ? 'ejercicios_distintos_correctos' : 'aciertos_totales';
+  } else if (!tipo && Object.hasOwn(condicion, 'racha_dias')) {
+    tipo = 'racha_dias';
+  }
+  const valor = Number(condicion.valor ?? condicion.aciertos_min ?? condicion.racha_dias ?? 1);
+
+  switch (tipo) {
+    case 'puntos_acumulados':
+      return metricas.puntos_acumulados >= valor;
+    case 'dificultad_completada':
+      return Array.isArray(metricas.niveles_completados) &&
+        metricas.niveles_completados.includes(String(condicion.nivel || '').toUpperCase());
+    case 'tema_perfecto':
+      return metricas.temas_perfectos > 0;
+    case 'temas_explorados':
+      return metricas.temas_explorados >= valor;
+    case 'aciertos_primer_intento':
+      return metricas.aciertos_primer_intento >= valor;
+    case 'intentos_totales':
+      return metricas.intentos_totales >= valor;
+    case 'ejercicios_dificiles':
+      return metricas.ejercicios_dificiles >= valor;
+    case 'racha_dias':
+      return metricas.racha_dias >= valor;
+    case 'aciertos_totales':
+      return metricas.aciertos_totales >= valor;
+    case 'ejercicios_distintos_correctos':
+      return metricas.ejercicios_distintos_correctos >= valor;
+    default:
+      return false;
+  }
 }
 
-/** Racha de días consecutivos de actividad (permite empezar ayer si hoy no hay actividad). */
-function calcularRacha(dias) {
-  if (!dias.length) return 0;
-  const set = new Set(dias.map(toISODate));
-  const cursor = new Date();
-  if (!set.has(toISODate(cursor))) {
-    cursor.setDate(cursor.getDate() - 1);
-    if (!set.has(toISODate(cursor))) return 0;
-  }
-  let racha = 0;
-  while (set.has(toISODate(cursor))) {
-    racha += 1;
-    cursor.setDate(cursor.getDate() - 1);
-  }
-  return racha;
-}
-
-/** Racha más larga registrada. */
-function calcularRachaMaxima(dias) {
-  const orden = [...new Set(dias.map(toISODate))].sort();
-  let max = 0;
-  let actual = 0;
-  let anterior = null;
-  for (const dia of orden) {
-    if (anterior) {
-      const prev = new Date(anterior);
-      prev.setDate(prev.getDate() + 1);
-      actual = toISODate(prev) === dia ? actual + 1 : 1;
-    } else {
-      actual = 1;
-    }
-    max = Math.max(max, actual);
-    anterior = dia;
-  }
-  return max;
-}
-
-/** Evalúa y otorga los logros que correspondan tras responder. */
+/** Evalúa y otorga logros después de confirmar la transacción de la respuesta. */
 async function evaluarLogros(usuarioId) {
-  const resumen = await repo.getResumen(usuarioId);
-  const dias = await repo.listDiasActivos(usuarioId);
+  const [metricas, dias, logros] = await Promise.all([
+    repo.getMetricasLogros(usuarioId),
+    repo.listDiasActivos(usuarioId),
+    repo.listLogrosEvaluables(),
+  ]);
+  metricas.racha_dias = calcularRacha(dias);
 
-  const candidatos = [];
-  if (resumen.aciertos >= 1) candidatos.push('PRIMER_ACIERTO');
-  if (resumen.aciertos >= 10) candidatos.push('PRIMERA_SERIE');
-  if (calcularRacha(dias) >= 3) candidatos.push('RACHA_INICIAL');
+  const candidatos = logros.filter((logro) => cumpleCondicion(logro.condicion, metricas, logro.codigo));
+  if (candidatos.length === 0) return [];
 
-  const aciertosDistintos = await repo.contarAciertosDistintos(usuarioId);
-  if (aciertosDistintos >= 15) candidatos.push('MAESTRO_LOGICA');
-
-  const otorgados = [];
-  for (const codigo of candidatos) {
-    const logro = await repo.findLogroPorCodigo(codigo);
-    if (!logro) continue;
-    const nuevo = await withTransaction((client) => repo.otorgarLogro(client, usuarioId, logro.id));
-    if (nuevo) {
-      otorgados.push({ codigo: logro.codigo, nombre: logro.nombre, puntos: logro.puntos });
-    }
-  }
-  return otorgados;
+  // Una única transacción pequeña tras la transacción principal; el índice único
+  // de logros_obtenidos resuelve de forma segura respuestas concurrentes.
+  const nuevosIds = new Set(
+    await withTransaction((client) =>
+      repo.otorgarLogros(client, usuarioId, candidatos.map((logro) => logro.id)),
+    ),
+  );
+  return candidatos
+    .filter((logro) => nuevosIds.has(logro.id))
+    .map(({ codigo, nombre, puntos }) => ({ codigo, nombre, puntos }));
 }
 
 async function progreso(usuarioId) {
@@ -171,4 +169,4 @@ async function stats(usuarioId) {
   };
 }
 
-module.exports = { listar, validar, progreso, logros, stats };
+module.exports = { listar, validar, progreso, logros, stats, cumpleCondicion };

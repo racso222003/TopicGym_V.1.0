@@ -12,7 +12,9 @@
     "dev": "nodemon src/server.js",
     "seed": "node seed.js",
     "db:schema": "psql -U postgres -d topicgym -f ../database/schema.sql",
-    "db:seed": "psql -U postgres -d topicgym -f ../database/seed.sql"
+    "db:seed": "psql -U postgres -d topicgym -f ../database/seed.sql",
+    "db:migrate:logros": "psql -U postgres -d topicgym -f ../database/migrations/005_nuevos_logros.sql",
+    "test": "node --test test/achievement-conditions.test.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

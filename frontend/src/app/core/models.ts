@@ -13,6 +13,9 @@ export interface Usuario {
   activo?: boolean;
   creado_en?: string;
   email_verificado?: boolean;
+  telefono?: string | null;
+  direccion?: string | null;
+  ciudad?: string | null;
 }
 
 export interface Semestre {

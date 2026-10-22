@@ -4,7 +4,7 @@
       <h1>Panel del Docente</h1>
       <p class="muted">Seguimiento y trazabilidad de tus alumnos</p>
     </div>
-    <div class="header-actions">
+    <div class="row">
       <button class="btn btn-ghost btn-sm" type="button" (click)="refrescarTodo()" [disabled]="cargandoCodigos() || cargandoAlumnos()">
         Actualizar
       </button>
@@ -18,10 +18,10 @@
     <div class="alert alert-error" role="alert">{{ error() }}</div>
   }
   @if (exito()) {
-    <div class="alert alert-success" role="alert">{{ exito() }}</div>
+    <div class="alert alert-ok" role="status">{{ exito() }}</div>
   }
 
-  <nav class="tabs">
+  <nav class="row" aria-label="Secciones del panel">
     <button class="tab-btn" [class.active]="vistaActiva() === 'seguimiento'" type="button" (click)="setVista('seguimiento')">
       Seguimiento de alumnos
     </button>
@@ -32,26 +32,26 @@
 
   @if (vistaActiva() === 'seguimiento') {
     <section class="card">
-      <div class="card-header">
+      <header class="card-header">
         <div>
           <h2>Avance de alumnos</h2>
-          <p class="muted small">Trazabilidad por alumno con base en los ejercicios del sistema.</p>
+          <p class="muted small">Progreso dentro de la asignatura de cada código de clase.</p>
         </div>
-        <div class="mini-stats">
-          <div class="mini-stat">
-            <span class="mini-value">{{ totalAlumnos() }}</span>
-            <span class="mini-label">Alumnos</span>
+        <dl class="kpis-bar">
+          <div>
+            <dt>Alumnos</dt>
+            <dd>{{ totalAlumnos() }}</dd>
           </div>
-          <div class="mini-stat">
-            <span class="mini-value">{{ totalEjercicios() }}</span>
-            <span class="mini-label">Ejercicios resueltos</span>
+          <div>
+            <dt>Ejercicios resueltos</dt>
+            <dd>{{ totalEjercicios() }}</dd>
           </div>
-          <div class="mini-stat">
-            <span class="mini-value">{{ totalPuntos() }}</span>
-            <span class="mini-label">Puntos totales</span>
+          <div>
+            <dt>Puntos totales</dt>
+            <dd>{{ totalPuntos() }}</dd>
           </div>
-        </div>
-      </div>
+        </dl>
+      </header>
 
       <div class="card-body">
         @if (cargandoAlumnos()) {
@@ -63,47 +63,60 @@
             <button class="btn btn-primary btn-sm" type="button" (click)="setVista('codigos')">Ir a códigos</button>
           </div>
         } @else {
-          <div class="alumnos-grid">
-            @for (alumno of alumnos(); track alumno.id) {
-              <article class="alumno-card">
-                <header class="alumno-card-header">
-                  <div class="alumno-identity">
-                    <div class="alumno-avatar">{{ inicialAlumno(alumno.nombre) }}</div>
-                    <div>
-                      <div class="alumno-nombre">{{ alumno.nombre }}</div>
-                      <div class="alumno-correo muted small">{{ alumno.correo }}</div>
-                    </div>
-                  </div>
-                  <span class="code-pill">{{ alumno.codigo_usado }}</span>
-                </header>
-
-                <div class="alumno-metrics">
-                  <div class="alumno-metric">
-                    <span class="alumno-metric-value">{{ alumno.ejercicios_resueltos }}</span>
-                    <span class="alumno-metric-label">Ejercicios resueltos</span>
-                  </div>
-                  <div class="alumno-metric">
-                    <span class="alumno-metric-value alumno-metric-points">{{ alumno.puntos_totales }}</span>
-                    <span class="alumno-metric-label">Puntos</span>
-                  </div>
-                  <div class="alumno-metric">
-                    <span class="alumno-metric-value">{{ alumno.logros?.length || 0 }}</span>
-                    <span class="alumno-metric-label">Logros</span>
-                  </div>
-                </div>
-
-                <div class="alumno-footer">
-                  <div class="muted small">
-                    @if (alumno.logros?.length) {
-                      Último logro: <strong>{{ alumno.logros[0].nombre }}</strong>
-                    } @else {
-                      Sin logros obtenidos aún
-                    }
-                  </div>
-                  <button class="btn btn-ghost btn-sm" type="button" (click)="verDetalle(alumno)">Ver trazabilidad</button>
-                </div>
-              </article>
-            }
+          <div class="table-wrap">
+            <table class="data-table">
+              <caption class="sr-only">Avance de alumnos por código de clase</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Alumno</th>
+                  <th scope="col">Código de clase</th>
+                  <th scope="col" class="num">Ejercicios</th>
+                  <th scope="col" class="num">Puntos</th>
+                  <th scope="col">Estado de actividad</th>
+                  <th scope="col"><span class="sr-only">Acciones</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (alumno of alumnos(); track alumno.id + '-' + alumno.codigo_id) {
+                  <tr>
+                    <td>
+                      <div class="alumno-identity">
+                        <div class="alumno-avatar" aria-hidden="true">{{ inicialAlumno(alumno.nombre) }}</div>
+                        <div class="alumno-texto">
+                          <span class="alumno-nombre">{{ alumno.nombre }}</span>
+                          <span class="alumno-correo">{{ alumno.correo }}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="code-pill">{{ alumno.codigo_usado }}</span></td>
+                    <td class="num">
+                      <strong class="fraccion">{{ alumno.ejercicios_resueltos }}</strong>
+                      <span class="muted"> / {{ alumno.total_ejercicios }}</span>
+                    </td>
+                    <td class="num points">{{ alumno.puntos_totales }}</td>
+                    <td>
+                      @switch (alumno.estado_actividad) {
+                        @case ('RACHA') {
+                          <span class="badge badge-activo">Racha · {{ alumno.racha_dias }} días</span>
+                        }
+                        @case ('ACTIVO') {
+                          <span class="badge badge-activo">Activo</span>
+                        }
+                        @default {
+                          <span class="badge badge-inactivo">Inactivo</span>
+                        }
+                      }
+                      <span class="muted small ultima">
+                        {{ alumno.ultima_actividad ? (alumno.ultima_actividad | date: 'dd/MM/yyyy') : 'Sin actividad' }}
+                      </span>
+                    </td>
+                    <td class="acciones">
+                      <button class="btn btn-outline btn-sm" type="button" (click)="verDetalle(alumno)">Ver detalles</button>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
           </div>
         }
       </div>
@@ -112,19 +125,16 @@
 
   @if (vistaActiva() === 'codigos') {
     <section class="card">
-      <div class="card-header">
+      <header class="card-header">
         <div>
           <h2>Códigos de Clase</h2>
           <p class="muted small">Genera códigos para que tus estudiantes se vinculen a tu grupo al registrarse.</p>
         </div>
-        <button class="btn btn-primary" type="button" (click)="generarCodigo()" [disabled]="generandoCodigo()">
-          {{ generandoCodigo() ? 'Generando…' : 'Generar Nuevo Código' }}
-        </button>
-      </div>
+      </header>
 
       <div class="card-body">
-        <div class="code-gen-row">
-          <select class="input" [value]="asignaturaSeleccionada()" (change)="asignaturaSeleccionada.set(+$any($event.target).value || null)">
+        <div class="row code-gen-row">
+          <select class="input" aria-label="Asignatura del código" [value]="asignaturaSeleccionada()" (change)="asignaturaSeleccionada.set(+$any($event.target).value || null)">
             <option [value]="null">Sin asignatura específica</option>
             @for (a of asignaturas(); track a.id) {
               <option [value]="a.id">{{ a.nombre }} @if (a.semestre_numero) { - Semestre {{ a.semestre_numero }} }</option>
@@ -144,13 +154,24 @@
           <div class="codes-grid">
             @for (codigo of codigosActivos(); track codigo.id) {
               <article class="code-card">
-                <div class="code-header">
+                <div class="spread">
                   <span class="code-label">Código</span>
-                  <span class="badge badge-active">ACTIVO</span>
+                  <span class="badge badge-activo">ACTIVO</span>
                 </div>
                 <div class="code-value">{{ codigo.codigo }}</div>
-                <div class="code-footer muted small">
+                <div class="muted small">
                   {{ codigo.asignatura_nombre || 'Sin asignatura' }} · Creado el {{ codigo.fecha_creacion | date: 'dd/MM/yyyy HH:mm' }}
+                </div>
+                <div class="code-card-actions">
+                  <button
+                    class="btn btn-danger-outline btn-sm"
+                    type="button"
+                    [disabled]="eliminandoCodigo() === codigo.id"
+                    (click)="pedirEliminacion(codigo)"
+                    [attr.aria-label]="'Eliminar código ' + codigo.codigo"
+                  >
+                    {{ eliminandoCodigo() === codigo.id ? 'Eliminando…' : 'Eliminar código' }}
+                  </button>
                 </div>
               </article>
             }
@@ -163,9 +184,18 @@
             <ul class="inactive-list">
               @for (codigo of codigos(); track codigo.id) {
                 @if (!codigo.activo) {
-                  <li>
+                  <li class="spread">
                     <span class="code-text">{{ codigo.codigo }}</span>
                     <span class="muted small">Creado el {{ codigo.fecha_creacion | date: 'dd/MM/yyyy' }}</span>
+                    <button
+                      class="btn btn-danger-outline btn-sm"
+                      type="button"
+                      [disabled]="eliminandoCodigo() === codigo.id"
+                      (click)="pedirEliminacion(codigo)"
+                      [attr.aria-label]="'Eliminar código inactivo ' + codigo.codigo"
+                    >
+                      {{ eliminandoCodigo() === codigo.id ? 'Eliminando…' : 'Eliminar' }}
+                    </button>
                   </li>
                 }
               }
@@ -179,59 +209,100 @@
 
 @if (drawerAbierto() && alumnoSeleccionado(); as alumno) {
   <div class="drawer-backdrop" (click)="cerrarDetalle()"></div>
-  <aside class="drawer">
+  <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-titulo">
     <header class="drawer-header">
-      <div class="drawer-identity">
-        <div class="alumno-avatar">{{ inicialAlumno(alumno.nombre) }}</div>
-        <div>
-          <div class="drawer-title">{{ alumno.nombre }}</div>
-          <div class="muted small">{{ alumno.correo }} · Código {{ alumno.codigo_usado }}</div>
+      <div class="row">
+        <div class="alumno-avatar" aria-hidden="true">{{ inicialAlumno(alumno.nombre) }}</div>
+        <div class="alumno-texto">
+          <span class="drawer-title" id="drawer-titulo">{{ alumno.nombre }}</span>
+          <span class="muted small">{{ alumno.correo }} · <span class="code-pill">{{ alumno.codigo_usado }}</span></span>
         </div>
       </div>
-      <button class="btn btn-ghost btn-sm" type="button" (click)="cerrarDetalle()">Cerrar</button>
+      <button class="btn btn-outline btn-sm" type="button" (click)="cerrarDetalle()">Cerrar</button>
     </header>
 
-    <section class="drawer-body">
+    <div class="drawer-body">
       <div class="drawer-kpis">
-        <div class="drawer-kpi">
-          <span class="drawer-kpi-value">{{ alumno.ejercicios_resueltos }}</span>
-          <span class="drawer-kpi-label">Ejercicios resueltos</span>
+        <div class="kpi">
+          <span class="kpi-value">{{ alumno.ejercicios_resueltos }}<small> / {{ alumno.total_ejercicios }}</small></span>
+          <span class="kpi-label">Ejercicios</span>
         </div>
-        <div class="drawer-kpi">
-          <span class="drawer-kpi-value drawer-kpi-points">{{ alumno.puntos_totales }}</span>
-          <span class="drawer-kpi-label">Puntos totales</span>
+        <div class="kpi">
+          <span class="kpi-value">{{ alumno.puntos_totales }}</span>
+          <span class="kpi-label">Puntos</span>
         </div>
-        <div class="drawer-kpi">
-          <span class="drawer-kpi-value">{{ alumno.logros?.length || 0 }}</span>
-          <span class="drawer-kpi-label">Logros obtenidos</span>
+        <div class="kpi">
+          <span class="kpi-value">{{ alumno.logros?.length || 0 }}</span>
+          <span class="kpi-label">Logros</span>
         </div>
       </div>
 
       <article class="drawer-card">
         <header class="drawer-card-header">
           <h3>Avance por tema</h3>
-          <p class="muted small">Desglose con base en ejercicios intentados y resueltos.</p>
         </header>
         <div class="drawer-card-body">
-          <div class="empty-state">
-            <p class="muted">Detalle por tema disponible próximamente con trazabilidad completa.</p>
-            <p class="muted small">Se alimentará desde <code>respuestas_estudiante</code> por tema/ejercicio.</p>
-          </div>
+          @if (cargandoDetalle()) {
+            <p class="muted small">Cargando detalle…</p>
+          } @else if (errorDetalle()) {
+            <div class="alert alert-error" role="alert">{{ errorDetalle() }}</div>
+          } @else if (detalle(); as d) {
+            @if (d.temas.length === 0) {
+              <p class="muted small">Esta asignatura aún no tiene temas.</p>
+            }
+            <ul class="progreso-lista">
+              @for (tema of d.temas; track tema.tema_id) {
+                <li>
+                  <div class="spread progreso-cabecera">
+                    <span class="progreso-tema">{{ tema.titulo }}</span>
+                    <span class="progreso-pct">{{ tema.porcentaje }}%</span>
+                  </div>
+                  <div class="barra" role="progressbar" [attr.aria-label]="tema.titulo" [attr.aria-valuenow]="tema.porcentaje" aria-valuemin="0" aria-valuemax="100">
+                    <span class="barra-relleno" [style.width.%]="tema.porcentaje"></span>
+                  </div>
+                  <span class="muted small">{{ tema.resueltos }} de {{ tema.total_ejercicios }} resueltos</span>
+                </li>
+              }
+            </ul>
+          }
         </div>
       </article>
 
-      <article class="drawer-card">
-        <header class="drawer-card-header">
-          <h3>Historial de intentos</h3>
-          <p class="muted small">Últimos intentos del alumno para acompañamiento.</p>
-        </header>
-        <div class="drawer-card-body">
-          <div class="empty-state">
-            <p class="muted">Historial de intentos disponible próximamente.</p>
-            <p class="muted small">Mostrará fecha, ejercicio, correcto/incorrecto y puntos.</p>
+      @if (detalle(); as d) {
+        <article class="drawer-card">
+          <header class="drawer-card-header">
+            <h3>Historial de intentos</h3>
+          </header>
+          <div class="drawer-card-body">
+            @if (d.historial.length === 0) {
+              <p class="muted small">Aún no hay intentos registrados.</p>
+            } @else {
+              <ol class="timeline">
+                @for (intento of d.historial; track intento.id) {
+                  <li class="timeline-item" [class.timeline-ok]="intento.correcta" [class.timeline-error]="!intento.correcta">
+                    <span class="timeline-icono" aria-hidden="true">
+                      @if (intento.correcta) {
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></svg>
+                      } @else {
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" /></svg>
+                      }
+                    </span>
+                    <div class="timeline-contenido">
+                      <time class="muted small" [attr.datetime]="intento.respondido_en">
+                        {{ intento.respondido_en | date: 'dd/MM/yyyy HH:mm' }}
+                      </time>
+                      <strong class="timeline-titulo">{{ intento.ejercicio }}</strong>
+                      <span class="muted small">
+                        {{ intento.tema }} · intento {{ intento.intento }} · {{ intento.correcta ? 'Acierto' : 'Error' }}
+                      </span>
+                    </div>
+                  </li>
+                }
+              </ol>
+            }
           </div>
-        </div>
-      </article>
+        </article>
+      }
 
       <article class="drawer-card">
         <header class="drawer-card-header">
@@ -241,9 +312,9 @@
           @if (!alumno.logros?.length) {
             <p class="muted small">Sin logros obtenidos.</p>
           } @else {
-            <div class="drawer-achievements">
+            <div class="stack">
               @for (logro of alumno.logros; track logro.codigo) {
-                <div class="drawer-achievement">
+                <div class="spread drawer-achievement">
                   <div>
                     <div class="drawer-achievement-name">{{ logro.nombre }}</div>
                     <div class="muted small">{{ logro.descripcion }}</div>
@@ -255,6 +326,50 @@
           }
         </div>
       </article>
-    </section>
+    </div>
   </aside>
 }
+
+<dialog
+  #dialogoEliminar
+  class="confirm-dialog"
+  aria-labelledby="confirm-titulo"
+  aria-describedby="confirm-descripcion"
+  (cancel)="alCancelarDialogo($event)"
+  (click)="clicEnFondoDialogo($event)"
+>
+  @if (codigoPendiente(); as codigo) {
+    <div class="confirm-body">
+      <div class="confirm-icono" aria-hidden="true">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01" /><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" /></svg>
+      </div>
+
+      <h3 id="confirm-titulo">{{ codigo.total_alumnos ? 'Desactivar código' : 'Eliminar código' }}</h3>
+
+      <p id="confirm-descripcion" class="muted">
+        @if (codigo.total_alumnos) {
+          {{ codigo.total_alumnos === 1 ? 'Un alumno está vinculado' : codigo.total_alumnos + ' alumnos están vinculados' }}
+          a este código. Para conservar su historial, el código se desactivará: los alumnos seguirán vinculados, pero el código no aceptará nuevos registros y sus alumnos dejarán de aparecer en el seguimiento.
+        } @else {
+          Esta acción no se puede deshacer. El código dejará de existir y no podrá usarse para vincular alumnos.
+        }
+      </p>
+
+      <span class="confirm-codigo">{{ codigo.codigo }}</span>
+    </div>
+
+    <footer class="confirm-acciones">
+      <button class="btn btn-outline" type="button" (click)="cancelarEliminacion()" [disabled]="eliminandoCodigo() !== null">
+        Cancelar
+      </button>
+      <button class="btn btn-danger" type="button" (click)="confirmarEliminacion()" [disabled]="eliminandoCodigo() !== null">
+        @if (eliminandoCodigo() !== null) {
+          Procesando…
+        } @else {
+          {{ codigo.total_alumnos ? 'Desactivar' : 'Eliminar' }}
+        }
+      </button>
+    </footer>
+  }
+</dialog>
+

@@ -139,6 +139,9 @@ export class AuthService {
       activo: u.activo,
       creado_en: u.creado_en,
       email_verificado: u.email_verificado,
+      telefono: u.telefono,
+      direccion: u.direccion,
+      ciudad: u.ciudad,
     };
   }
 }

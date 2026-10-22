@@ -1,122 +1,180 @@
-<div class="page-head">
-  <h1>Mi perfil</h1>
-  <p>Datos personales, contacto y vinculación con docentes.</p>
-</div>
+<div class="perfil-page">
+  <header class="page-head">
+    <h1>Mi perfil</h1>
+    <p>Datos personales, contacto y vinculación con docentes.</p>
+  </header>
 
-@if (mensaje()) {
-  <div class="alert alert-success">{{ mensaje() }}</div>
-}
-@if (error()) {
-  <div class="alert alert-error">{{ error() }}</div>
-}
-
-<div class="perfil-grid">
-  @if (usuario(); as u) {
-    <div class="card perfil-card">
-      <div class="card-header">
-        <div class="perfil-head">
-          <div class="avatar" aria-hidden="true">{{ inicial() }}</div>
-          <div>
-            <strong class="perfil-nombre">{{ u.nombre }}</strong>
-            <div class="small muted">{{ u.correo }}</div>
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="perfil-row">
-          <span class="perfil-label">Rol</span>
-          <span class="badge badge-active">{{ u.rol }}</span>
-        </div>
-        <div class="perfil-row">
-          <span class="perfil-label">Estado</span>
-          <span>{{ u.activo === false ? 'Inactivo' : 'Activo' }}</span>
-        </div>
-        @if (u.creado_en) {
-          <div class="perfil-row">
-            <span class="perfil-label">Miembro desde</span>
-            <span>{{ u.creado_en | slice: 0 : 10 }}</span>
-          </div>
-        }
-        <div class="perfil-actions">
-          <button class="btn btn-ghost" type="button" (click)="salir()">
-            Cerrar sesión
-          </button>
-        </div>
-      </div>
-    </div>
+  @if (mensaje()) {
+    <div class="alert alert-success" role="status">{{ mensaje() }}</div>
+  }
+  @if (error()) {
+    <div class="alert alert-error" role="alert">{{ error() }}</div>
   }
 
-  <div class="card">
-    <div class="card-header">
-      <div>
-        <h2>Datos personales</h2>
-        <p class="muted small">El correo institucional no se puede modificar.</p>
-      </div>
-    </div>
-    <div class="card-body form-grid">
-      <div class="field">
-        <label>Nombre completo</label>
-        <input class="input" [(ngModel)]="nombre">
-      </div>
-      <div class="field">
-        <label>Correo institucional</label>
-        <input class="input" [value]="usuario()?.correo" disabled>
-      </div>
-      <div class="field">
-        <label>Número de contacto / Teléfono</label>
-        <input class="input" [(ngModel)]="telefono" placeholder="Ej: 3001234567">
-      </div>
-      <div class="field">
-        <label>Ciudad</label>
-        <input class="input" [(ngModel)]="ciudad" placeholder="Ej: Bogotá">
-      </div>
-      <div class="field field-full">
-        <label>Dirección</label>
-        <input class="input" [(ngModel)]="direccion" placeholder="Ej: Cra 123 #45-67">
-      </div>
-      <div class="field-full">
-        <button class="btn btn-primary" type="button" (click)="guardarPerfil()" [disabled]="guardando()">
-          {{ guardando() ? 'Guardando...' : 'Guardar cambios' }}
-        </button>
-      </div>
-    </div>
-  </div>
+  <div class="perfil-layout">
+    @if (usuario(); as u) {
+      <section class="card resumen-card" aria-labelledby="resumen-titulo">
+        <div class="card-body">
+          <div class="perfil-head">
+            <div class="avatar" aria-hidden="true">{{ inicial() }}</div>
+            <div class="perfil-id">
+              <h2 id="resumen-titulo" class="perfil-nombre">{{ u.nombre }}</h2>
+              <span class="small muted">{{ u.correo }}</span>
+            </div>
+          </div>
 
-  @if (usuario()?.rol === 'ESTUDIANTE') {
-    <div class="card card-full">
-      <div class="card-header">
-        <div>
-          <h2>Mis docentes y códigos</h2>
-          <p class="muted small">Puedes vincularte a múltiples códigos. Cada docente verá solo los avances de su asignatura.</p>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="link-row">
-          <input class="input" [(ngModel)]="codigoVincular" placeholder="Ingresa código PROG-XXXXXX">
-          <button class="btn btn-primary" type="button" (click)="vincular()" [disabled]="vinculando() || !codigoVincular.trim()">
-            {{ vinculando() ? 'Vinculando...' : 'Vincular código' }}
-          </button>
-        </div>
-
-        <div class="codes-list">
-          @if (cargandoCodigos()) {
-            <p class="muted small">Cargando...</p>
-          } @else if (misCodigos().length === 0) {
-            <p class="muted small">Aún no estás vinculado a ningún código. Pega el código que te dio tu docente aquí.</p>
-          } @else {
-            @for (item of misCodigos(); track item.codigo_id) {
-              <article class="code-item">
-                <div>
-                  <div class="code-item-title">{{ item.codigo }}</div>
-                  <div class="muted small">Docente: {{ item.docente_nombre }} · {{ item.docente_correo }}</div>
-                  <div class="muted small">Asignatura: {{ item.asignatura_nombre || 'Sin asignar' }}</div>
-                </div>
-                <span class="badge badge-active">{{ item.activo ? 'ACTIVO' : 'INACTIVO' }}</span>
-              </article>
+          <dl class="datos">
+            <div class="dato">
+              <dt>Rol</dt>
+              <dd><span class="pill">{{ u.rol }}</span></dd>
+            </div>
+            <div class="dato">
+              <dt>Estado</dt>
+              <dd>
+                <span class="pill" [class.pill-off]="u.activo === false">
+                  {{ u.activo === false ? 'Inactivo' : 'Activo' }}
+                </span>
+              </dd>
+            </div>
+            @if (u.creado_en) {
+              <div class="dato">
+                <dt>Miembro desde</dt>
+                <dd>{{ u.creado_en | slice: 0 : 10 }}</dd>
+              </div>
             }
-          }
+          </dl>
         </div>
-      </div>
-    </div>
-  }
+
+        <footer class="card-footer">
+          <button class="btn btn-logout" type="button" (click)="salir()">Cerrar sesión</button>
+        </footer>
+      </section>
+    }
+
+    <section class="card form-card" aria-labelledby="datos-titulo">
+      <header class="card-head">
+        <h2 id="datos-titulo">Datos personales</h2>
+        <p class="muted small">El correo institucional no se puede modificar.</p>
+      </header>
+
+      <form class="card-body" [formGroup]="form" (ngSubmit)="guardarPerfil()">
+        <div class="form-grid">
+          <div class="field">
+            <label for="campo-nombre">Nombre completo</label>
+            <input
+              id="campo-nombre"
+              class="input"
+              formControlName="nombre"
+              autocomplete="name"
+              [class.is-invalid]="nombre.invalid && nombre.touched"
+            />
+            @if (nombre.invalid && nombre.touched) {
+              <span class="field-error">Escribe un nombre de entre 2 y 100 caracteres.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="campo-correo">Correo institucional</label>
+            <input id="campo-correo" class="input" type="email" formControlName="correo" />
+          </div>
+
+          <div class="field">
+            <label for="campo-telefono">Número de contacto / Teléfono</label>
+            <input
+              id="campo-telefono"
+              class="input"
+              formControlName="telefono"
+              placeholder="Ej: 3001234567"
+              autocomplete="tel"
+            />
+          </div>
+
+          <div class="field">
+            <label for="campo-ciudad">Ciudad</label>
+            <input
+              id="campo-ciudad"
+              class="input"
+              formControlName="ciudad"
+              placeholder="Ej: Bogotá"
+              autocomplete="address-level2"
+            />
+          </div>
+
+          <div class="field field-full">
+            <label for="campo-direccion">Dirección</label>
+            <input
+              id="campo-direccion"
+              class="input"
+              formControlName="direccion"
+              placeholder="Ej: Cra 123 #45-67"
+              autocomplete="street-address"
+            />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" [disabled]="form.invalid || !form.dirty || guardando()">
+            @if (guardando()) {
+              <span class="spin-inline" aria-hidden="true"></span>
+              <span>Guardando...</span>
+            } @else {
+              Guardar cambios
+            }
+          </button>
+        </div>
+      </form>
+    </section>
+
+    @if (esEstudiante()) {
+      <section class="card card-full" aria-labelledby="codigos-titulo">
+        <header class="card-head">
+          <h2 id="codigos-titulo">Mis docentes y códigos</h2>
+          <p class="muted small">
+            Puedes vincularte a varios códigos. Cada docente verá solo los avances de su asignatura.
+          </p>
+        </header>
+
+        <div class="card-body">
+          <form class="link-row" [formGroup]="vinculoForm" (ngSubmit)="vincular()">
+            <input
+              class="input"
+              formControlName="codigo"
+              placeholder="Ingresa el código PROG-XXXXXX"
+              aria-label="Código de clase"
+            />
+            <button class="btn btn-primary" type="submit" [disabled]="vinculoForm.invalid || vinculando()">
+              {{ vinculando() ? 'Vinculando...' : 'Vincular código' }}
+            </button>
+          </form>
+
+          <div class="codes-list">
+            @if (cargandoCodigos()) {
+              <p class="muted small">Cargando códigos...</p>
+            } @else if (codigos().length === 0) {
+              <p class="muted small">
+                Aún no estás vinculado a ningún código. Pega el código que te dio tu docente aquí.
+              </p>
+            } @else {
+              @for (item of codigos(); track item.codigo_id) {
+                <article class="code-item">
+                  <div class="code-info">
+                    <span class="code-badge">{{ item.codigo }}</span>
+                    <div class="code-meta">
+                      <strong>{{ item.docente_nombre }}</strong>
+                      <span class="small muted">
+                        {{ item.docente_correo }} · {{ item.asignatura_nombre || 'Sin asignar' }}
+                      </span>
+                    </div>
+                  </div>
+                  <span class="code-status" [class.code-status-off]="!item.activo">
+                    {{ item.activo ? 'ACTIVO' : 'INACTIVO' }}
+                  </span>
+                </article>
+              }
+            }
+          </div>
+        </div>
+      </section>
+    }
+  </div>
 </div>

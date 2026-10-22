@@ -313,10 +313,18 @@ INSERT INTO opciones (ejercicio_id, texto, es_correcta, orden) VALUES
 --  Logros del piloto
 -- ---------------------------------------------------------------------------
 INSERT INTO logros (codigo, nombre, descripcion, condicion, puntos) VALUES
-  ('PRIMER_ACIERTO', 'Primer acierto',      'Resuelve correctamente tu primer ejercicio.',        '{"aciertos_min": 1}'::jsonb,   5),
-  ('PRIMERA_SERIE',  'Primera serie',       'Resuelve 10 ejercicios correctamente.',              '{"aciertos_min": 10}'::jsonb, 20),
-  ('RACHA_INICIAL',  'Racha inicial',       'Mantén una racha de 3 días consecutivos.',           '{"racha_dias": 3}'::jsonb,    15),
-  ('MAESTRO_LOGICA', 'Maestro de lógica',   'Acierta los 15 ejercicios del banco de Lógica.',     '{"aciertos_min": 15}'::jsonb, 50);
+  ('PRIMER_ACIERTO', 'Primer acierto',      'Resuelve correctamente tu primer ejercicio.',        '{"tipo":"aciertos_totales","valor":1}'::jsonb, 5),
+  ('PRIMERA_SERIE',  'Primera serie',       'Resuelve 10 ejercicios correctamente.',              '{"tipo":"aciertos_totales","valor":10}'::jsonb, 20),
+  ('RACHA_INICIAL',  'Racha inicial',       'Mantén una racha de 3 días consecutivos.',           '{"tipo":"racha_dias","valor":3}'::jsonb, 15),
+  ('MAESTRO_LOGICA', 'Maestro de lógica',   'Acierta los 15 ejercicios del banco de Lógica.',     '{"tipo":"ejercicios_distintos_correctos","valor":15}'::jsonb, 50),
+  ('PUNTOS_LOGICOS', 'Lógica en marcha', 'Acumula 100 puntos resolviendo ejercicios.', '{"tipo":"puntos_acumulados","valor":100}'::jsonb, 20),
+  ('DESAFIO_DIFICIL', 'Desafío superado', 'Resuelve correctamente un ejercicio de nivel difícil.', '{"tipo":"dificultad_completada","nivel":"DIFICIL"}'::jsonb, 15),
+  ('TEMA_DOMINADO', 'Tema dominado', 'Resuelve correctamente todos los ejercicios de al menos un tema.', '{"tipo":"tema_perfecto"}'::jsonb, 25),
+  ('EXPLORADOR_DE_TEMAS', 'Explorador de lógica', 'Consigue al menos un acierto en cada uno de los cinco temas del piloto.', '{"tipo":"temas_explorados","valor":5}'::jsonb, 20),
+  ('PRIMER_INTENTO', 'Código preciso', 'Acumula diez respuestas correctas al primer intento.', '{"tipo":"aciertos_primer_intento","valor":10}'::jsonb, 20),
+  ('PERSEVERANTE', 'Depurador persistente', 'Registra treinta intentos resolviendo ejercicios.', '{"tipo":"intentos_totales","valor":30}'::jsonb, 15),
+  ('DOMINIO_DIFICIL', 'Maestro de desafíos', 'Resuelve correctamente los cinco ejercicios difíciles del banco.', '{"tipo":"ejercicios_dificiles","valor":5}'::jsonb, 40),
+  ('RACHA_SEMANAL', 'Lógica constante', 'Mantén una racha de actividad de siete días consecutivos.', '{"tipo":"racha_dias","valor":7}'::jsonb, 30);
 
 -- ---------------------------------------------------------------------------
 --  Usuarios demo

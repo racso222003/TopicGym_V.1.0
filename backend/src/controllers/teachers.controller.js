@@ -23,6 +23,17 @@ async function listarCodigos(req, res, next) {
   }
 }
 
+async function eliminarCodigo(req, res, next) {
+  try {
+    const docenteId = req.usuario.sub;
+    const { codigoId } = req.params;
+    const resultado = await service.eliminarCodigo(docenteId, codigoId);
+    res.json({ ok: true, ...resultado });
+  } catch (err) {
+    next(err);
+  }
+}
+
 async function listarAsignaturas(req, res, next) {
   try {
     const asignaturas = await service.listarAsignaturas();
@@ -42,9 +53,22 @@ async function progresoEstudiantes(req, res, next) {
   }
 }
 
+async function detalleAlumno(req, res, next) {
+  try {
+    const docenteId = req.usuario.sub;
+    const { estudianteId, codigoId } = req.params;
+    const detalle = await service.obtenerDetalleAlumno(docenteId, estudianteId, codigoId);
+    res.json(detalle);
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
   crearCodigo,
   listarCodigos,
+  eliminarCodigo,
   listarAsignaturas,
   progresoEstudiantes,
+  detalleAlumno,
 };

@@ -143,37 +143,70 @@ async function listLogros(usuarioId) {
   return rows;
 }
 
-/** Ejercicios distintos acertados en todo el banco (logro "Maestro de lógica"). */
-async function contarAciertosDistintos(usuarioId) {
+/** Logros y condiciones JSONB para la evaluación del servicio. */
+async function listLogrosEvaluables() {
   const { rows } = await query(
-    `SELECT count(DISTINCT r.ejercicio_id)::int AS aciertos
-       FROM respuestas_estudiante r
-       JOIN ejercicios e ON e.id = r.ejercicio_id
-      WHERE r.usuario_id = $1 AND r.correcta`,
+    `SELECT id, codigo, nombre, puntos, condicion
+       FROM logros
+      ORDER BY id`,
+  );
+  return rows;
+}
+
+/** Métricas calculadas después de registrar la respuesta, en una sola consulta. */
+async function getMetricasLogros(usuarioId) {
+  const { rows } = await query(
+    `WITH respuestas AS (
+       SELECT r.ejercicio_id, r.correcta, r.intento, e.nivel, e.tema_id
+         FROM respuestas_estudiante r
+         JOIN ejercicios e ON e.id = r.ejercicio_id
+        WHERE r.usuario_id = $1
+     ), temas AS (
+       SELECT e.tema_id,
+              COUNT(DISTINCT e.id)::int AS total_ejercicios,
+              COUNT(DISTINCT e.id) FILTER (WHERE r.correcta)::int AS ejercicios_correctos
+         FROM ejercicios e
+         LEFT JOIN respuestas r ON r.ejercicio_id = e.id
+        GROUP BY e.tema_id
+     )
+     SELECT
+       COUNT(*)::int AS intentos_totales,
+       COUNT(*) FILTER (WHERE correcta)::int AS aciertos_totales,
+       COUNT(*) FILTER (WHERE correcta AND intento = 1)::int AS aciertos_primer_intento,
+       COUNT(DISTINCT ejercicio_id) FILTER (WHERE correcta)::int AS ejercicios_distintos_correctos,
+       COUNT(DISTINCT ejercicio_id) FILTER (WHERE correcta AND nivel = 'DIFICIL')::int AS ejercicios_dificiles,
+       COUNT(DISTINCT tema_id) FILTER (WHERE correcta)::int AS temas_explorados,
+       ARRAY(
+         SELECT DISTINCT nivel
+           FROM respuestas
+          WHERE correcta
+          ORDER BY nivel
+       ) AS niveles_completados,
+       COALESCE((SELECT SUM(puntos)::int FROM progreso_estudiante WHERE usuario_id = $1), 0)::int AS puntos_acumulados,
+       COALESCE((
+         SELECT COUNT(*)::int
+           FROM temas
+          WHERE total_ejercicios > 0
+            AND ejercicios_correctos = total_ejercicios
+       ), 0)::int AS temas_perfectos
+       FROM respuestas`,
     [usuarioId],
   );
-  return rows[0].aciertos;
+  return rows[0];
 }
 
-/** Otorga un logro si aún no lo tiene. */
-async function otorgarLogro(client, usuarioId, logroId) {
+/** Otorga en bloque los logros nuevos; el índice único evita duplicados concurrentes. */
+async function otorgarLogros(client, usuarioId, logroIds) {
+  if (logroIds.length === 0) return [];
   const { rows } = await client.query(
     `INSERT INTO logros_obtenidos (usuario_id, logro_id)
-     VALUES ($1, $2)
+     SELECT $1, logro_id
+       FROM UNNEST($2::int[]) AS candidatos(logro_id)
      ON CONFLICT (usuario_id, logro_id) DO NOTHING
-     RETURNING id`,
-    [usuarioId, logroId],
+     RETURNING logro_id`,
+    [usuarioId, logroIds],
   );
-  return rows.length > 0;
-}
-
-/** Busca un logro por código. */
-async function findLogroPorCodigo(codigo) {
-  const { rows } = await query(
-    `SELECT id, codigo, nombre, puntos FROM logros WHERE codigo = $1`,
-    [codigo],
-  );
-  return rows[0] || null;
+  return rows.map((row) => row.logro_id);
 }
 
 module.exports = {
@@ -186,7 +219,7 @@ module.exports = {
   getResumen,
   listDiasActivos,
   listLogros,
-  contarAciertosDistintos,
-  otorgarLogro,
-  findLogroPorCodigo,
+  listLogrosEvaluables,
+  getMetricasLogros,
+  otorgarLogros,
 };

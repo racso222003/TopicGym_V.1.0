@@ -8,8 +8,8 @@
 } @else if (error()) {
   <div class="alert alert-error">{{ error() }}</div>
 } @else {
-  <div class="achievement-grid">
-    @for (l of logros(); track l.id) {
+  <section class="achievement-grid" aria-label="Insignias de logros">
+    @for (l of logros(); track l.codigo) {
       <div class="achievement" [class.locked]="!l.obtenido">
         <div class="achievement-medal" aria-hidden="true">{{ l.obtenido ? '★' : '☆' }}</div>
         <div class="achievement-body">
@@ -32,5 +32,5 @@
         </div>
       </div>
     }
-  </div>
+  </section>
 }

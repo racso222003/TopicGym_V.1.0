@@ -19,6 +19,7 @@ export interface CodigoClase {
   asignatura_id?: number | null;
   asignatura_nombre?: string;
   semestre_numero?: number;
+  total_alumnos?: number;
 }
 
 export interface LogroAlumno {
@@ -29,16 +30,55 @@ export interface LogroAlumno {
   obtenido_en: string;
 }
 
+export type EstadoActividad = 'ACTIVO' | 'RACHA' | 'INACTIVO';
+
 export interface AlumnoProgreso {
   id: string;
+  codigo_id: number;
   nombre: string;
   correo: string;
   codigo_usado: string;
-  asignatura_id?: number;
-  asignatura_nombre?: string;
+  asignatura_id: number | null;
+  asignatura_nombre: string | null;
+  total_ejercicios: number;
   ejercicios_resueltos: number;
   puntos_totales: number;
+  ultima_actividad: string | null;
+  racha_dias: number;
+  estado_actividad: EstadoActividad;
   logros: LogroAlumno[];
+}
+
+export interface TemaProgreso {
+  tema_id: number;
+  titulo: string;
+  total_ejercicios: number;
+  resueltos: number;
+  intentados: number;
+  porcentaje: number;
+}
+
+export interface IntentoHistorial {
+  id: string;
+  respondido_en: string;
+  correcta: boolean;
+  intento: number;
+  ejercicio_id: number;
+  ejercicio: string;
+  tema: string;
+}
+
+export interface DetalleAlumno {
+  alumno: {
+    id: string;
+    nombre: string;
+    correo: string;
+    codigo_usado: string;
+    asignatura_id: number | null;
+    asignatura_nombre: string | null;
+  };
+  temas: TemaProgreso[];
+  historial: IntentoHistorial[];
 }
 
 interface RespuestaCrearCodigo {
@@ -73,7 +113,27 @@ export class TeachersService {
     return this.http.get<RespuestaListarCodigos>(`${API_BASE}/teachers/codes`);
   }
 
+  eliminarCodigo(codigoId: number): Observable<{
+    ok: boolean;
+    codigo: string;
+    eliminado: boolean;
+    activo?: boolean;
+  }> {
+    return this.http.delete<{
+      ok: boolean;
+      codigo: string;
+      eliminado: boolean;
+      activo?: boolean;
+    }>(`${API_BASE}/teachers/codes/${codigoId}`);
+  }
+
   obtenerProgresoAlumnos(): Observable<RespuestaProgresoAlumnos> {
     return this.http.get<RespuestaProgresoAlumnos>(`${API_BASE}/teachers/students-progress`);
+  }
+
+  obtenerDetalleAlumno(estudianteId: string, codigoId: number): Observable<DetalleAlumno> {
+    return this.http.get<DetalleAlumno>(
+      `${API_BASE}/teachers/students/${estudianteId}/codes/${codigoId}/detalle`,
+    );
   }
 }

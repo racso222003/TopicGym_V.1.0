@@ -54,6 +54,8 @@ npm run dev      # http://localhost:3000
 `npm run seed` es idempotente: si las tablas no existen, aplica `../database/schema.sql` y
 `../database/seed.sql`; luego crea los usuarios demo con hash **bcrypt** y comprueba que los
 15 ejercicios (Acta 06 · Banco ampliado) coincidan con `../banco-ejercicios/ejercicios_piloto.json`.
+También aplica la migración idempotente de logros nuevos. Para actualizar una base existente
+sin ejecutar el seed, usa `npm run db:migrate:logros`.
 
 Reiniciar desde cero:
 
@@ -77,6 +79,8 @@ node seed.js --reset
 | `npm run seed` | Crea/verifica datos y usuarios demo. |
 | `npm run db:schema` | Aplica `schema.sql` con `psql`. |
 | `npm run db:seed` | Aplica `seed.sql` con `psql`. |
+| `npm run db:migrate:logros` | Aplica la migración idempotente de gamificación. |
+| `npm test` | Pruebas unitarias de condiciones del motor de logros. |
 
 ## Endpoints
 

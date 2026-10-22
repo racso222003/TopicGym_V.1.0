@@ -19,6 +19,7 @@ const config = require('./src/config/env');
 const RAIZ = path.join(__dirname, '..');
 const SQL_SCHEMA = path.join(RAIZ, 'database', 'schema.sql');
 const SQL_SEED = path.join(RAIZ, 'database', 'seed.sql');
+const SQL_NUEVOS_LOGROS = path.join(RAIZ, 'database', 'migrations', '005_nuevos_logros.sql');
 const JSON_BANCO = path.join(RAIZ, 'banco-ejercicios', 'ejercicios_piloto.json');
 
 const USUARIOS_DEMO = [
@@ -136,6 +137,9 @@ async function main() {
       await aplicarSql(SQL_SCHEMA);
       await aplicarSql(SQL_SEED);
     }
+
+    // Mantiene disponibles los logros nuevos también en bases ya inicializadas.
+    await aplicarSql(SQL_NUEVOS_LOGROS);
   }
 
   const usuarios = await crearUsuarios();
