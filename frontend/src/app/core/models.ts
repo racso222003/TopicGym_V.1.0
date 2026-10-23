@@ -22,13 +22,14 @@ export interface Semestre {
   id: number;
   numero: number;
   nombre: string;
-  estado: string;
+  estado: 'ACTIVO' | 'PROXIMAMENTE';
 }
 
 export interface Asignatura {
   id: number;
   nombre: string;
   orden: number;
+  tiene_contenido?: boolean;
 }
 
 export interface TemaResumen {
@@ -85,6 +86,7 @@ export interface ResultadoValidacion {
   intento: number;
   primerIntento: boolean;
   explicacion: string | null;
+  retroalimentacionOpcion?: string | null;
   opcionCorrectaId: number | null;
   logros: LogroOtorgado[];
 }

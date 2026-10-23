@@ -40,7 +40,13 @@ async function findWithOpciones(ejercicioId) {
             e.codigo_referencia, e.explicacion, e.pista, e.puntos_ponderados,
             COALESCE(
               json_agg(
-                json_build_object('id', o.id, 'texto', o.texto, 'es_correcta', o.es_correcta, 'orden', o.orden)
+               json_build_object(
+                 'id', o.id,
+                 'texto', o.texto,
+                 'es_correcta', o.es_correcta,
+                 'explicacion', o.explicacion,
+                 'orden', o.orden
+               )
                 ORDER BY o.orden
               ) FILTER (WHERE o.id IS NOT NULL), '[]'
             ) AS opciones

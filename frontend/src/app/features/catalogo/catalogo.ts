@@ -35,6 +35,7 @@ export class Catalogo implements OnInit {
   }
 
   elegirSemestre(s: Semestre): void {
+    if (s.estado !== 'ACTIVO') return;
     this.semestreSel.set(s);
     this.asignaturaSel.set(null);
     this.temas.set([]);
@@ -55,6 +56,11 @@ export class Catalogo implements OnInit {
   elegirAsignatura(a: Asignatura): void {
     this.asignaturaSel.set(a);
     this.error.set(null);
+    if (a.tiene_contenido === false) {
+      this.temas.set([]);
+      this.cargandoHijos.set(false);
+      return;
+    }
     this.cargandoHijos.set(true);
     this.service.temas(a.id).subscribe({
       next: (temas) => {

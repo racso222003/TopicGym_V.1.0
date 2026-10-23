@@ -1,0 +1,602 @@
+[
+  {
+    "asignatura":"Matemática Fundamental","tema":"Suma y simplificación de fracciones","titulo":"Resta de fracciones con denominador común",
+    "enunciado":"Un proceso consume 5/8 de una unidad y recupera 1/4 de unidad. ¿Qué cantidad neta se consumió?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"3/8","es_correcta":true,"explicacion":"Correcto: 1/4 = 2/8 y 5/8 − 2/8 = 3/8."},
+      {"texto":"4/12","es_correcta":false,"explicacion":"No se restan los denominadores; primero se convierten las fracciones a un denominador común."},
+      {"texto":"7/8","es_correcta":false,"explicacion":"7/8 resultaría de sumar; la recuperación se resta de lo consumido."},
+      {"texto":"1/2","es_correcta":false,"explicacion":"1/2 equivale a 4/8, pero la resta correcta es 5/8 − 2/8 = 3/8."}
+    ]
+  },
+  {
+    "asignatura":"Matemática Fundamental","tema":"Suma y simplificación de fracciones","titulo":"Fracción restante tras consumo proporcional",
+    "enunciado":"Un recipiente está lleno a 3/4 de su capacidad. Se consume una cantidad equivalente a 2/3 de lo que contiene. ¿Qué fracción de la capacidad queda?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"1/4","es_correcta":true,"explicacion":"Se consume (2/3)(3/4) = 1/2 de la capacidad; queda 3/4 − 1/2 = 1/4."},
+      {"texto":"1/2","es_correcta":false,"explicacion":"1/2 es la fracción consumida, no la que queda."},
+      {"texto":"5/12","es_correcta":false,"explicacion":"Primero se multiplica 2/3 por el contenido actual y luego se resta del inicial."},
+      {"texto":"3/8","es_correcta":false,"explicacion":"El consumo es 1/2; la diferencia entre 3/4 y 1/2 es 1/4."}
+    ]
+  },
+  {
+    "asignatura":"Matemática Fundamental","tema":"Porcentajes","titulo":"Cálculo directo de un porcentaje",
+    "enunciado":"Una memoria cuesta 150 unidades monetarias. ¿Cuánto es el 20 % de ese precio?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"30","es_correcta":true,"explicacion":"20 % = 0,20; 0,20 × 150 = 30."},
+      {"texto":"20","es_correcta":false,"explicacion":"20 es la tasa; se debe calcular sobre el precio de 150."},
+      {"texto":"130","es_correcta":false,"explicacion":"130 sería un precio después de restar 20 unidades, no el 20 % de 150."},
+      {"texto":"75","es_correcta":false,"explicacion":"75 es el 50 % de 150; el 20 % es 30."}
+    ]
+  },
+  {
+    "asignatura":"Matemática Fundamental","tema":"Porcentajes","titulo":"Descuentos sucesivos",
+    "enunciado":"Un equipo cuesta 250 unidades. Se aplica un descuento del 20 % y luego otro del 10 % sobre el precio rebajado. ¿Cuál es el precio final?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"180","es_correcta":true,"explicacion":"Primero 250 × 0,80 = 200; después 200 × 0,90 = 180."},
+      {"texto":"175","es_correcta":false,"explicacion":"175 equivale a descontar 30 % del precio original; los descuentos sucesivos no se suman directamente."},
+      {"texto":"200","es_correcta":false,"explicacion":"200 es el precio tras el primer descuento; falta aplicar el 10 % adicional."},
+      {"texto":"225","es_correcta":false,"explicacion":"225 resulta de descontar 10 % de 250 e ignorar el primer descuento."}
+    ]
+  },
+  {
+    "asignatura":"Matemática Fundamental","tema":"Ecuaciones lineales","titulo":"Ecuación lineal con término independiente",
+    "enunciado":"Resuelve la ecuación 7x − 9 = 26.","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"5","es_correcta":true,"explicacion":"7x = 26 + 9 = 35; al dividir entre 7, x = 5."},
+      {"texto":"3","es_correcta":false,"explicacion":"35 es el resultado intermedio; todavía se debe dividir entre 7."},
+      {"texto":"35","es_correcta":false,"explicacion":"35 corresponde a 7x, no al valor de x."},
+      {"texto":"−5","es_correcta":false,"explicacion":"La ecuación da 7x = 35, por lo que x es positivo."}
+    ]
+  },
+  {
+    "asignatura":"Matemática Fundamental","tema":"Ecuaciones lineales","titulo":"Ecuación lineal con paréntesis",
+    "enunciado":"¿Qué valor satisface 2(3x − 4) = 4x + 10?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"9","es_correcta":true,"explicacion":"6x − 8 = 4x + 10; entonces 2x = 18 y x = 9."},
+      {"texto":"1","es_correcta":false,"explicacion":"Al distribuir el 2 se obtiene 6x − 8, no 6x − 4."},
+      {"texto":"−9","es_correcta":false,"explicacion":"Al despejar se obtiene 2x = 18, así que la solución es positiva."},
+      {"texto":"18","es_correcta":false,"explicacion":"18 es el valor de 2x antes de dividir entre 2."}
+    ]
+  },
+  {
+    "asignatura":"Matemática Fundamental","tema":"Sistemas de ecuaciones lineales","titulo":"Sistema de dos ecuaciones básico",
+    "enunciado":"En el sistema 2x + y = 11 y x + y = 7, ¿cuánto vale x?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"4","es_correcta":true,"explicacion":"Al restar la segunda ecuación de la primera queda x = 11 − 7 = 4."},
+      {"texto":"3","es_correcta":false,"explicacion":"3 es el valor de y en la solución, no el de x."},
+      {"texto":"7","es_correcta":false,"explicacion":"7 es la suma x + y, no el valor individual de x."},
+      {"texto":"11","es_correcta":false,"explicacion":"11 es el lado derecho de la primera ecuación."}
+    ]
+  },
+  {
+    "asignatura":"Matemática Fundamental","tema":"Sistemas de ecuaciones lineales","titulo":"Sistema lineal por eliminación",
+    "enunciado":"Resuelve el sistema 3x + 2y = 16 y x + y = 6. ¿Cuál es el par (x, y)?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"(4, 2)","es_correcta":true,"explicacion":"Con x=4 e y=2, x+y=6 y 3x+2y=16; satisface ambas ecuaciones."},
+      {"texto":"(2, 4)","es_correcta":false,"explicacion":"Aunque suma 6, 3(2)+2(4)=14 y no 16."},
+      {"texto":"(3, 3)","es_correcta":false,"explicacion":"La segunda ecuación se cumple, pero 3(3)+2(3)=15."},
+      {"texto":"(5, 1)","es_correcta":false,"explicacion":"La primera expresión vale 17 y no satisface el sistema."}
+    ]
+  },
+  {
+    "asignatura":"Matemática Fundamental","tema":"Factorización de expresiones cuadráticas","titulo":"Diferencia de cuadrados",
+    "enunciado":"¿Cuál es la factorización de x² − 9?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"(x − 3)(x + 3)","es_correcta":true,"explicacion":"x² − 9 = x² − 3² es una diferencia de cuadrados."},
+      {"texto":"(x − 9)(x + 1)","es_correcta":false,"explicacion":"Al desarrollar se obtiene x² − 8x − 9."},
+      {"texto":"(x − 3)²","es_correcta":false,"explicacion":"El cuadrado desarrolla x² − 6x + 9."},
+      {"texto":"(x + 3)²","es_correcta":false,"explicacion":"El cuadrado desarrolla x² + 6x + 9."}
+    ]
+  },
+  {
+    "asignatura":"Matemática Fundamental","tema":"Factorización de expresiones cuadráticas","titulo":"Trinomio cuadrático mónico",
+    "enunciado":"¿Cuál es la factorización de x² + 7x + 12?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"(x + 3)(x + 4)","es_correcta":true,"explicacion":"3 y 4 suman 7 y su producto es 12."},
+      {"texto":"(x + 2)(x + 6)","es_correcta":false,"explicacion":"2 y 6 suman 8, así que el término lineal sería 8x."},
+      {"texto":"(x − 3)(x − 4)","es_correcta":false,"explicacion":"Esta factorización produce un término lineal negativo."},
+      {"texto":"(x + 1)(x + 12)","es_correcta":false,"explicacion":"1 y 12 suman 13 y no generan 7x."}
+    ]
+  },
+  {
+    "asignatura":"Legislación Informática","tema":"Protección de datos personales","titulo":"Cambio de finalidad del tratamiento",
+    "enunciado":"Una institución obtuvo autorización para usar correos estudiantiles exclusivamente para avisos académicos. Otra área quiere utilizarlos para publicidad comercial. ¿Qué debe hacer antes de ese nuevo uso?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Informar la nueva finalidad y obtener la autorización que corresponda antes de tratar los datos para ella.","es_correcta":true,"explicacion":"La finalidad autorizada limita el tratamiento; un uso distinto requiere revisar la base legal e informar al titular."},
+      {"texto":"Usarlos porque cualquier finalidad institucional queda cubierta por la autorización inicial.","es_correcta":false,"explicacion":"La autorización para avisos académicos no habilita automáticamente publicidad comercial."},
+      {"texto":"Publicar la lista y permitir que cada estudiante solicite ser retirado después.","es_correcta":false,"explicacion":"La divulgación no autorizada no se corrige ofreciendo una exclusión posterior."},
+      {"texto":"Entregar la lista a un tercero sin informarle de la finalidad original.","es_correcta":false,"explicacion":"La transferencia también debe respetar las finalidades y garantías aplicables."}
+    ]
+  },
+  {
+    "asignatura":"Legislación Informática","tema":"Protección de datos personales","titulo":"Atención de una solicitud de rectificación",
+    "enunciado":"Una estudiante detecta que su correo está mal registrado y solicita corregirlo. ¿Cuál respuesta se ajusta mejor a sus derechos como titular de datos?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Verificar la identidad por el canal definido, tramitar la rectificación y actualizar el dato cuando proceda.","es_correcta":true,"explicacion":"La rectificación es un derecho del titular; la organización debe contar con canales para atenderlo."},
+      {"texto":"Ignorar la solicitud porque el dato se recopiló durante la matrícula.","es_correcta":false,"explicacion":"La recopilación previa no elimina el derecho a solicitar la actualización de información inexacta."},
+      {"texto":"Publicar el correo correcto en un foro para que la comunidad lo confirme.","es_correcta":false,"explicacion":"La verificación no justifica divulgar el dato personal en un foro público."},
+      {"texto":"Cambiar todos los correos de la base de datos al valor indicado.","es_correcta":false,"explicacion":"La corrección debe aplicarse al registro correspondiente tras verificar la solicitud."}
+    ]
+  },
+  {
+    "asignatura":"Legislación Informática","tema":"Mensajes de datos y firma digital","titulo":"Verificación de integridad de una firma digital",
+    "enunciado":"Un documento con firma digital válida es modificado después de firmarse. ¿Qué resultado se espera al verificar la firma con el contenido alterado?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"La verificación de integridad debe fallar porque el contenido ya no coincide con el firmado.","es_correcta":true,"explicacion":"La firma digital permite detectar cambios posteriores en el mensaje firmado."},
+      {"texto":"La firma prueba que el contenido modificado también fue aprobado.","es_correcta":false,"explicacion":"La firma se calculó sobre el contenido original y no autentica cambios posteriores."},
+      {"texto":"La modificación no afecta la firma porque solo se firma el nombre del autor.","es_correcta":false,"explicacion":"La verificación se relaciona criptográficamente con el mensaje, no solo con el nombre visible."},
+      {"texto":"El documento se cifra automáticamente y no puede modificarse.","es_correcta":false,"explicacion":"Firmar no es lo mismo que cifrar; la firma detecta cambios, no los impide físicamente."}
+    ]
+  },
+  {
+    "asignatura":"Legislación Informática","tema":"Mensajes de datos y firma digital","titulo":"Claves para verificar una firma digital",
+    "enunciado":"En un esquema de firma digital de clave pública, ¿qué elemento usa normalmente quien recibe el documento para verificar la firma?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"La clave pública asociada al firmante, junto con el mensaje firmado.","es_correcta":true,"explicacion":"La clave pública permite verificar la firma generada con la clave privada correspondiente."},
+      {"texto":"La clave privada del firmante, que debe compartirse con todos los receptores.","es_correcta":false,"explicacion":"La clave privada debe permanecer bajo control de su titular."},
+      {"texto":"La contraseña de la cuenta de correo del firmante.","es_correcta":false,"explicacion":"La contraseña del correo no es el mecanismo criptográfico para verificar la firma."},
+      {"texto":"Una copia impresa del documento sin datos criptográficos.","es_correcta":false,"explicacion":"Una copia impresa no aporta los datos necesarios para validar criptográficamente la firma."}
+    ]
+  },
+  {
+    "asignatura":"Legislación Informática","tema":"Licenciamiento de software","titulo":"Atribución en una licencia permisiva",
+    "enunciado":"Un equipo incorpora una biblioteca publicada bajo una licencia permisiva que exige conservar el aviso de copyright y el texto de la licencia. ¿Qué debe hacer al redistribuir el producto?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Incluir los avisos y el texto de licencia requeridos al distribuir el producto.","es_correcta":true,"explicacion":"Las licencias permisivas suelen permitir modificación y redistribución sujetas a conservar sus avisos."},
+      {"texto":"Eliminar los avisos porque el código fuente está disponible públicamente.","es_correcta":false,"explicacion":"La disponibilidad pública no elimina las condiciones expresas de la licencia."},
+      {"texto":"Cambiar el autor original por el nombre del equipo que integró la biblioteca.","es_correcta":false,"explicacion":"La integración no transfiere la autoría ni permite borrar la atribución requerida."},
+      {"texto":"Asumir que la licencia no aplica cuando el producto se vende.","es_correcta":false,"explicacion":"La redistribución comercial también debe respetar los términos de licencia."}
+    ]
+  },
+  {
+    "asignatura":"Legislación Informática","tema":"Licenciamiento de software","titulo":"Distribución de una obra derivada con GPL",
+    "enunciado":"Un producto distribuye una modificación de un componente cubierto por GPL, suponiendo que la combinación constituye una obra derivada bajo esa licencia. ¿Qué obligación debe analizar el equipo al distribuirlo?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Cumplir las condiciones de redistribución aplicables, incluidas las relativas al código fuente correspondiente y a conservar avisos.","es_correcta":true,"explicacion":"Al distribuir una obra derivada bajo GPL deben cumplirse sus términos de redistribución y disponibilidad del código fuente correspondiente."},
+      {"texto":"Cambiar la extensión de los archivos para que el código deje de estar sujeto a la licencia.","es_correcta":false,"explicacion":"Cambiar nombres o extensiones no modifica los derechos ni las obligaciones de licencia."},
+      {"texto":"Distribuir solo binarios y eliminar todas las referencias al componente.","es_correcta":false,"explicacion":"Ocultar el componente no elimina las obligaciones aplicables a la distribución."},
+      {"texto":"Asumir que GPL prohíbe cualquier uso comercial del software.","es_correcta":false,"explicacion":"GPL permite uso y distribución comercial, sujetos al cumplimiento de sus condiciones."}
+    ]
+  },
+  {
+    "asignatura":"Legislación Informática","tema":"Acceso no autorizado a sistemas","titulo":"Reporte responsable de una exposición de credenciales",
+    "enunciado":"Un estudiante encuentra por accidente credenciales visibles en un repositorio público. ¿Cuál es la primera acción responsable?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"No probar las credenciales y reportar la exposición por un canal autorizado, evitando divulgar más datos.","es_correcta":true,"explicacion":"No se debe intentar acceder; hay que limitar la exposición y notificar al responsable por un canal seguro."},
+      {"texto":"Iniciar sesión para comprobar cuántos sistemas usan la misma contraseña.","es_correcta":false,"explicacion":"Usar credenciales ajenas sin autorización amplía el acceso no autorizado."},
+      {"texto":"Publicar las credenciales en redes sociales para alertar rápidamente.","es_correcta":false,"explicacion":"Difundirlas aumenta el riesgo de abuso y expone más los sistemas afectados."},
+      {"texto":"Guardar una copia local y esperar a que alguien más reporte el problema.","es_correcta":false,"explicacion":"Conservar credenciales expuestas prolonga el riesgo y no activa el proceso de respuesta."}
+    ]
+  },
+  {
+    "asignatura":"Legislación Informática","tema":"Acceso no autorizado a sistemas","titulo":"Alcance autorizado de una prueba de seguridad",
+    "enunciado":"Una organización autoriza una prueba de seguridad únicamente sobre un servidor de laboratorio, entre las 18:00 y las 20:00. El equipo descubre otro servidor relacionado. ¿Qué debe hacer?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Limitar las pruebas al servidor y horario autorizados y solicitar autorización adicional antes de ampliar el alcance.","es_correcta":true,"explicacion":"La autorización se limita al objetivo, técnicas y ventana acordados; cualquier ampliación requiere permiso explícito."},
+      {"texto":"Probar el segundo servidor porque pertenece a la misma organización.","es_correcta":false,"explicacion":"La propiedad común no extiende automáticamente el alcance autorizado."},
+      {"texto":"Continuar después de las 20:00 si el servidor aún responde.","es_correcta":false,"explicacion":"La ventana temporal forma parte del alcance y debe respetarse."},
+      {"texto":"Publicar los hallazgos con direcciones y credenciales para acelerar la corrección.","es_correcta":false,"explicacion":"La divulgación pública de detalles sensibles puede facilitar ataques; debe seguirse el canal acordado."}
+    ]
+  },
+  {
+    "asignatura":"Legislación Informática","tema":"Compatibilidad de licencias","titulo":"Licencia y condiciones de uso de una dependencia",
+    "enunciado":"Antes de integrar un paquete descargado de un repositorio público, ¿qué verificación inicial es adecuada?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Identificar su licencia, versión y avisos de terceros, y revisar si permiten el uso previsto.","es_correcta":true,"explicacion":"La procedencia pública no elimina la necesidad de conocer las condiciones de uso."},
+      {"texto":"Asumir que todo repositorio público es de dominio público.","es_correcta":false,"explicacion":"Un repositorio público puede contener software protegido por copyright y sujeto a licencia."},
+      {"texto":"Borrar el archivo LICENSE antes de compilar para evitar conflictos.","es_correcta":false,"explicacion":"Eliminar la licencia no elimina las obligaciones y oculta información necesaria."},
+      {"texto":"Revisar únicamente el número de descargas del paquete.","es_correcta":false,"explicacion":"La popularidad no informa qué permisos u obligaciones establece la licencia."}
+    ]
+  },
+  {
+    "asignatura":"Legislación Informática","tema":"Compatibilidad de licencias","titulo":"Integración de dependencias con licencias distintas",
+    "enunciado":"Un producto combina una dependencia con copyleft y otra con una licencia permisiva. ¿Qué decisión reduce el riesgo de incumplimiento antes de distribuir el producto?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Analizar los términos y la forma de combinación, documentar las dependencias y validar la compatibilidad o elegir alternativas.","es_correcta":true,"explicacion":"La compatibilidad depende de las licencias concretas y de cómo se combinan y distribuyen los componentes."},
+      {"texto":"Suponer que la licencia permisiva anula las obligaciones de la licencia copyleft.","es_correcta":false,"explicacion":"Una licencia no cancela automáticamente los términos de otra dependencia."},
+      {"texto":"Cambiar los nombres de las dependencias en el producto final.","es_correcta":false,"explicacion":"Cambiar nombres no cambia las licencias ni el origen del código."},
+      {"texto":"Ignorar las licencias si ambas dependencias compilan correctamente.","es_correcta":false,"explicacion":"La compatibilidad técnica de compilación no equivale a compatibilidad jurídica."}
+    ]
+  },
+  {
+    "asignatura":"Introducción a la Ingeniería de Software","tema":"Requisitos funcionales y no funcionales","titulo":"Requisito de autenticación funcional",
+    "enunciado":"¿Cuál frase describe una función que el sistema debe ofrecer al usuario?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"El usuario puede restablecer su contraseña mediante un enlace temporal enviado a su correo verificado.","es_correcta":true,"explicacion":"Describe una capacidad observable del sistema y una interacción del usuario."},
+      {"texto":"El servicio debe estar disponible el 99,9 % del mes.","es_correcta":false,"explicacion":"Es un requisito de disponibilidad, una cualidad no funcional."},
+      {"texto":"La página debe cargar en menos de dos segundos bajo una carga definida.","es_correcta":false,"explicacion":"Es una condición de rendimiento, no una función de usuario."},
+      {"texto":"El código debe estar organizado en módulos mantenibles.","es_correcta":false,"explicacion":"Describe una característica interna de calidad o diseño, no una función directa."}
+    ]
+  },
+  {
+    "asignatura":"Introducción a la Ingeniería de Software","tema":"Requisitos funcionales y no funcionales","titulo":"Requisito de seguridad verificable",
+    "enunciado":"Un requisito indica “el sistema debe ser seguro”. ¿Cuál refinamiento lo convierte en una condición más verificable?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Tras cinco intentos fallidos consecutivos, la cuenta se bloquea temporalmente y el evento queda registrado.","es_correcta":true,"explicacion":"Define un evento, un umbral y un resultado observable que puede someterse a pruebas."},
+      {"texto":"La seguridad debe ser excelente en todo momento.","es_correcta":false,"explicacion":"“Excelente” es subjetivo y no define una condición comprobable."},
+      {"texto":"El equipo usará las mejores herramientas disponibles.","es_correcta":false,"explicacion":"La elección de herramientas no especifica qué comportamiento debe cumplir el sistema."},
+      {"texto":"Los usuarios no deben tener problemas de seguridad.","es_correcta":false,"explicacion":"No establece una amenaza, una medida ni un criterio de verificación."}
+    ]
+  },
+  {
+    "asignatura":"Introducción a la Ingeniería de Software","tema":"Elicitación de requisitos","titulo":"Técnica inicial para conocer necesidades",
+    "enunciado":"Un equipo aún no conoce cómo los docentes registran el progreso de sus grupos. ¿Qué actividad ayuda a descubrir necesidades reales antes de diseñar la solución?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Entrevistar y observar a docentes que realizan actualmente ese trabajo.","es_correcta":true,"explicacion":"La interacción con usuarios y la observación del proceso revelan objetivos, restricciones y dificultades."},
+      {"texto":"Implementar de inmediato la primera idea del equipo técnico.","es_correcta":false,"explicacion":"Diseñar sin conocer el proceso puede producir una solución que no responda a necesidades reales."},
+      {"texto":"Elegir colores y tipografías antes de entender el problema.","es_correcta":false,"explicacion":"El diseño visual no sustituye la elicitación de necesidades y requisitos."},
+      {"texto":"Preguntar solo al patrocinador y asumir que representa todas las tareas docentes.","es_correcta":false,"explicacion":"Una sola perspectiva puede omitir variaciones y necesidades de quienes usan el proceso."}
+    ]
+  },
+  {
+    "asignatura":"Introducción a la Ingeniería de Software","tema":"Elicitación de requisitos","titulo":"Resolución de requisitos contradictorios",
+    "enunciado":"Docentes solicitan exportar notas a una hoja de cálculo, pero el área de protección de datos indica que ciertos datos no deben salir del sistema. ¿Qué debe hacer primero el equipo de requisitos?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Aclarar necesidades y restricciones con los interesados, documentar la decisión y definir criterios de aceptación compatibles.","es_correcta":true,"explicacion":"Los conflictos se resuelven con los interesados y restricciones aplicables, dejando trazabilidad y comportamiento verificable."},
+      {"texto":"Implementar la exportación completa y dejar que cada docente decida si la usa.","es_correcta":false,"explicacion":"Implementar sin resolver la restricción de privacidad puede producir un incumplimiento."},
+      {"texto":"Ignorar al área de protección de datos porque no es usuario final.","es_correcta":false,"explicacion":"Las restricciones legales y de seguridad son requisitos relevantes aunque su fuente no sea un usuario final."},
+      {"texto":"Elegir en privado la opción más fácil de programar.","es_correcta":false,"explicacion":"La conveniencia técnica no sustituye la resolución documentada de necesidades y restricciones."}
+    ]
+  },
+  {
+    "asignatura":"Introducción a la Ingeniería de Software","tema":"Historias de usuario y criterios de aceptación","titulo":"Formato de una historia de usuario",
+    "enunciado":"¿Cuál formato expresa de manera más completa la intención de una historia de usuario?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Como [tipo de usuario], quiero [capacidad] para [beneficio].","es_correcta":true,"explicacion":"Identifica quién necesita la capacidad y para qué valor o beneficio."},
+      {"texto":"Como [nombre del programador], usar [lenguaje] en [archivo].","es_correcta":false,"explicacion":"Describe una decisión de implementación, no una necesidad y beneficio del usuario."},
+      {"texto":"El sistema tendrá [cantidad] de clases y [cantidad] de tablas.","es_correcta":false,"explicacion":"La historia no debería reducirse a una lista de decisiones internas de diseño."},
+      {"texto":"Hacerlo rápido y terminarlo pronto.","es_correcta":false,"explicacion":"No identifica usuario, capacidad ni beneficio verificable."}
+    ]
+  },
+  {
+    "asignatura":"Introducción a la Ingeniería de Software","tema":"Historias de usuario y criterios de aceptación","titulo":"Criterio de aceptación con condición y resultado",
+    "enunciado":"Para la historia “Como estudiante, quiero ver mis ejercicios pendientes”, ¿qué criterio de aceptación es más comprobable?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Dado un estudiante autenticado con ejercicios pendientes, cuando abre su lista, entonces se muestran solo los ejercicios que aún no ha completado.","es_correcta":true,"explicacion":"Define contexto, acción y resultado observable que puede probarse."},
+      {"texto":"La lista debe ser bonita y fácil.","es_correcta":false,"explicacion":"“Bonita” y “fácil” son subjetivos y no indican datos ni comportamiento verificable."},
+      {"texto":"El sistema usará una tabla con exactamente siete columnas.","es_correcta":false,"explicacion":"Impone una solución de interfaz sin expresar el resultado que necesita el usuario."},
+      {"texto":"El programador debe revisar la lista después de implementarla.","es_correcta":false,"explicacion":"Describe una tarea interna, no una condición de aceptación del comportamiento."}
+    ]
+  },
+  {
+    "asignatura":"Introducción a la Ingeniería de Software","tema":"Pruebas unitarias e integración","titulo":"Aislamiento de una función de cálculo",
+    "enunciado":"Una función pura convierte una calificación numérica en una etiqueta (“Aprobado” o “Reprobado”) y no accede a la base de datos. ¿Qué prueba verifica directamente sus casos límite?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Una prueba unitaria con valores justo debajo, en y justo encima del umbral.","es_correcta":true,"explicacion":"Una prueba unitaria puede aislar la función y comprobar entradas límite."},
+      {"texto":"Una prueba de carga con cientos de usuarios concurrentes.","es_correcta":false,"explicacion":"La carga mide rendimiento y concurrencia, no la lógica de una función pura."},
+      {"texto":"Una prueba manual que solo compruebe la página de inicio.","es_correcta":false,"explicacion":"La página de inicio no garantiza que la conversión del umbral funcione."},
+      {"texto":"Una prueba de recuperación ante fallos del servidor.","es_correcta":false,"explicacion":"La recuperación valida resiliencia, no directamente la función de conversión."}
+    ]
+  },
+  {
+    "asignatura":"Introducción a la Ingeniería de Software","tema":"Pruebas unitarias e integración","titulo":"Dependencia externa en una prueba unitaria",
+    "enunciado":"Una función calcula puntos y además consulta una API externa. ¿Qué técnica ayuda a probar la lógica de cálculo sin depender de la red?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Sustituir la API por un doble de prueba con respuestas controladas y verificar el resultado de la función.","es_correcta":true,"explicacion":"Un mock o stub controla la dependencia externa y permite aislar la lógica que se prueba."},
+      {"texto":"Usar siempre la API de producción durante cada prueba unitaria.","es_correcta":false,"explicacion":"La red añade lentitud, variabilidad y dependencia externa, reduciendo el aislamiento."},
+      {"texto":"Eliminar las aserciones para que la prueba no dependa de resultados.","es_correcta":false,"explicacion":"Sin aserciones no se verifica que la función calcule correctamente."},
+      {"texto":"Aumentar el tiempo de espera hasta que la API responda.","es_correcta":false,"explicacion":"Un timeout mayor no elimina la dependencia externa ni convierte la prueba en unitaria."}
+    ]
+  },
+  {
+    "asignatura":"Introducción a la Ingeniería de Software","tema":"Diseño modular y control de versiones","titulo":"Alta cohesión en un módulo",
+    "enunciado":"¿Qué módulo muestra mayor cohesión?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Un módulo que valida y normaliza direcciones de correo para el registro.","es_correcta":true,"explicacion":"Sus responsabilidades están estrechamente relacionadas con una finalidad clara."},
+      {"texto":"Un módulo que envía correos, calcula notas, imprime reportes y modifica inventario.","es_correcta":false,"explicacion":"Agrupa responsabilidades sin relación y tiene baja cohesión."},
+      {"texto":"Un archivo con todas las funciones del sistema para evitar tener varios módulos.","es_correcta":false,"explicacion":"Concentrar funciones no relacionadas dificulta comprender, mantener y probar el código."},
+      {"texto":"Un módulo que cambia según variables globales no documentadas.","es_correcta":false,"explicacion":"El estado global y las responsabilidades implícitas reducen claridad y cohesión."}
+    ]
+  },
+  {
+    "asignatura":"Introducción a la Ingeniería de Software","tema":"Diseño modular y control de versiones","titulo":"Cohesión y acoplamiento entre módulos",
+    "enunciado":"Un equipo quiere que los cambios en el servicio de correo no obliguen a modificar el módulo de calificaciones. ¿Qué decisión ayuda más?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Separar responsabilidades y comunicar módulos mediante interfaces estables con dependencias explícitas.","es_correcta":true,"explicacion":"Alta cohesión y bajo acoplamiento limitan el impacto de cambios entre módulos."},
+      {"texto":"Hacer que ambos módulos compartan todas sus variables internas.","es_correcta":false,"explicacion":"Compartir estado interno aumenta el acoplamiento y hace que los cambios se propaguen."},
+      {"texto":"Copiar el código del servicio de correo dentro del módulo de calificaciones.","es_correcta":false,"explicacion":"La duplicación aumenta el mantenimiento y no desacopla responsabilidades."},
+      {"texto":"Permitir que el servicio de correo modifique directamente las tablas internas de calificaciones.","es_correcta":false,"explicacion":"El acceso directo a datos internos crea dependencias fuertes entre módulos."}
+    ]
+  },
+  {
+    "asignatura":"Identidad FET","tema":"Identidad institucional y pertenencia","titulo":"Identidad institucional en una actividad estudiantil",
+    "enunciado":"Un grupo organiza una actividad académica y quiere representar adecuadamente a su institución. ¿Qué recurso debe consultar antes de publicar piezas gráficas oficiales?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Los lineamientos institucionales de identidad visual y uso de símbolos.","es_correcta":true,"explicacion":"Las guías institucionales ayudan a usar símbolos y elementos gráficos de forma consistente y autorizada."},
+      {"texto":"Una versión del logotipo descargada de una fuente no verificada.","es_correcta":false,"explicacion":"Una fuente no verificada puede distribuir un símbolo desactualizado o alterado."},
+      {"texto":"Modificar colores y proporciones según preferencias personales.","es_correcta":false,"explicacion":"Alterar elementos oficiales sin consultar lineamientos puede distorsionar la identidad institucional."},
+      {"texto":"Eliminar el nombre de la institución para evitar consultar sus lineamientos.","es_correcta":false,"explicacion":"Omitir el nombre no resuelve el uso adecuado de símbolos si se representa a la institución."}
+    ]
+  },
+  {
+    "asignatura":"Identidad FET","tema":"Identidad institucional y pertenencia","titulo":"Representación responsable de la institución",
+    "enunciado":"Una publicación estudiantil critica una decisión académica y usa el logotipo oficial sin autorización, dando a entender que habla en nombre de la institución. ¿Qué práctica evita esa confusión?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Distinguir la opinión personal de una comunicación oficial y seguir las reglas institucionales para usar sus símbolos.","es_correcta":true,"explicacion":"La transparencia sobre quién habla y el uso autorizado de la identidad evitan atribuciones engañosas."},
+      {"texto":"Mantener el logotipo porque cualquier integrante puede emitir comunicaciones oficiales.","es_correcta":false,"explicacion":"Pertenecer a la comunidad no convierte automáticamente una opinión personal en comunicación institucional."},
+      {"texto":"Añadir más símbolos oficiales para que la crítica parezca institucional.","es_correcta":false,"explicacion":"Agregar símbolos aumenta la posibilidad de atribuir erróneamente el mensaje a la institución."},
+      {"texto":"Publicar sin indicar si la opinión es personal o institucional.","es_correcta":false,"explicacion":"La falta de contexto mantiene la ambigüedad sobre quién respalda el mensaje."}
+    ]
+  },
+  {
+    "asignatura":"Identidad FET","tema":"Identidad digital universitaria","titulo":"Autenticación segura de la cuenta institucional",
+    "enunciado":"¿Qué medida reduce mejor el riesgo de que otra persona use una cuenta institucional comprometida?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Usar una contraseña única y robusta, activar un segundo factor si está disponible y no compartir códigos.","es_correcta":true,"explicacion":"La contraseña única reduce reutilización y el segundo factor dificulta accesos con credenciales robadas."},
+      {"texto":"Reutilizar la misma contraseña en todas las plataformas.","es_correcta":false,"explicacion":"Si una plataforma se compromete, la contraseña reutilizada puede facilitar el acceso a las demás."},
+      {"texto":"Enviar el código de verificación a un compañero.","es_correcta":false,"explicacion":"Los códigos de autenticación son secretos temporales y no deben compartirse."},
+      {"texto":"Guardar la contraseña en una publicación visible.","es_correcta":false,"explicacion":"Publicar una contraseña la expone directamente y anula la protección de la cuenta."}
+    ]
+  },
+  {
+    "asignatura":"Identidad FET","tema":"Identidad digital universitaria","titulo":"Respuesta ante un intento de phishing",
+    "enunciado":"Un mensaje que aparenta venir del soporte institucional pide la contraseña y un código de autenticación mediante un enlace externo. ¿Cuál es la respuesta más segura?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"No abrir el enlace ni entregar credenciales; reportar el mensaje por el canal oficial y verificar el aviso directamente.","es_correcta":true,"explicacion":"La solicitud de contraseñas o códigos es una señal de phishing; hay que verificar por canales confiables y reportarla."},
+      {"texto":"Responder con el código para confirmar que la cuenta está activa.","es_correcta":false,"explicacion":"Entregar el código puede permitir al atacante completar la autenticación."},
+      {"texto":"Abrir el enlace desde otro computador y probar la contraseña.","es_correcta":false,"explicacion":"Usar otro dispositivo no vuelve confiable el enlace ni protege las credenciales."},
+      {"texto":"Reenviar el mensaje a todos los estudiantes.","es_correcta":false,"explicacion":"Difundir el enlace amplía la exposición; debe reportarse al canal oficial."}
+    ]
+  },
+  {
+    "asignatura":"Identidad FET","tema":"Participación en la comunidad académica","titulo":"Canales de participación estudiantil",
+    "enunciado":"Un estudiante tiene una propuesta para mejorar un servicio académico. ¿Cuál es un primer paso constructivo?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Identificar el canal institucional pertinente y presentar la propuesta con razones concretas.","es_correcta":true,"explicacion":"Los canales de participación permiten dirigir propuestas a quienes pueden evaluarlas y responderlas."},
+      {"texto":"Publicar datos personales de quienes administran el servicio para presionarlos.","es_correcta":false,"explicacion":"Divulgar datos personales no es un mecanismo de participación y puede perjudicar a terceros."},
+      {"texto":"Impedir que otros estudiantes usen el servicio hasta que acepten la propuesta.","es_correcta":false,"explicacion":"Bloquear el acceso afecta a la comunidad y no sustituye el diálogo institucional."},
+      {"texto":"Afirmar que toda la comunidad está de acuerdo sin consultarla.","es_correcta":false,"explicacion":"Atribuir un consenso no consultado debilita la representación de la propuesta."}
+    ]
+  },
+  {
+    "asignatura":"Identidad FET","tema":"Participación en la comunidad académica","titulo":"Propuesta basada en evidencia y seguimiento",
+    "enunciado":"Varios estudiantes reportan dificultades para acceder a un laboratorio. ¿Qué propuesta ofrece una base más sólida para una mejora institucional?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Recopilar observaciones representativas, describir el impacto, proponer alternativas viables y solicitar respuesta por el canal correspondiente.","es_correcta":true,"explicacion":"Combina evidencia, impacto, alternativas y seguimiento sin asumir una solución única."},
+      {"texto":"Publicar una acusación general sin recopilar ejemplos ni escuchar a usuarios.","es_correcta":false,"explicacion":"Una afirmación sin evidencia dificulta entender el problema y evaluar soluciones."},
+      {"texto":"Exigir el cierre del laboratorio antes de consultar a quienes lo utilizan.","es_correcta":false,"explicacion":"Una medida unilateral puede perjudicar a la comunidad y no evalúa alternativas."},
+      {"texto":"Enviar la misma queja repetidamente a personas no relacionadas con el servicio.","es_correcta":false,"explicacion":"El seguimiento debe dirigirse a los canales responsables y aportar información útil."}
+    ]
+  },
+  {
+    "asignatura":"Identidad FET","tema":"Integridad académica y atribución","titulo":"Atribución de una idea consultada",
+    "enunciado":"Un estudiante explica con sus propias palabras una idea tomada de un libro. ¿Qué debe hacer para reconocer correctamente su origen?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Citar la fuente de la idea aunque la redacción sea propia.","es_correcta":true,"explicacion":"Las ideas ajenas deben atribuirse incluso cuando se parafrasean."},
+      {"texto":"Cambiar varias palabras y presentar la idea como un descubrimiento propio.","es_correcta":false,"explicacion":"Cambiar palabras no cambia el origen intelectual de la idea."},
+      {"texto":"Citar solo si el autor lo solicita personalmente.","es_correcta":false,"explicacion":"La atribución es una práctica académica, no depende de una solicitud individual."},
+      {"texto":"Eliminar la idea aunque sea relevante para el trabajo.","es_correcta":false,"explicacion":"La idea puede utilizarse de forma honesta con la cita correspondiente."}
+    ]
+  },
+  {
+    "asignatura":"Identidad FET","tema":"Integridad académica y atribución","titulo":"Atribución de código fuente reutilizado",
+    "enunciado":"Un equipo adapta un fragmento de código de un repositorio externo para un trabajo académico. ¿Qué práctica combina mejor integridad académica y uso responsable del software?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Identificar la procedencia, citar el recurso, explicar las modificaciones y revisar las condiciones de su licencia.","es_correcta":true,"explicacion":"La atribución reconoce el trabajo ajeno y la revisión de licencia verifica las condiciones de reutilización."},
+      {"texto":"Cambiar nombres de variables y declarar que todo el código fue escrito desde cero.","es_correcta":false,"explicacion":"Cambiar identificadores no elimina la procedencia del código reutilizado."},
+      {"texto":"Omitir la referencia si el código compila correctamente.","es_correcta":false,"explicacion":"La funcionalidad técnica no sustituye la atribución académica ni el cumplimiento de licencia."},
+      {"texto":"Copiar cualquier credencial que aparezca en el repositorio para que el ejemplo funcione.","es_correcta":false,"explicacion":"Las credenciales deben protegerse y nunca incorporarse como parte de una reutilización."}
+    ]
+  },
+  {
+    "asignatura":"Identidad FET","tema":"Convivencia y resolución de desacuerdos","titulo":"Desacuerdo respetuoso en un equipo",
+    "enunciado":"Dos integrantes discrepan sobre cómo dividir las tareas de un proyecto. ¿Qué comportamiento facilita una discusión respetuosa?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Escuchar ambas propuestas y comparar cómo contribuyen al objetivo y a la carga de trabajo.","es_correcta":true,"explicacion":"Escuchar y evaluar criterios compartidos ayuda a resolver el desacuerdo sin descalificar personas."},
+      {"texto":"Interrumpir para imponer la propia propuesta.","es_correcta":false,"explicacion":"Interrumpir impide comprender argumentos y dificulta una decisión colaborativa."},
+      {"texto":"Excluir de la conversación a quien discrepa.","es_correcta":false,"explicacion":"Excluir integrantes reduce la colaboración y puede ocultar riesgos relevantes."},
+      {"texto":"Cambiar las tareas de los demás sin informarles.","es_correcta":false,"explicacion":"Modificar responsabilidades unilateralmente deteriora la confianza y la coordinación."}
+    ]
+  },
+  {
+    "asignatura":"Identidad FET","tema":"Convivencia y resolución de desacuerdos","titulo":"Acuerdo y seguimiento de un conflicto de equipo",
+    "enunciado":"Un conflicto en el equipo ya afectó dos entregas. Las personas involucradas aceptan dialogar. ¿Qué cierre ayuda a evitar que el mismo problema se repita?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Acordar responsabilidades, fechas y una forma de revisar el cumplimiento, dejando espacio para ajustar el plan.","es_correcta":true,"explicacion":"Un acuerdo concreto y revisable convierte el diálogo en compromisos verificables."},
+      {"texto":"Decidir quién tuvo la culpa y terminar sin definir acciones.","es_correcta":false,"explicacion":"Atribuir culpas sin acordar acciones no resuelve las causas prácticas del conflicto."},
+      {"texto":"Pedir que el grupo olvide el problema sin revisar la organización del trabajo.","es_correcta":false,"explicacion":"Ignorar las causas deja intactas las condiciones que provocaron las entregas fallidas."},
+      {"texto":"Asignar todas las tareas futuras a una sola persona.","es_correcta":false,"explicacion":"Concentrar responsabilidades puede crear sobrecarga y no aborda comunicación ni coordinación."}
+    ]
+  },
+  {
+    "asignatura":"Técnicas de la Comunicación","tema":"Propósito y audiencia","titulo":"Explicación de un término técnico a otra audiencia",
+    "enunciado":"Un informe dirigido a directivos no técnicos debe mencionar una “API”. ¿Qué redacción ayuda a mantener precisión y comprensión?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Definir API en su primera aparición y explicar qué efecto tiene en el proyecto.","es_correcta":true,"explicacion":"Definir el término y conectarlo con su impacto adapta el mensaje sin perder precisión."},
+      {"texto":"Usar más siglas técnicas sin explicarlas.","es_correcta":false,"explicacion":"Las siglas no explicadas pueden impedir que la audiencia comprenda el mensaje."},
+      {"texto":"Eliminar todo detalle y dejar únicamente la palabra API.","es_correcta":false,"explicacion":"Omitir la explicación no comunica el impacto ni el significado del término."},
+      {"texto":"Sustituir API por una palabra incorrecta que suene familiar.","es_correcta":false,"explicacion":"Simplificar no debe cambiar el significado técnico del concepto."}
+    ]
+  },
+  {
+    "asignatura":"Técnicas de la Comunicación","tema":"Propósito y audiencia","titulo":"Comunicación de un riesgo técnico a públicos distintos",
+    "enunciado":"El equipo detecta una vulnerabilidad que puede retrasar el lanzamiento. ¿Cómo debe comunicarla a directivos y al equipo técnico sin distorsionar los hechos?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Mantener los mismos hechos y nivel de riesgo, presentar impacto y decisión requerida a directivos y detalle técnico al equipo.","es_correcta":true,"explicacion":"Se adapta el nivel de detalle y la acción esperada, pero no se alteran los hechos ni el riesgo."},
+      {"texto":"Ocultar la vulnerabilidad a los directivos para evitar preocupación.","es_correcta":false,"explicacion":"Ocultar un riesgo que afecta la decisión impide tomar una decisión informada."},
+      {"texto":"Usar exactamente los mismos tecnicismos y anexos extensos para ambas audiencias.","es_correcta":false,"explicacion":"La consistencia factual no exige ignorar las necesidades de cada audiencia."},
+      {"texto":"Exagerar la probabilidad ante el equipo técnico para conseguir más tiempo.","es_correcta":false,"explicacion":"Exagerar deliberadamente el riesgo compromete la credibilidad y la toma de decisiones."}
+    ]
+  },
+  {
+    "asignatura":"Técnicas de la Comunicación","tema":"Estructura del informe técnico","titulo":"Interpretación separada de los resultados",
+    "enunciado":"Un informe presenta los tiempos medidos de cinco consultas y luego explica por qué una fue lenta. ¿Qué estructura ayuda a distinguir datos de interpretación?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Presentar primero los resultados observados y después discutir su interpretación y posibles causas.","es_correcta":true,"explicacion":"Separar resultados de discusión distingue evidencia medida de interpretación."},
+      {"texto":"Presentar solo la causa supuesta y omitir las mediciones.","es_correcta":false,"explicacion":"Sin datos observados, la explicación no puede contrastarse con evidencia."},
+      {"texto":"Mezclar cada cifra con una conclusión no identificada como interpretación.","es_correcta":false,"explicacion":"Mezclar datos e inferencias dificulta identificar qué se midió y qué se concluye."},
+      {"texto":"Mover todas las mediciones al título del documento.","es_correcta":false,"explicacion":"El título identifica el documento, pero no sustituye una sección de resultados."}
+    ]
+  },
+  {
+    "asignatura":"Técnicas de la Comunicación","tema":"Estructura del informe técnico","titulo":"Trazabilidad de una recomendación técnica",
+    "enunciado":"Un informe recomienda ampliar la memoria de un servidor. ¿Qué conjunto de elementos sustenta mejor la recomendación?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Objetivo, método de medición, datos observados, limitaciones y vínculo entre resultados y recomendación.","es_correcta":true,"explicacion":"Esa estructura permite revisar cómo la evidencia respalda la conclusión y bajo qué límites."},
+      {"texto":"La recomendación repetida varias veces para que parezca concluyente.","es_correcta":false,"explicacion":"La repetición no aporta evidencia ni explica el razonamiento."},
+      {"texto":"Una captura del servidor sin fecha, escala ni explicación.","es_correcta":false,"explicacion":"Sin contexto ni método no se puede evaluar la validez de la medición."},
+      {"texto":"La opinión de quien redacta, sin incluir resultados.","es_correcta":false,"explicacion":"Una opinión sin resultados o método no ofrece trazabilidad."}
+    ]
+  },
+  {
+    "asignatura":"Técnicas de la Comunicación","tema":"Paráfrasis y citación","titulo":"Cita textual con atribución",
+    "enunciado":"Una estudiante necesita conservar exactamente una definición de un autor en su informe. ¿Cómo debe presentarla?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Delimitar las palabras exactas como cita textual e identificar la fuente según el formato solicitado.","es_correcta":true,"explicacion":"La cita textual distingue las palabras del autor y permite localizar su fuente."},
+      {"texto":"Copiar la definición sin comillas porque el tema es técnico.","es_correcta":false,"explicacion":"La naturaleza técnica del tema no elimina la obligación de reconocer palabras copiadas."},
+      {"texto":"Cambiar el orden de dos frases y omitir la fuente.","es_correcta":false,"explicacion":"Cambios menores no convierten la reproducción en autoría propia."},
+      {"texto":"Citar una fuente distinta que trate el mismo tema.","es_correcta":false,"explicacion":"La referencia debe identificar la fuente efectivamente utilizada."}
+    ]
+  },
+  {
+    "asignatura":"Técnicas de la Comunicación","tema":"Paráfrasis y citación","titulo":"Citación de una idea traducida",
+    "enunciado":"Un informe traduce al español una idea tomada de un artículo en inglés y la redacta con otras palabras. ¿Qué debe hacer con la fuente?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Citar el artículo original, pues la traducción y la paráfrasis no cambian el origen de la idea.","es_correcta":true,"explicacion":"La atribución corresponde a la fuente de la idea aunque se traduzca y reformule."},
+      {"texto":"No citarla porque la redacción final está en otro idioma.","es_correcta":false,"explicacion":"El idioma de la paráfrasis no cambia la autoría intelectual de la idea."},
+      {"texto":"Citar únicamente un diccionario bilingüe.","es_correcta":false,"explicacion":"El diccionario puede apoyar la traducción, pero no reemplaza la fuente de la idea."},
+      {"texto":"Atribuir la idea a quien hizo la traducción y omitir el artículo.","es_correcta":false,"explicacion":"Traducir no transfiere la autoría de la idea original."}
+    ]
+  },
+  {
+    "asignatura":"Técnicas de la Comunicación","tema":"Exposición oral técnica","titulo":"Diapositivas legibles para una exposición",
+    "enunciado":"¿Qué práctica ayuda a que la audiencia siga una exposición técnica mientras escucha a quien presenta?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Usar diapositivas legibles con ideas clave y explicar oralmente los detalles.","es_correcta":true,"explicacion":"Las diapositivas apoyan la exposición y quien presenta desarrolla la explicación."},
+      {"texto":"Poner el texto completo del informe en cada diapositiva y leerlo.","es_correcta":false,"explicacion":"El texto abundante sobrecarga la diapositiva y compite con la explicación oral."},
+      {"texto":"Usar letra muy pequeña para que quepa todo el contenido.","es_correcta":false,"explicacion":"Si el texto no es legible, la audiencia no puede usarlo como apoyo."},
+      {"texto":"Eliminar títulos y etiquetas para dejar espacio a imágenes decorativas.","es_correcta":false,"explicacion":"Los títulos y etiquetas ayudan a interpretar la información visual."}
+    ]
+  },
+  {
+    "asignatura":"Técnicas de la Comunicación","tema":"Exposición oral técnica","titulo":"Comunicación de un gráfico técnico",
+    "enunciado":"Una diapositiva muestra una gráfica de latencia. ¿Qué debe incluir para que la audiencia pueda interpretarla correctamente?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Ejes etiquetados con unidades, periodo o contexto de medición y una explicación del hallazgo principal.","es_correcta":true,"explicacion":"Las etiquetas, unidades y contexto permiten interpretar la magnitud y el significado de los datos."},
+      {"texto":"Solo una línea de tendencia sin ejes para evitar detalles.","es_correcta":false,"explicacion":"Sin ejes ni unidades no se puede determinar qué representa la línea."},
+      {"texto":"Cambiar la escala sin indicarlo para que la mejora parezca mayor.","es_correcta":false,"explicacion":"Una escala no declarada puede inducir a una interpretación engañosa."},
+      {"texto":"Ocultar el periodo medido aunque los datos correspondan a momentos distintos.","es_correcta":false,"explicacion":"El periodo es necesario para interpretar y comparar las mediciones."}
+    ]
+  },
+  {
+    "asignatura":"Técnicas de la Comunicación","tema":"Requisitos comunicados con precisión","titulo":"Umbral simple y verificable de rendimiento",
+    "enunciado":"¿Cuál requisito reemplaza mejor la frase ambigua “la búsqueda debe ser rápida”?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Con hasta 1000 registros y una conexión de prueba definida, la búsqueda debe responder en menos de 2 segundos.","es_correcta":true,"explicacion":"Establece condiciones de prueba y un umbral temporal medible."},
+      {"texto":"La búsqueda debe sentirse rápida para todos los usuarios.","es_correcta":false,"explicacion":"“Sentirse rápida” no establece una medida reproducible."},
+      {"texto":"La búsqueda debe usar un algoritmo avanzado.","es_correcta":false,"explicacion":"La implementación elegida no define un tiempo de respuesta verificable."},
+      {"texto":"La búsqueda debe cargar inmediatamente sin importar el tamaño de los datos.","es_correcta":false,"explicacion":"“Inmediatamente” y “sin importar” son expresiones sin condiciones medibles."}
+    ]
+  },
+  {
+    "asignatura":"Técnicas de la Comunicación","tema":"Requisitos comunicados con precisión","titulo":"Validación de aceptación con interesados",
+    "enunciado":"Un requisito medible ya fue redactado por el equipo técnico. ¿Qué paso confirma que también representa la necesidad del usuario?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Revisarlo con los interesados, acordar ejemplos de aceptación y comprobar que la prueba refleja la tarea real.","es_correcta":true,"explicacion":"La verificabilidad técnica debe complementarse con la validación de la necesidad acordada."},
+      {"texto":"Considerarlo aprobado porque el equipo puede medirlo automáticamente.","es_correcta":false,"explicacion":"Un requisito medible puede resolver el problema equivocado si no se valida con interesados."},
+      {"texto":"Eliminar la participación del usuario para evitar cambios.","es_correcta":false,"explicacion":"Excluir interesados aumenta el riesgo de malentender la necesidad."},
+      {"texto":"Probarlo con datos inventados sin documentar el resultado esperado.","es_correcta":false,"explicacion":"Sin ejemplos representativos y resultados acordados, la prueba no valida el requisito."}
+    ]
+  },
+  {
+    "asignatura":"Inglés I","tema":"Presente simple en contexto técnico","titulo":"Forma negativa del presente simple",
+    "enunciado":"Choose the correct negative form: “The application ___ store plain-text passwords.”","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"does not","es_correcta":true,"explicacion":"With the third-person singular subject “the application”, use “does not” plus the base verb “store”."},
+      {"texto":"do not","es_correcta":false,"explicacion":"“Do not” is used with I, you, we, and they, not a third-person singular subject."},
+      {"texto":"is not","es_correcta":false,"explicacion":"“Is not” does not form the simple present negative of the main verb “store”."},
+      {"texto":"does not stores","es_correcta":false,"explicacion":"After “does not”, use the base form “store”, not “stores”."}
+    ]
+  },
+  {
+    "asignatura":"Inglés I","tema":"Presente simple en contexto técnico","titulo":"Pregunta en presente simple con tercera persona",
+    "enunciado":"Choose the correct question: “___ the server restart automatically after an update?”","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Does","es_correcta":true,"explicacion":"A present-simple question with a third-person singular subject uses “Does” plus the base verb “restart”."},
+      {"texto":"Do","es_correcta":false,"explicacion":"“Do” is used with I, you, we, and they; “the server” is third-person singular."},
+      {"texto":"Is","es_correcta":false,"explicacion":"“Is” would form a different structure, such as “Is the server restarting?”."},
+      {"texto":"Does ... restarts","es_correcta":false,"explicacion":"After “Does”, the main verb must remain in its base form: “restart”."}
+    ]
+  },
+  {
+    "asignatura":"Inglés I","tema":"Vocabulario de tecnología","titulo":"Significado de debug",
+    "enunciado":"In software development, what does “debug a program” mean?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Find and fix errors in the program.","es_correcta":true,"explicacion":"Debugging is the process of locating, analyzing, and fixing defects in software."},
+      {"texto":"Translate the program into another language.","es_correcta":false,"explicacion":"Translation changes the programming language; it is not debugging."},
+      {"texto":"Install the program on a user's computer.","es_correcta":false,"explicacion":"Installation or deployment makes software available; debugging focuses on defects."},
+      {"texto":"Delete the program's documentation.","es_correcta":false,"explicacion":"Documentation is separate from locating and fixing software errors."}
+    ]
+  },
+  {
+    "asignatura":"Inglés I","tema":"Vocabulario de tecnología","titulo":"Significado de deploy",
+    "enunciado":"A team says, “We deployed the patch to the staging environment.” What did the team most likely do?","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"Released or installed the patch in the staging environment so it can be tested there.","es_correcta":true,"explicacion":"To deploy is to make a software version available in a target environment."},
+      {"texto":"Deleted the patch from the repository permanently.","es_correcta":false,"explicacion":"Deployment makes a version available; it does not mean deleting its source."},
+      {"texto":"Translated the patch documentation into English.","es_correcta":false,"explicacion":"Translation is a language task, not deployment to an environment."},
+      {"texto":"Finished designing the patch but did not install it anywhere.","es_correcta":false,"explicacion":"Designing is not deployment; the patch was placed in the staging environment."}
+    ]
+  },
+  {
+    "asignatura":"Inglés I","tema":"Presente continuo y acciones temporales","titulo":"Presente continuo con sujeto plural",
+    "enunciado":"Choose the correct sentence to describe an action happening now: “The students ___ the router.”","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"are configuring","es_correcta":true,"explicacion":"“The students” is plural, so use “are” plus the -ing form “configuring”."},
+      {"texto":"is configuring","es_correcta":false,"explicacion":"“Is” agrees with a singular subject, not “the students”."},
+      {"texto":"are configure","es_correcta":false,"explicacion":"The present continuous requires the -ing form after “are”."},
+      {"texto":"configures","es_correcta":false,"explicacion":"“Configures” is present simple with a third-person singular subject."}
+    ]
+  },
+  {
+    "asignatura":"Inglés I","tema":"Presente continuo y acciones temporales","titulo":"Verbos de estado y presente continuo",
+    "enunciado":"Choose the most natural sentence: “I ___ the new database schema.”","tipo":"OPCION_MULTIPLE","dificultad":"DIFICIL",
+    "opciones":[
+      {"texto":"understand","es_correcta":true,"explicacion":"“Understand” is commonly a stative verb, so the simple present is normally used for this meaning."},
+      {"texto":"am understanding","es_correcta":false,"explicacion":"“Understand” normally describes a state rather than a temporary physical action."},
+      {"texto":"understood","es_correcta":false,"explicacion":"“Understood” is past tense and does not describe the current state."},
+      {"texto":"am understand","es_correcta":false,"explicacion":"The continuous form needs -ing, and this stative use normally takes simple present."}
+    ]
+  },
+  {
+    "asignatura":"Inglés I","tema":"Comprensión de instrucciones técnicas","titulo":"Secuencia temporal en instrucciones",
+    "enunciado":"Read the instruction: “Before restarting the service, create a backup.” What should the engineer do first?","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Create a backup.","es_correcta":true,"explicacion":"“Before” indicates that creating the backup must happen earlier than restarting the service."},
+      {"texto":"Restart the service and then create a backup.","es_correcta":false,"explicacion":"This reverses the order required by “before”."},
+      {"texto":"Delete the backup before restarting.","es_correcta":false,"explicacion":"The instruction says to create a backup, not delete one."},
+      {"texto":"Do nothing until the service restarts by itself.","es_correcta":false,"explicacion":"The instruction gives an explicit action to perform before restart."}
+    ]
+  },
+  {
+    "asignatura":"Inglés I","tema":"Comprensión de instrucciones técnicas","titulo":"Interpretación de unless en una instrucción",
+    "enunciado":"Read: “Do not restart the server unless the backup is complete.” Under what condition is restarting allowed?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Only when the backup is complete.","es_correcta":true,"explicacion":"Here “unless” means “if not”; restarting is prohibited when the backup is incomplete."},
+      {"texto":"Only when the backup has not started.","es_correcta":false,"explicacion":"The condition refers to completion, not whether the backup has started."},
+      {"texto":"The server must never be restarted, even after the backup completes.","es_correcta":false,"explicacion":"The instruction permits restarting once its condition is satisfied."},
+      {"texto":"The backup should be deleted before restarting.","es_correcta":false,"explicacion":"The sentence requires a completed backup; it does not say to delete it."}
+    ]
+  },
+  {
+    "asignatura":"Inglés I","tema":"Redacción de correo profesional","titulo":"Solicitud cortés con fecha límite",
+    "enunciado":"Choose the most appropriate sentence to request a teammate to send a test report by Thursday.","tipo":"OPCION_MULTIPLE","dificultad":"FACIL",
+    "opciones":[
+      {"texto":"Could you please send the test report by Thursday?","es_correcta":true,"explicacion":"“Could you please” makes a polite request, and “by Thursday” gives a clear deadline."},
+      {"texto":"Send me test report Thursday now.","es_correcta":false,"explicacion":"This wording is abrupt and omits an article; it is not a polished professional request."},
+      {"texto":"Why did you not send the report last Thursday?","es_correcta":false,"explicacion":"This asks about a past event rather than requesting the report by a future deadline."},
+      {"texto":"I sent the report by Thursday?","es_correcta":false,"explicacion":"This asks about the speaker's action, not a request to a teammate."}
+    ]
+  },
+  {
+    "asignatura":"Inglés I","tema":"Redacción de correo profesional","titulo":"Asunto claro para un correo de incidencia",
+    "enunciado":"Which email subject line is clearest for reporting that the test environment is unavailable?","tipo":"OPCION_MULTIPLE","dificultad":"MEDIO",
+    "opciones":[
+      {"texto":"Test environment unavailable — incident report","es_correcta":true,"explicacion":"It states the affected environment and the purpose of the message clearly and concisely."},
+      {"texto":"Hello","es_correcta":false,"explicacion":"A greeting does not identify the issue or help the recipient prioritize the message."},
+      {"texto":"Important!!!!","es_correcta":false,"explicacion":"It signals urgency but gives no information about the incident."},
+      {"texto":"A very long story about everything that happened today","es_correcta":false,"explicacion":"A subject line should summarize the purpose, not contain the full message."}
+    ]
+  }
+]

@@ -41,3 +41,34 @@
   color: var(--accent-dark);
   transform: translateX(2px);
 }
+
+.select-row:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.select-row:disabled:hover {
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.asignatura-opcion {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.construction-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.construction-state h3,
+.construction-state p {
+  margin: 0;
+}

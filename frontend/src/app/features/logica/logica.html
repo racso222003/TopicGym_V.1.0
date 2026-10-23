@@ -118,7 +118,9 @@
                 {{ r.puntos }} puntos (intento {{ r.intento }})
               </strong>
             </div>
-            @if (r.explicacion) {
+            @if (r.retroalimentacionOpcion) {
+              <p style="margin: 8px 0 0">{{ r.retroalimentacionOpcion }}</p>
+            } @else if (r.explicacion) {
               <p style="margin: 8px 0 0">{{ r.explicacion }}</p>
             }
             @if (!r.correcta && r.primerIntento) {

@@ -15,10 +15,11 @@ async function listSemesters() {
 /** Asignaturas de un semestre. */
 async function listSubjectsBySemester(semestreId) {
   const { rows } = await query(
-    `SELECT id, nombre, orden
-       FROM asignaturas
-      WHERE semestre_id = $1
-      ORDER BY orden`,
+    `SELECT a.id, a.nombre, a.orden,
+            EXISTS (SELECT 1 FROM temas t WHERE t.asignatura_id = a.id) AS tiene_contenido
+       FROM asignaturas a
+      WHERE a.semestre_id = $1
+      ORDER BY a.orden, a.id`,
     [semestreId],
   );
   return rows;

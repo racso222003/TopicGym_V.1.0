@@ -54,8 +54,16 @@ npm run dev      # http://localhost:3000
 `npm run seed` es idempotente: si las tablas no existen, aplica `../database/schema.sql` y
 `../database/seed.sql`; luego crea los usuarios demo con hash **bcrypt** y comprueba que los
 15 ejercicios (Acta 06 · Banco ampliado) coincidan con `../banco-ejercicios/ejercicios_piloto.json`.
-También aplica la migración idempotente de logros nuevos. Para actualizar una base existente
-sin ejecutar el seed, usa `npm run db:migrate:logros`.
+También aplica las migraciones idempotentes de gamificación y del catálogo de los semestres 1–4.
+Además, carga 125 ejercicios para nueve asignaturas combinando
+`../banco-ejercicios/ejercicios_asignaturas_nuevas.json` y
+`../banco-ejercicios/ejercicios_semestre_1_ampliacion.json`. Las asignaturas del Semestre 1
+fuera del piloto y Programación Orientada a Objetos tienen tres ejercicios por tema; Estructura
+de Datos conserva cinco ejercicios en esta iteración.
+También añade la columna opcional de retroalimentación por opción. Para actualizar una base
+existente y cargar ese contenido, ejecuta `npm run seed`; es idempotente y conserva los IDs de
+opciones existentes. Las migraciones independientes de logros y catálogo están disponibles como
+`npm run db:migrate:logros` y `npm run db:migrate:catalogo`.
 
 Reiniciar desde cero:
 
@@ -80,6 +88,7 @@ node seed.js --reset
 | `npm run db:schema` | Aplica `schema.sql` con `psql`. |
 | `npm run db:seed` | Aplica `seed.sql` con `psql`. |
 | `npm run db:migrate:logros` | Aplica la migración idempotente de gamificación. |
+| `npm run db:migrate:catalogo` | Agrega asignaturas de los semestres 1–4 sin borrar el piloto. |
 | `npm test` | Pruebas unitarias de condiciones del motor de logros. |
 
 ## Endpoints

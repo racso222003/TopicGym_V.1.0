@@ -32,6 +32,7 @@ async function validar({ usuarioId, ejercicioId, opcionId, textoRespuesta }) {
   const esOpcionMultiple = ejercicio.tipo === 'OPCION_MULTIPLE';
   let correcta = false;
   let opcionCorrecta = null;
+  let opcionSeleccionada = null;
 
   if (esOpcionMultiple) {
     if (!opcionId) {
@@ -40,6 +41,7 @@ async function validar({ usuarioId, ejercicioId, opcionId, textoRespuesta }) {
       throw err;
     }
     opcionCorrecta = ejercicio.opciones.find((o) => o.es_correcta) || null;
+    opcionSeleccionada = ejercicio.opciones.find((o) => o.id === Number(opcionId)) || null;
     correcta = Boolean(opcionCorrecta) && opcionCorrecta.id === Number(opcionId);
   }
   // tipo PSEUDOCODIGO: se almacena para revisión manual; no se autocalifica en el piloto.
@@ -79,6 +81,7 @@ async function validar({ usuarioId, ejercicioId, opcionId, textoRespuesta }) {
     intento: resultado.intento,
     primerIntento: resultado.esPrimerIntento,
     explicacion: ejercicio.explicacion,
+    retroalimentacionOpcion: opcionSeleccionada?.explicacion || null,
     opcionCorrectaId: opcionCorrecta ? opcionCorrecta.id : null,
     logros: logrosOtorgados,
   };

@@ -109,6 +109,7 @@ CREATE TABLE opciones (
     id            SERIAL    PRIMARY KEY,
     ejercicio_id  INTEGER   NOT NULL REFERENCES ejercicios(id) ON DELETE CASCADE,
     texto         TEXT      NOT NULL,
+    explicacion   TEXT,                              -- retroalimentación de la opción, solo tras responder
     es_correcta   BOOLEAN   NOT NULL DEFAULT FALSE,
     orden         SMALLINT  NOT NULL DEFAULT 1,
     CONSTRAINT uq_opcion_orden UNIQUE (ejercicio_id, orden)

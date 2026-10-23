@@ -17,21 +17,60 @@ INSERT INTO roles (codigo, nombre, descripcion) VALUES
   ('ADMIN',      'Administrador', 'Gestión técnica de la plataforma.');
 
 -- ---------------------------------------------------------------------------
---  Semestres (1.º y 2.º activos; 3.º y 4.º próximamente)
+--  Semestres 1–4 disponibles en el catálogo
 -- ---------------------------------------------------------------------------
 INSERT INTO semestres (numero, nombre, estado) VALUES
   (1, 'Semestre 1', 'ACTIVO'),
   (2, 'Semestre 2', 'ACTIVO'),
-  (3, 'Semestre 3', 'PROXIMAMENTE'),
-  (4, 'Semestre 4', 'PROXIMAMENTE');
+  (3, 'Semestre 3', 'ACTIVO'),
+  (4, 'Semestre 4', 'ACTIVO');
 
 -- ---------------------------------------------------------------------------
---  Asignaturas del 1.º semestre (el piloto es Lógica de Programación)
+--  Asignaturas de los cuatro semestres.
+--  Lógica de Programación conserva explícitamente el ID 1: los temas del
+--  piloto y los códigos de clase actuales dependen de esta referencia.
 -- ---------------------------------------------------------------------------
-INSERT INTO asignaturas (semestre_id, nombre, orden) VALUES
-  (1, 'Lógica de Programación',       1),
-  (1, 'Matemáticas Fundamentales',    2),
-  (1, 'Introducción a la Ingeniería', 3);
+INSERT INTO asignaturas (id, semestre_id, nombre, orden) VALUES
+  -- Semestre 1 (ID 1 reservado para el piloto de Lógica)
+  (2,  1, 'Matemática Fundamental', 1),
+  (4,  1, 'Legislación Informática', 2),
+  (1,  1, 'Lógica de Programación', 3),
+  (3,  1, 'Introducción a la Ingeniería de Software', 4),
+  (5,  1, 'Arquitectura de Computadores', 5),
+  (6,  1, 'Identidad FET', 6),
+  (7,  1, 'Técnicas de la Comunicación', 7),
+  (8,  1, 'Inglés I', 8),
+  -- Semestre 2
+  (9,  2, 'Física 1', 1),
+  (10, 2, 'Interfaces I', 2),
+  (11, 2, 'Ensamble y Mantenimiento de Computadores I', 3),
+  (12, 2, 'Programación Orientada a Objetos', 4),
+  (13, 2, 'Sistemas Operativos I', 5),
+  (14, 2, 'Electiva', 6),
+  (15, 2, 'Epistemología', 7),
+  -- Semestre 3
+  (16, 3, 'Álgebra Lineal', 1),
+  (17, 3, 'Física 2', 2),
+  (18, 3, 'Estadística y Probabilidad', 3),
+  (19, 3, 'Electrónica Básica', 4),
+  (20, 3, 'Lenguaje de Programación I', 5),
+  (21, 3, 'Introducción a las Bases de Datos', 6),
+  (22, 3, 'Estructura de Datos', 7),
+  (23, 3, 'Sistemas Operativos II', 8),
+  (24, 3, 'Metodologías para el Desarrollo de Software', 9),
+  (25, 3, 'Emprendimiento I', 10),
+  -- Semestre 4
+  (26, 4, 'Cálculo Diferencial', 1),
+  (27, 4, 'Lenguaje de Programación II', 2),
+  (28, 4, 'Redes y Comunicaciones I', 3),
+  (29, 4, 'Modelado de Bases de Datos', 4),
+  (30, 4, 'Opción de Grado I', 5),
+  (31, 4, 'Optativa I', 6),
+  (32, 4, 'Electiva de Formación Complementaria', 7),
+  (33, 4, 'Metodología de la Investigación', 8),
+  (34, 4, 'Inglés II', 9);
+
+SELECT setval(pg_get_serial_sequence('asignaturas', 'id'), (SELECT MAX(id) FROM asignaturas), TRUE);
 
 -- ---------------------------------------------------------------------------
 --  Temas del piloto (asignatura 1 = Lógica de Programación)

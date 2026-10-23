@@ -105,7 +105,8 @@ Limpia la cookie de sesión.
 
 ### `GET /semesters`
 
-Lista de semestres y su estado (`ACTIVO` / `PROXIMAMENTE`).
+Lista de semestres y su estado (`ACTIVO` / `PROXIMAMENTE`). Los semestres 1–4
+están activos en el catálogo.
 
 ```json
 {
@@ -122,10 +123,13 @@ Asignaturas del semestre.
 ```json
 {
   "asignaturas": [
-    { "id": 1, "nombre": "Lógica de Programación", "orden": 1 }
+    { "id": 1, "nombre": "Lógica de Programación", "orden": 3, "tiene_contenido": true }
   ]
 }
 ```
+
+`tiene_contenido` indica si la asignatura tiene temas publicados. Cuando es `false`,
+el frontend muestra el estado “Asignatura en construcción”.
 
 ### `GET /subjects/:asignaturaId/topics`
 
@@ -174,7 +178,7 @@ Detalle del tema con sus videos de apoyo.
 
 ### `GET /exercises?temaId=<id>&nivel=<FACIL|MEDIO|DIFICIL>`
 
-Banco de ejercicios de un tema. **No expone la respuesta correcta.**
+Banco de ejercicios de un tema. **No expone la respuesta correcta ni la retroalimentación individual de las opciones.**
 
 - `temaId` es obligatorio; `nivel` es opcional (filtro).
 
@@ -219,6 +223,9 @@ Valida la respuesta del estudiante y actualiza progreso/logros (requiere JWT).
   - Puntos solo en el **primer intento correcto**.
   - El ejercicio debe ser del banco (404 si no existe).
   - Se devuelve la **explicación** y el **id de la opción correcta** al resolver.
+  - Para ejercicios con retroalimentación por opción, se devuelve `retroalimentacionOpcion` correspondiente a la opción elegida.
+  - Si una opción tiene retroalimentación individual, se devuelve en `retroalimentacionOpcion`;
+    nunca se incluye en el listado previo a responder.
 
 - Respuesta `200`:
 
@@ -229,6 +236,7 @@ Valida la respuesta del estudiante y actualiza progreso/logros (requiere JWT).
   "intento": 1,
   "primerIntento": true,
   "explicacion": "…",
+  "retroalimentacionOpcion": "…",
   "opcionCorrectaId": 42,
   "logros": [
     { "codigo": "PRIMER_ACIERTO", "nombre": "Primer acierto", "puntos": 5 }

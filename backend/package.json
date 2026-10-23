@@ -14,7 +14,8 @@
     "db:schema": "psql -U postgres -d topicgym -f ../database/schema.sql",
     "db:seed": "psql -U postgres -d topicgym -f ../database/seed.sql",
     "db:migrate:logros": "psql -U postgres -d topicgym -f ../database/migrations/005_nuevos_logros.sql",
-    "test": "node --test test/achievement-conditions.test.js"
+    "db:migrate:catalogo": "psql -U postgres -d topicgym -f ../database/migrations/006_catalogo_semestres_1_4.sql",
+    "test": "node --test test/achievement-conditions.test.js test/course-exercises.test.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

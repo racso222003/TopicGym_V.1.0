@@ -1,0 +1,867 @@
+[
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Modelo de Von Neumann",
+    "enunciado": "¿Cuál es una característica central de la arquitectura de Von Neumann?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Las instrucciones y los datos comparten la memoria principal.", "es_correcta": true, "explicacion": "Correcto. En el modelo clásico de Von Neumann, instrucciones y datos comparten el mismo espacio de memoria." },
+      { "texto": "Cada instrucción se almacena permanentemente dentro de la ALU.", "es_correcta": false, "explicacion": "La ALU ejecuta operaciones aritméticas y lógicas; no almacena permanentemente el programa." },
+      { "texto": "El procesador no utiliza memoria principal.", "es_correcta": false, "explicacion": "El procesador necesita memoria para almacenar instrucciones y datos durante la ejecución." },
+      { "texto": "Los datos solo pueden almacenarse en registros y nunca en memoria.", "es_correcta": false, "explicacion": "Los registros son almacenamiento interno de alta velocidad, pero los datos también se almacenan en memoria principal y secundaria." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Registros del procesador",
+    "enunciado": "Durante la ejecución de un programa, ¿qué registro contiene la dirección de la siguiente instrucción que debe buscar el procesador?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Contador de programa (PC)", "es_correcta": true, "explicacion": "Correcto. El PC conserva la dirección de la siguiente instrucción que se buscará, aunque su valor puede cambiar durante saltos." },
+      { "texto": "Registro de instrucción (IR)", "es_correcta": false, "explicacion": "El IR contiene la instrucción que se está decodificando o ejecutando, no la dirección de la siguiente." },
+      { "texto": "Registro acumulador", "es_correcta": false, "explicacion": "El acumulador suele conservar operandos o resultados intermedios de operaciones." },
+      { "texto": "Registro de estado", "es_correcta": false, "explicacion": "El registro de estado guarda indicadores de condición, como cero, acarreo o signo." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Memoria caché",
+    "enunciado": "Un procesador realiza 1000 accesos a memoria y encuentra el dato en caché en 920 de ellos. ¿Cuál es la tasa de aciertos de caché?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "92 %", "es_correcta": true, "explicacion": "Correcto. La tasa de aciertos es 920 / 1000 × 100 = 92 %." },
+      { "texto": "8 %", "es_correcta": false, "explicacion": "El 8 % corresponde a la tasa de fallos: 80 accesos no encontraron el dato en caché." },
+      { "texto": "9,2 %", "es_correcta": false, "explicacion": "El cálculo debe multiplicarse por 100: 920 / 1000 = 0,92, es decir, 92 %." },
+      { "texto": "920 %", "es_correcta": false, "explicacion": "920 es el número de aciertos, no un porcentaje. Se divide por el total de accesos." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Representación de datos y endianness",
+    "enunciado": "El valor hexadecimal 0x12345678 se almacena desde la dirección más baja en una máquina little-endian. ¿Qué byte queda en esa dirección?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "0x78", "es_correcta": true, "explicacion": "Correcto. Little-endian almacena primero el byte menos significativo; para este valor es 0x78." },
+      { "texto": "0x12", "es_correcta": false, "explicacion": "0x12 es el byte más significativo y quedaría en la dirección más alta en little-endian." },
+      { "texto": "0x34", "es_correcta": false, "explicacion": "0x34 es el segundo byte más significativo, no el byte menos significativo." },
+      { "texto": "0x56", "es_correcta": false, "explicacion": "0x56 es el segundo byte menos significativo y se almacena después de 0x78." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Complemento a dos",
+    "enunciado": "¿Cuál es la representación de -37 en complemento a dos usando exactamente 8 bits?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "11011011", "es_correcta": true, "explicacion": "Correcto. 37 es 00100101; al invertir los bits se obtiene 11011010 y al sumar 1 resulta 11011011." },
+      { "texto": "11011010", "es_correcta": false, "explicacion": "Este patrón es el complemento bit a bit de 37, pero falta sumar 1 para obtener complemento a dos." },
+      { "texto": "10100101", "es_correcta": false, "explicacion": "Este resultado no se obtiene aplicando complemento a dos a la representación de 37." },
+      { "texto": "00100101", "es_correcta": false, "explicacion": "00100101 representa +37 en binario sin signo o con signo positivo, no -37." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Encapsulamiento",
+    "enunciado": "Una clase Saldo mantiene el atributo saldo como privado y ofrece los métodos depositar y consultarSaldo. ¿Qué principio de programación orientada a objetos aplica principalmente?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Encapsulamiento", "es_correcta": true, "explicacion": "Correcto. El estado interno se oculta y se controla el acceso mediante métodos públicos." },
+      { "texto": "Herencia", "es_correcta": false, "explicacion": "La herencia permite crear clases basadas en otras; el ejemplo no describe una relación entre clases." },
+      { "texto": "Polimorfismo", "es_correcta": false, "explicacion": "El polimorfismo permite tratar objetos de distintos tipos mediante una interfaz común; no es el concepto central del ejemplo." },
+      { "texto": "Recursividad", "es_correcta": false, "explicacion": "La recursividad ocurre cuando una función se invoca a sí misma y no se relaciona con ocultar el estado." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Sobrescritura y despacho dinámico",
+    "enunciado": "Una variable de tipo Animal referencia un objeto de tipo Perro. Ambas clases definen el método emitirSonido y Perro lo sobrescribe. Si se invoca animal.emitirSonido(), ¿qué implementación se ejecuta con despacho dinámico?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "La implementación de Perro", "es_correcta": true, "explicacion": "Correcto. El despacho dinámico selecciona la implementación sobrescrita según el tipo real del objeto." },
+      { "texto": "La implementación de Animal siempre", "es_correcta": false, "explicacion": "La implementación de la clase base se ejecutaría si no hubiera sobrescritura o si se invocara explícitamente." },
+      { "texto": "Ambas implementaciones en paralelo", "es_correcta": false, "explicacion": "La sobrescritura sustituye la implementación seleccionada para esa llamada; no ejecuta ambas automáticamente." },
+      { "texto": "Ninguna, porque una referencia Animal no puede apuntar a un Perro", "es_correcta": false, "explicacion": "Una referencia de la superclase puede apuntar a una instancia de una subclase compatible." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Sobrecarga de métodos",
+    "enunciado": "Una clase define sumar(int, int) y sumar(double, double). En un lenguaje con resolución de sobrecargas estática, ¿qué versión se selecciona para la llamada sumar(2, 3)?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "sumar(int, int)", "es_correcta": true, "explicacion": "Correcto. Los argumentos son enteros y coinciden exactamente con sumar(int, int), por lo que no hace falta conversión." },
+      { "texto": "sumar(double, double)", "es_correcta": false, "explicacion": "Esta versión requeriría convertir los argumentos enteros a double; se prefiere la coincidencia exacta." },
+      { "texto": "Ambas versiones se ejecutan", "es_correcta": false, "explicacion": "La sobrecarga resuelve una única firma compatible en tiempo de compilación." },
+      { "texto": "La llamada es ambigua en todos los lenguajes", "es_correcta": false, "explicacion": "Con las firmas indicadas, la versión entera es una coincidencia exacta y no hay ambigüedad en los lenguajes habituales con estas reglas." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Interfaces y abstracción",
+    "enunciado": "Una aplicación debe procesar pagos con tarjeta, transferencia y efectivo. Las clases de cada medio ya pertenecen a jerarquías distintas, pero todas deben poder usarse mediante el método procesar(monto). ¿Qué diseño permite definir ese contrato común sin exigir una superclase compartida?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Definir una interfaz MetodoPago con procesar(monto) e implementarla en cada clase", "es_correcta": true, "explicacion": "Correcto. Una interfaz define un contrato común que pueden implementar clases de distintas jerarquías." },
+      { "texto": "Hacer que todas las clases hereden de una única clase concreta aunque sus jerarquías sean incompatibles", "es_correcta": false, "explicacion": "La herencia única puede ser incompatible con las jerarquías existentes y acopla innecesariamente las clases." },
+      { "texto": "Duplicar el método procesar en el código que usa cada medio de pago", "es_correcta": false, "explicacion": "Duplicar lógica aumenta el acoplamiento y no proporciona un contrato polimórfico común." },
+      { "texto": "Guardar el nombre de la clase en una cadena y seleccionar el pago con una condición global", "es_correcta": false, "explicacion": "Una condición basada en nombres desplaza el comportamiento fuera de los objetos y se vuelve difícil de extender." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Composición frente a herencia",
+    "enunciado": "Un sistema debe permitir reemplazar el motor de un vehículo en tiempo de ejecución por distintas implementaciones compatibles, como MotorCombustion o MotorElectrico. ¿Qué relación de diseño es más adecuada para que Vehiculo delegue el arranque al motor?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Composición: Vehiculo contiene una referencia a una abstracción Motor y delega el arranque", "es_correcta": true, "explicacion": "Correcto. La composición permite cambiar la implementación del motor y delegar su comportamiento sin acoplar Vehiculo a una clase concreta." },
+      { "texto": "Herencia: MotorCombustion y MotorElectrico heredan de Vehiculo", "es_correcta": false, "explicacion": "La relación es incorrecta: un motor no es un tipo de vehículo, sino un componente utilizado por este." },
+      { "texto": "Copiar el código de arranque de cada motor dentro de Vehiculo", "es_correcta": false, "explicacion": "Copiar implementaciones acopla Vehiculo a cada motor y obliga a modificarlo al agregar nuevos tipos." },
+      { "texto": "Usar una variable global para elegir el tipo de motor", "es_correcta": false, "explicacion": "Una variable global introduce estado compartido y no resuelve la delegación ni el reemplazo encapsulado." }
+    ]
+  },
+  {
+    "asignatura": "Estructura de Datos",
+    "tema": "Pilas",
+    "enunciado": "Se ejecutan estas operaciones sobre una pila inicialmente vacía: push(4), push(9), pop(). ¿Qué valor devuelve pop()?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "9", "es_correcta": true, "explicacion": "Correcto. Una pila sigue LIFO: sale primero el último elemento insertado." },
+      { "texto": "4", "es_correcta": false, "explicacion": "4 fue insertado antes que 9 y permanece debajo de él en la pila." },
+      { "texto": "0", "es_correcta": false, "explicacion": "La pila no devuelve cero por defecto; pop retira y devuelve el elemento superior." },
+      { "texto": "La operación produce un error porque la pila está vacía", "es_correcta": false, "explicacion": "La pila contiene dos elementos antes de ejecutar pop(), por lo que no está vacía." }
+    ]
+  },
+  {
+    "asignatura": "Estructura de Datos",
+    "tema": "Colas",
+    "enunciado": "En una cola inicialmente vacía se ejecutan enqueue(A), enqueue(B), enqueue(C) y luego dequeue(). ¿Qué elemento devuelve dequeue()?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "A", "es_correcta": true, "explicacion": "Correcto. Una cola FIFO retira primero el elemento que ingresó primero." },
+      { "texto": "C", "es_correcta": false, "explicacion": "C fue el último elemento en ingresar y permanece al final de la cola." },
+      { "texto": "B", "es_correcta": false, "explicacion": "B está detrás de A; debe retirarse A antes de llegar a B." },
+      { "texto": "La cola queda vacía sin devolver un elemento", "es_correcta": false, "explicacion": "dequeue retira y devuelve el primer elemento, A; los otros elementos permanecen." }
+    ]
+  },
+  {
+    "asignatura": "Estructura de Datos",
+    "tema": "Listas simplemente enlazadas",
+    "enunciado": "Una lista simplemente enlazada mantiene una referencia al nodo cabeza. Si se desea insertar un nuevo nodo al inicio y actualizar la cabeza, ¿cuál es la complejidad temporal de la operación?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "O(1)", "es_correcta": true, "explicacion": "Correcto. Basta enlazar el nuevo nodo con la cabeza actual y actualizar la referencia a la cabeza." },
+      { "texto": "O(n)", "es_correcta": false, "explicacion": "O(n) sería necesario para recorrer la lista, por ejemplo, para insertar al final sin una referencia a la cola." },
+      { "texto": "O(log n)", "es_correcta": false, "explicacion": "La inserción al inicio no requiere una búsqueda logarítmica ni recorrer la lista." },
+      { "texto": "O(n log n)", "es_correcta": false, "explicacion": "Esta complejidad suele asociarse con algoritmos de ordenamiento eficientes, no con insertar en la cabeza." }
+    ]
+  },
+  {
+    "asignatura": "Estructura de Datos",
+    "tema": "Árboles binarios de búsqueda",
+    "enunciado": "En un árbol binario de búsqueda, el nodo raíz contiene 50; su hijo derecho contiene 70, y el hijo izquierdo de 70 contiene 60. Si el algoritmo de borrado reemplaza un nodo con dos hijos por su sucesor inorden, ¿qué valor reemplaza a la raíz al borrar 50?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "60", "es_correcta": true, "explicacion": "Correcto. El sucesor inorden es el mínimo del subárbol derecho; en este caso, 60." },
+      { "texto": "70", "es_correcta": false, "explicacion": "70 es la raíz del subárbol derecho, pero tiene un valor menor en su subárbol izquierdo." },
+      { "texto": "50", "es_correcta": false, "explicacion": "50 es el valor que se está eliminando y no puede reemplazarse a sí mismo." },
+      { "texto": "El árbol no permite eliminar nodos con dos hijos", "es_correcta": false, "explicacion": "Los árboles binarios de búsqueda permiten eliminar nodos con dos hijos usando un sucesor o un predecesor inorden." }
+    ]
+  },
+  {
+    "asignatura": "Estructura de Datos",
+    "tema": "Tablas hash y colisiones",
+    "enunciado": "Una tabla hash con encadenamiento almacena n claves. Si, en el peor caso, todas las claves colisionan en el mismo índice, ¿cuál es la complejidad temporal de buscar una clave en esa cadena?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "O(n)", "es_correcta": true, "explicacion": "Correcto. En el peor caso hay que recorrer una cadena que contiene las n claves." },
+      { "texto": "O(1) garantizado", "es_correcta": false, "explicacion": "O(1) es el rendimiento esperado bajo supuestos favorables, no una garantía ante colisiones." },
+      { "texto": "O(log n)", "es_correcta": false, "explicacion": "El encadenamiento no mantiene necesariamente la cadena ordenada ni permite una búsqueda binaria." },
+      { "texto": "O(n²)", "es_correcta": false, "explicacion": "Una búsqueda lineal en una única cadena de n elementos requiere O(n), no O(n²)." }
+    ]
+  },
+  {
+    "asignatura": "Matemática Fundamental",
+    "tema": "Suma y simplificación de fracciones",
+    "enunciado": "¿Cuál es el resultado simplificado de 1/3 + 1/6?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "1/2", "es_correcta": true, "explicacion": "Correcto. Con denominador común 6, 1/3 = 2/6 y 2/6 + 1/6 = 3/6 = 1/2." },
+      { "texto": "2/9", "es_correcta": false, "explicacion": "No se suman numeradores y denominadores directamente; primero se obtiene un denominador común." },
+      { "texto": "1/9", "es_correcta": false, "explicacion": "El producto de las fracciones no corresponde a su suma." },
+      { "texto": "1/3", "es_correcta": false, "explicacion": "1/3 equivale a 2/6; al sumar 1/6 se obtiene 3/6, que se simplifica a 1/2." }
+    ]
+  },
+  {
+    "asignatura": "Matemática Fundamental",
+    "tema": "Porcentajes",
+    "enunciado": "Un componente cuesta 240 unidades monetarias y recibe un descuento del 15 %. ¿Cuál es el valor del descuento?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "36", "es_correcta": true, "explicacion": "Correcto. El 15 % de 240 es 0,15 × 240 = 36." },
+      { "texto": "15", "es_correcta": false, "explicacion": "15 es la tasa porcentual, no el valor calculado sobre 240." },
+      { "texto": "204", "es_correcta": false, "explicacion": "204 es el precio después del descuento (240 − 36), no el valor descontado." },
+      { "texto": "40", "es_correcta": false, "explicacion": "40 corresponde a una sexta parte de 240; el 15 % es 36." }
+    ]
+  },
+  {
+    "asignatura": "Matemática Fundamental",
+    "tema": "Ecuaciones lineales",
+    "enunciado": "¿Qué valor de x satisface la ecuación 3x + 5 = 20?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "5", "es_correcta": true, "explicacion": "Correcto. Al restar 5 se obtiene 3x = 15; al dividir entre 3, x = 5." },
+      { "texto": "15", "es_correcta": false, "explicacion": "15 es el resultado intermedio de 20 − 5; aún se debe dividir entre 3." },
+      { "texto": "25/3", "es_correcta": false, "explicacion": "Se obtiene al sumar 5 en lugar de restarlo al despejar el término 3x." },
+      { "texto": "3", "es_correcta": false, "explicacion": "Si x = 3, entonces 3x + 5 = 14, que no es 20." }
+    ]
+  },
+  {
+    "asignatura": "Matemática Fundamental",
+    "tema": "Sistemas de ecuaciones lineales",
+    "enunciado": "Un laboratorio compra sensores y cables a precios unitarios fijos. Tres sensores y dos cables cuestan 30 unidades monetarias; dos sensores y cinco cables cuestan 31. ¿Cuánto cuestan un sensor y un cable juntos?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "11", "es_correcta": true, "explicacion": "Correcto. Al resolver 3s+2c=30 y 2s+5c=31 se obtiene s=8 y c=3; juntos cuestan 11." },
+      { "texto": "8", "es_correcta": false, "explicacion": "8 es el precio de un sensor; falta sumar el costo de un cable, que es 3." },
+      { "texto": "13", "es_correcta": false, "explicacion": "Los precios 8 y 5 no satisfacen simultáneamente las dos ecuaciones del problema." },
+      { "texto": "14", "es_correcta": false, "explicacion": "Los precios 10 y 4 no satisfacen 3s+2c=30 ni el sistema completo." }
+    ]
+  },
+  {
+    "asignatura": "Matemática Fundamental",
+    "tema": "Factorización de expresiones cuadráticas",
+    "enunciado": "¿Cuáles son las raíces de x² − 5x + 6 = 0?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "x = 2 y x = 3", "es_correcta": true, "explicacion": "Correcto. x² − 5x + 6 = (x − 2)(x − 3); al igualar cada factor a cero se obtienen 2 y 3." },
+      { "texto": "x = −2 y x = −3", "es_correcta": false, "explicacion": "Estas raíces corresponden a factores (x + 2)(x + 3), cuyo término lineal sería +5x." },
+      { "texto": "x = 1 y x = 6", "es_correcta": false, "explicacion": "Aunque 1 × 6 = 6, su suma es 7, no 5; no producen el término −5x." },
+      { "texto": "x = −2 y x = 3", "es_correcta": false, "explicacion": "El producto de las raíces sería −6, pero el término independiente exige un producto de 6." }
+    ]
+  },
+  {
+    "asignatura": "Legislación Informática",
+    "tema": "Protección de datos personales",
+    "enunciado": "Una aplicación universitaria solicita correos y teléfonos para enviar avisos académicos. ¿Qué práctica respeta mejor los principios de protección de datos personales en Colombia?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Informar la finalidad y obtener autorización del titular, salvo una excepción legal aplicable.", "es_correcta": true, "explicacion": "Correcto. La Ley 1581 de 2012 establece como regla informar la finalidad del tratamiento y obtener autorización previa, expresa e informada, salvo excepciones legales." },
+      { "texto": "Recolectar cualquier dato porque la aplicación pertenece a una institución educativa.", "es_correcta": false, "explicacion": "La condición educativa no elimina los deberes de informar, limitar la finalidad y respetar los derechos del titular." },
+      { "texto": "Publicar los datos para que otros estudiantes validen que son correctos.", "es_correcta": false, "explicacion": "La publicación indiscriminada expone datos personales y no es necesaria para enviar avisos académicos." },
+      { "texto": "Conservar los datos para cualquier uso futuro no informado.", "es_correcta": false, "explicacion": "El tratamiento debe corresponder a finalidades informadas y autorizadas; no habilita usos futuros ilimitados." }
+    ]
+  },
+  {
+    "asignatura": "Legislación Informática",
+    "tema": "Mensajes de datos y firma digital",
+    "enunciado": "¿Cuál afirmación describe mejor una firma digital basada en criptografía y la distingue de una imagen escaneada de una firma manuscrita?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Puede vincular al firmante con el mensaje y permitir verificar su integridad mediante mecanismos criptográficos.", "es_correcta": true, "explicacion": "Correcto. La firma digital usa mecanismos criptográficos para asociar una firma al mensaje y detectar modificaciones, conforme al marco de mensajes de datos." },
+      { "texto": "Es únicamente una imagen decorativa y no puede aportar evidencia sobre integridad.", "es_correcta": false, "explicacion": "Una firma digital criptográfica no es solo una imagen; permite verificar matemáticamente una relación con el mensaje." },
+      { "texto": "Cifra automáticamente todo el contenido para que nadie pueda leerlo.", "es_correcta": false, "explicacion": "La firma aporta autenticidad e integridad; cifrar para mantener confidencialidad es una operación distinta." },
+      { "texto": "Es válida solo si el documento se imprime y se firma con tinta.", "es_correcta": false, "explicacion": "El marco de mensajes de datos reconoce efectos jurídicos a mecanismos electrónicos que cumplan los requisitos aplicables." }
+    ]
+  },
+  {
+    "asignatura": "Legislación Informática",
+    "tema": "Licenciamiento de software",
+    "enunciado": "Un equipo quiere incorporar una biblioteca de software libre a un producto distribuido. ¿Qué debe revisar antes de incluirla?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "Las condiciones de la licencia, sus avisos, atribuciones y obligaciones de redistribución.", "es_correcta": true, "explicacion": "Correcto. El software libre sigue protegido por derechos de autor; su uso y redistribución están sujetos a las condiciones de su licencia." },
+      { "texto": "Nada: software libre significa que pasó al dominio público.", "es_correcta": false, "explicacion": "Software libre no equivale a dominio público; la licencia sigue definiendo permisos y obligaciones." },
+      { "texto": "Solo el color del logotipo del proyecto.", "es_correcta": false, "explicacion": "La compatibilidad y el cumplimiento de la licencia dependen de sus términos, no del diseño del logotipo." },
+      { "texto": "Si la biblioteca aparece en internet, se puede eliminar toda atribución.", "es_correcta": false, "explicacion": "La disponibilidad pública no elimina las obligaciones de atribución o conservación de avisos que imponga la licencia." }
+    ]
+  },
+  {
+    "asignatura": "Legislación Informática",
+    "tema": "Acceso no autorizado a sistemas",
+    "enunciado": "Un estudiante usa credenciales ajenas para ingresar a un servidor universitario sin autorización y consultar archivos privados. ¿Cuál es la respuesta más adecuada desde la seguridad y la legislación informática?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Detener el acceso, preservar evidencia y reportarlo por los canales institucionales; el acceso abusivo puede tener consecuencias legales.", "es_correcta": true, "explicacion": "Correcto. El acceso sin autorización debe tratarse como incidente; la Ley 1273 de 2009 incorporó delitos relacionados con la protección de la información y los datos." },
+      { "texto": "Continuar mientras no se modifiquen los archivos, porque consultar no cuenta como acceso.", "es_correcta": false, "explicacion": "El acceso no autorizado puede ser problemático aunque no se alteren ni eliminen archivos." },
+      { "texto": "Compartir los archivos para demostrar que el servidor tenía una falla.", "es_correcta": false, "explicacion": "Difundir información privada agrava el incidente y no es un método autorizado de reporte." },
+      { "texto": "Usar las credenciales ajenas si el estudiante conoce personalmente al titular.", "es_correcta": false, "explicacion": "Conocer al titular no equivale a tener autorización institucional para acceder al sistema o a sus archivos." }
+    ]
+  },
+  {
+    "asignatura": "Legislación Informática",
+    "tema": "Compatibilidad de licencias",
+    "enunciado": "Un equipo planea distribuir un producto que incorpora código de terceros. Una de las licencias exige conservar avisos de autoría y divulgar bajo sus términos las modificaciones de ese componente. ¿Qué decisión es más responsable antes de publicar?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Analizar compatibilidad y obligaciones de ambas licencias, documentar el componente y cumplir sus condiciones o elegir una alternativa compatible.", "es_correcta": true, "explicacion": "Correcto. La distribución debe respetar las licencias de todos los componentes y evaluar si sus obligaciones son compatibles con el producto." },
+      { "texto": "Cambiar el nombre de los archivos para que la licencia deje de aplicar.", "es_correcta": false, "explicacion": "Renombrar archivos no elimina derechos ni obligaciones de licencia sobre el código incorporado." },
+      { "texto": "Eliminar el aviso de autoría para que el producto parezca original.", "es_correcta": false, "explicacion": "Eliminar avisos puede incumplir expresamente la licencia y ocultar la procedencia del componente." },
+      { "texto": "Publicar primero y revisar las licencias solo si alguien presenta una queja.", "es_correcta": false, "explicacion": "La diligencia previa permite identificar incompatibilidades antes de distribuir y evita incumplimientos previsibles." }
+    ]
+  },
+  {
+    "asignatura": "Introducción a la Ingeniería de Software",
+    "tema": "Requisitos funcionales y no funcionales",
+    "enunciado": "¿Cuál de los siguientes es un requisito no funcional para una plataforma académica?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "El sistema debe responder las consultas del catálogo en menos de dos segundos bajo la carga definida.", "es_correcta": true, "explicacion": "Correcto. Especifica una propiedad de rendimiento y una medida verificable, no una función de negocio." },
+      { "texto": "El estudiante puede consultar las asignaturas de un semestre.", "es_correcta": false, "explicacion": "Describe una capacidad observable del sistema, por lo que es un requisito funcional." },
+      { "texto": "El docente puede generar un código de clase.", "es_correcta": false, "explicacion": "Es una función que el sistema ofrece al docente." },
+      { "texto": "El estudiante puede enviar la respuesta de un ejercicio.", "es_correcta": false, "explicacion": "Describe una interacción funcional del estudiante con la plataforma." }
+    ]
+  },
+  {
+    "asignatura": "Introducción a la Ingeniería de Software",
+    "tema": "Elicitación de requisitos",
+    "enunciado": "Un equipo recibe la petición “el sistema debe ser fácil de usar”. ¿Cuál es el mejor siguiente paso para convertirla en un requisito verificable?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "Acordar con usuarios una tarea representativa y un criterio medible de éxito y tiempo para completarla.", "es_correcta": true, "explicacion": "Correcto. La validación con usuarios y criterios observables transforma una cualidad subjetiva en un requisito comprobable." },
+      { "texto": "Dejar la frase sin cambios porque todos entienden lo mismo por “fácil”.", "es_correcta": false, "explicacion": "La facilidad es ambigua y puede interpretarse de forma distinta por cada interesado." },
+      { "texto": "Elegir un color más brillante para los botones y considerar resuelto el requisito.", "es_correcta": false, "explicacion": "Una decisión visual aislada no demuestra que el sistema sea usable para sus tareas principales." },
+      { "texto": "Esperar hasta el final del proyecto para preguntar a los usuarios.", "es_correcta": false, "explicacion": "La elicitación temprana reduce riesgos y permite corregir malentendidos antes de que sean costosos." }
+    ]
+  },
+  {
+    "asignatura": "Introducción a la Ingeniería de Software",
+    "tema": "Historias de usuario y criterios de aceptación",
+    "enunciado": "Una historia de usuario dice: “Como estudiante, quiero ver mis ejercicios pendientes para organizar mi estudio”. ¿Qué elemento permite verificar objetivamente cuándo está terminada?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "Criterios de aceptación con resultados observables, por ejemplo, mostrar los ejercicios pendientes del estudiante autenticado.", "es_correcta": true, "explicacion": "Correcto. Los criterios de aceptación concretan las condiciones verificables para considerar satisfecha la historia." },
+      { "texto": "El nombre de la persona que escribió la historia, sin condiciones adicionales.", "es_correcta": false, "explicacion": "La autoría no define qué comportamiento debe cumplir ni cómo se valida." },
+      { "texto": "Una estimación de esfuerzo sin describir el comportamiento esperado.", "es_correcta": false, "explicacion": "La estimación ayuda a planificar, pero no especifica criterios de aceptación." },
+      { "texto": "Una captura del diseño que no indique datos ni acciones disponibles.", "es_correcta": false, "explicacion": "Una imagen puede complementar, pero por sí sola no establece reglas comprobables de comportamiento." }
+    ]
+  },
+  {
+    "asignatura": "Introducción a la Ingeniería de Software",
+    "tema": "Pruebas unitarias e integración",
+    "enunciado": "Una función calcula el total de una factura sin acceder a servicios externos. ¿Qué tipo de prueba verifica de forma más directa los casos límite de esa función aislada?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Una prueba unitaria con entradas controladas y resultados esperados.", "es_correcta": true, "explicacion": "Correcto. Una prueba unitaria aísla una unidad pequeña y permite verificar distintos casos de entrada y salida." },
+      { "texto": "Una prueba de aceptación que recorra toda la aplicación en producción.", "es_correcta": false, "explicacion": "Una prueba de aceptación valida necesidades de usuario a nivel de sistema, no es la comprobación más directa de una función aislada." },
+      { "texto": "Una prueba de carga que aumente el número de usuarios concurrentes.", "es_correcta": false, "explicacion": "La carga evalúa rendimiento bajo concurrencia, no la lógica de casos límite de una función." },
+      { "texto": "Una revisión visual de la interfaz sin ejecutar la función.", "es_correcta": false, "explicacion": "La inspección visual no comprueba los resultados de cálculo de la función." }
+    ]
+  },
+  {
+    "asignatura": "Introducción a la Ingeniería de Software",
+    "tema": "Diseño modular y control de versiones",
+    "enunciado": "Dos integrantes modifican el mismo archivo en ramas distintas. ¿Qué práctica reduce el riesgo de integrar cambios incompatibles y facilita localizar errores?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Integrar cambios pequeños con frecuencia, revisar el diff, resolver conflictos y ejecutar pruebas automatizadas.", "es_correcta": true, "explicacion": "Correcto. La integración frecuente y revisada reduce el tamaño de los conflictos y permite detectar regresiones pronto." },
+      { "texto": "Sobrescribir la rama de la otra persona sin revisar sus cambios.", "es_correcta": false, "explicacion": "Sobrescribir cambios puede perder trabajo y no verifica compatibilidad." },
+      { "texto": "Mantener las ramas separadas hasta el final y copiar archivos manualmente.", "es_correcta": false, "explicacion": "La integración tardía acumula divergencias y la copia manual dificulta rastrear cambios." },
+      { "texto": "Desactivar las pruebas para que la integración sea más rápida.", "es_correcta": false, "explicacion": "Eliminar pruebas reduce la posibilidad de detectar errores introducidos durante la integración." }
+    ]
+  },
+  {
+    "asignatura": "Identidad FET",
+    "tema": "Identidad institucional y pertenencia",
+    "enunciado": "¿Qué conjunto de elementos contribuye de forma más completa a la identidad de una institución educativa?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Su misión, visión, valores, símbolos y prácticas compartidas por la comunidad.", "es_correcta": true, "explicacion": "Correcto. La identidad institucional combina propósito, principios, símbolos y experiencias compartidas." },
+      { "texto": "Únicamente el diseño de su sitio web.", "es_correcta": false, "explicacion": "La presencia digital es un canal, pero no representa por sí sola la identidad institucional completa." },
+      { "texto": "Solo el nombre de cada asignatura del plan de estudios.", "es_correcta": false, "explicacion": "Las asignaturas forman parte de la oferta académica, pero no describen por sí solas el propósito y la cultura institucional." },
+      { "texto": "La opinión individual de una sola persona, sin relación con la comunidad.", "es_correcta": false, "explicacion": "La identidad institucional se construye y comunica colectivamente, no se reduce a una percepción aislada." }
+    ]
+  },
+  {
+    "asignatura": "Identidad FET",
+    "tema": "Identidad digital universitaria",
+    "enunciado": "Un estudiante participa en un foro usando su cuenta institucional. ¿Qué acción refleja mejor una identidad digital responsable?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Comunicar con respeto, proteger sus credenciales y compartir solo información pertinente.", "es_correcta": true, "explicacion": "Correcto. La ciudadanía digital responsable combina respeto, seguridad de la cuenta y cuidado de la información." },
+      { "texto": "Publicar la contraseña para demostrar que confía en sus compañeros.", "es_correcta": false, "explicacion": "Las credenciales son personales y compartirlas expone la cuenta y los datos asociados." },
+      { "texto": "Difundir capturas con datos privados de otros estudiantes para ganar visibilidad.", "es_correcta": false, "explicacion": "Publicar datos de terceros sin autorización vulnera su privacidad y no es una conducta responsable." },
+      { "texto": "Usar la cuenta institucional para enviar mensajes ofensivos porque son opiniones personales.", "es_correcta": false, "explicacion": "La libertad de expresión no elimina el deber de respeto ni las responsabilidades asociadas al uso de canales institucionales." }
+    ]
+  },
+  {
+    "asignatura": "Identidad FET",
+    "tema": "Participación en la comunidad académica",
+    "enunciado": "Un grupo propone mejorar un espacio de estudio. ¿Qué acción representa una participación constructiva en la comunidad académica?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "Presentar la propuesta con argumentos, escuchar a los afectados y usar los canales institucionales correspondientes.", "es_correcta": true, "explicacion": "Correcto. La participación constructiva combina diálogo, evidencia y mecanismos de representación o consulta." },
+      { "texto": "Imponer la decisión del grupo sin consultar a quienes usan el espacio.", "es_correcta": false, "explicacion": "Ignorar a las personas afectadas reduce la legitimidad y puede pasar por alto necesidades importantes." },
+      { "texto": "Compartir rumores sobre quienes administran el espacio.", "es_correcta": false, "explicacion": "Los rumores no son un mecanismo de participación ni aportan evidencia para resolver el problema." },
+      { "texto": "Dañar el espacio para forzar una respuesta inmediata.", "es_correcta": false, "explicacion": "El daño a bienes comunes perjudica a la comunidad y no reemplaza los canales de diálogo." }
+    ]
+  },
+  {
+    "asignatura": "Identidad FET",
+    "tema": "Integridad académica y atribución",
+    "enunciado": "Una estudiante reutiliza un párrafo de un artículo en un informe sin comillas ni referencia. ¿Qué práctica corrige mejor el problema de integridad académica?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "Citar la fuente y, si conserva las palabras exactas, delimitarlas como cita textual según el formato solicitado.", "es_correcta": true, "explicacion": "Correcto. La atribución identifica las ideas ajenas y distingue claramente las citas textuales de la redacción propia." },
+      { "texto": "Cambiar unas pocas palabras y presentar el párrafo como propio sin citar.", "es_correcta": false, "explicacion": "Una paráfrasis también requiere reconocer la fuente de las ideas." },
+      { "texto": "Añadir la URL en una nota privada que el lector no pueda consultar.", "es_correcta": false, "explicacion": "La referencia debe ser accesible y permitir identificar la fuente empleada." },
+      { "texto": "Eliminar el nombre del autor del artículo para evitar confusiones.", "es_correcta": false, "explicacion": "Omitir la autoría agrava la falta de atribución en vez de resolverla." }
+    ]
+  },
+  {
+    "asignatura": "Identidad FET",
+    "tema": "Convivencia y resolución de desacuerdos",
+    "enunciado": "En un equipo académico hay desacuerdo sobre una decisión técnica. ¿Qué estrategia favorece una convivencia respetuosa y una decisión fundamentada?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Comparar alternativas con criterios acordados, escuchar argumentos y dejar constancia de la decisión y sus razones.", "es_correcta": true, "explicacion": "Correcto. Un proceso transparente permite resolver el desacuerdo con evidencia, respeto y trazabilidad." },
+      { "texto": "Elegir la propuesta de quien habla más fuerte para terminar rápido.", "es_correcta": false, "explicacion": "La intensidad de una intervención no demuestra que una alternativa sea técnicamente adecuada." },
+      { "texto": "Excluir a quien tenga una opinión distinta sin escuchar sus razones.", "es_correcta": false, "explicacion": "Excluir voces impide valorar información relevante y deteriora la colaboración." },
+      { "texto": "Cambiar el acuerdo en secreto después de la reunión.", "es_correcta": false, "explicacion": "Modificar decisiones sin comunicarlo destruye la confianza y la trazabilidad del trabajo." }
+    ]
+  },
+  {
+    "asignatura": "Técnicas de la Comunicación",
+    "tema": "Propósito y audiencia",
+    "enunciado": "Antes de redactar un informe técnico, ¿qué decisión ayuda más a seleccionar el nivel de detalle y el vocabulario?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Identificar el propósito del informe y los conocimientos de su audiencia.", "es_correcta": true, "explicacion": "Correcto. Propósito y audiencia guían qué información incluir, cómo organizarla y qué términos explicar." },
+      { "texto": "Usar siempre la mayor cantidad posible de tecnicismos.", "es_correcta": false, "explicacion": "Los tecnicismos innecesarios pueden dificultar la comprensión, especialmente si la audiencia no los conoce." },
+      { "texto": "Escribir primero sin definir qué decisión o información necesita el lector.", "es_correcta": false, "explicacion": "Sin propósito es difícil priorizar información relevante y estructurar el documento." },
+      { "texto": "Elegir el tamaño de letra antes de conocer el contenido y los lectores.", "es_correcta": false, "explicacion": "El formato ayuda a presentar el mensaje, pero no sustituye el análisis de propósito y audiencia." }
+    ]
+  },
+  {
+    "asignatura": "Técnicas de la Comunicación",
+    "tema": "Estructura del informe técnico",
+    "enunciado": "¿Qué organización facilita que una persona lectora localice el objetivo, el método y los resultados de un informe técnico?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Secciones con títulos claros y una secuencia coherente, por ejemplo, objetivo, método, resultados y conclusiones.", "es_correcta": true, "explicacion": "Correcto. Una estructura explícita facilita la navegación y muestra cómo la evidencia responde al objetivo." },
+      { "texto": "Un único párrafo extenso sin títulos ni separación de ideas.", "es_correcta": false, "explicacion": "La falta de estructura dificulta localizar información y relacionar resultados con el propósito." },
+      { "texto": "Conclusiones al inicio sin explicar los datos ni el método.", "es_correcta": false, "explicacion": "Las conclusiones deben poder relacionarse con los métodos y la evidencia presentada." },
+      { "texto": "Ordenar las secciones únicamente por su longitud.", "es_correcta": false, "explicacion": "La longitud no define una secuencia lógica para comunicar un trabajo técnico." }
+    ]
+  },
+  {
+    "asignatura": "Técnicas de la Comunicación",
+    "tema": "Paráfrasis y citación",
+    "enunciado": "Al redactar con sus propias palabras una idea tomada de un artículo, ¿qué debe hacer una estudiante para comunicarla correctamente?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "Parafrasear fielmente y citar la fuente de la idea.", "es_correcta": true, "explicacion": "Correcto. Cambiar la redacción no cambia la autoría intelectual de la idea, por lo que debe citarse." },
+      { "texto": "Cambiar algunos sinónimos y omitir la referencia.", "es_correcta": false, "explicacion": "El uso de sinónimos no elimina la necesidad de reconocer la fuente." },
+      { "texto": "Citar la fuente solo si se copia palabra por palabra.", "es_correcta": false, "explicacion": "Las ideas parafraseadas también requieren atribución." },
+      { "texto": "Agregar la referencia únicamente si la idea contradice la propia opinión.", "es_correcta": false, "explicacion": "La atribución depende del origen de la idea, no de si coincide con la opinión de quien escribe." }
+    ]
+  },
+  {
+    "asignatura": "Técnicas de la Comunicación",
+    "tema": "Exposición oral técnica",
+    "enunciado": "Una presentación debe explicar un prototipo a una audiencia con perfiles técnicos y no técnicos. ¿Qué estrategia mejora la comprensión sin perder precisión?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "Presentar primero el problema y el propósito, explicar los términos necesarios y apoyar las afirmaciones con evidencia visual legible.", "es_correcta": true, "explicacion": "Correcto. La secuencia contextualiza, define conceptos y usa apoyos visuales para hacer comprensible la evidencia." },
+      { "texto": "Leer en voz alta cada párrafo de las diapositivas, aunque sean extensas.", "es_correcta": false, "explicacion": "Leer texto abundante reduce el contacto con la audiencia y duplica información en vez de explicarla." },
+      { "texto": "Omitir el problema y mostrar únicamente una lista de tecnologías.", "es_correcta": false, "explicacion": "Sin contexto, la audiencia no puede entender por qué el prototipo o las tecnologías son relevantes." },
+      { "texto": "Usar gráficos sin títulos, unidades ni fuente de datos.", "es_correcta": false, "explicacion": "Sin etiquetas y contexto, un gráfico puede interpretarse de forma incorrecta." }
+    ]
+  },
+  {
+    "asignatura": "Técnicas de la Comunicación",
+    "tema": "Requisitos comunicados con precisión",
+    "enunciado": "Un requisito dice “el sistema debe cargar rápido”. ¿Cuál reformulación es más útil para desarrollo y pruebas?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Bajo una carga y conexión definidas, el percentil 95 de respuestas de la pantalla principal no debe superar dos segundos.", "es_correcta": true, "explicacion": "Correcto. La reformulación define condiciones, una métrica y un umbral que pueden verificarse." },
+      { "texto": "El sistema debe cargar muy rápido para todos.", "es_correcta": false, "explicacion": "“Muy rápido” y “todos” siguen siendo ambiguos y no establecen una prueba reproducible." },
+      { "texto": "El sistema debería usar una tecnología moderna.", "es_correcta": false, "explicacion": "La tecnología elegida no expresa una medida observable del tiempo de respuesta." },
+      { "texto": "La pantalla debe verse bien cuando termine de cargar.", "es_correcta": false, "explicacion": "La apariencia visual no define el rendimiento temporal solicitado." }
+    ]
+  },
+  {
+    "asignatura": "Inglés I",
+    "tema": "Presente simple en contexto técnico",
+    "enunciado": "Complete the sentence with the correct verb form: “The server ___ requests every minute.”",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "processes", "es_correcta": true, "explicacion": "Correct. “The server” is third-person singular, so the present simple verb takes -s." },
+      { "texto": "process", "es_correcta": false, "explicacion": "With a third-person singular subject in the present simple, use “processes”." },
+      { "texto": "processing", "es_correcta": false, "explicacion": "“Processing” needs an auxiliary verb such as “is” and does not express the habitual action here." },
+      { "texto": "processed", "es_correcta": false, "explicacion": "“Processed” is past tense, but “every minute” describes a regular action." }
+    ]
+  },
+  {
+    "asignatura": "Inglés I",
+    "tema": "Vocabulario de tecnología",
+    "enunciado": "In a software project, what does “repository” usually mean?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "A place where a project's files and version history are stored.", "es_correcta": true, "explicacion": "Correct. A software repository stores project files and, in version control systems, their change history." },
+      { "texto": "A device that prints source code on paper.", "es_correcta": false, "explicacion": "A repository is for storing and managing project files, not printing them." },
+      { "texto": "A person who tests every program automatically.", "es_correcta": false, "explicacion": "A repository is a storage location, not a person or testing role." },
+      { "texto": "A network cable used to connect two computers.", "es_correcta": false, "explicacion": "A repository is software storage; a network cable is a physical communication medium." }
+    ]
+  },
+  {
+    "asignatura": "Inglés I",
+    "tema": "Presente continuo y acciones temporales",
+    "enunciado": "A developer is describing a temporary task happening now. Choose the correct sentence.",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "I am testing the new interface this week.", "es_correcta": true, "explicacion": "Correct. The present continuous (am + verb-ing) describes a temporary activity around the present." },
+      { "texto": "I testing the new interface this week.", "es_correcta": false, "explicacion": "The present continuous requires the auxiliary verb “am” before the -ing form." },
+      { "texto": "I tests the new interface this week.", "es_correcta": false, "explicacion": "“Tests” does not agree with “I”, and the present simple is not the requested temporary form." },
+      { "texto": "I am test the new interface this week.", "es_correcta": false, "explicacion": "After “am” in the present continuous, use the -ing form: “testing”." }
+    ]
+  },
+  {
+    "asignatura": "Inglés I",
+    "tema": "Comprensión de instrucciones técnicas",
+    "enunciado": "Read the instruction: “Before deploying the update, back up the database.” What must the team do first?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Create a copy of the database before deploying the update.", "es_correcta": true, "explicacion": "Correct. “Before” establishes that the backup must happen earlier than deployment." },
+      { "texto": "Deploy the update and then delete the database copy.", "es_correcta": false, "explicacion": "The instruction requires a backup before deployment, not deletion afterward." },
+      { "texto": "Back up the update after deploying it.", "es_correcta": false, "explicacion": "The object to back up is the database, and the backup must occur before deployment." },
+      { "texto": "Skip the backup if the update is small.", "es_correcta": false, "explicacion": "The instruction does not provide an exception based on the size of the update." }
+    ]
+  },
+  {
+    "asignatura": "Inglés I",
+    "tema": "Redacción de correo profesional",
+    "enunciado": "Choose the most appropriate sentence to make a polite request to a project teammate by email.",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Could you please review the test results by Friday?", "es_correcta": true, "explicacion": "Correct. “Could you please…?” is a polite request, and the deadline is stated clearly." },
+      { "texto": "You review test results Friday now.", "es_correcta": false, "explicacion": "This wording is grammatically incorrect and sounds abrupt rather than polite." },
+      { "texto": "Give test results because I say so.", "es_correcta": false, "explicacion": "This is an unprofessional command and does not express a courteous request." },
+      { "texto": "I reviewed the test results by Friday?", "es_correcta": false, "explicacion": "This is a question about a past action, not a request for a teammate to review the results." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Modelo de Von Neumann",
+    "titulo": "Contención en el bus compartido",
+    "enunciado": "En una arquitectura clásica de Von Neumann, el procesador necesita leer una instrucción y un dato desde la memoria principal. ¿Qué limitación puede aparecer si ambos usan el mismo bus y no hay mecanismos independientes?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "La transferencia de instrucción y dato puede competir por el mismo camino de comunicación.", "es_correcta": true, "explicacion": "Correcto. El uso compartido del bus puede serializar accesos y limitar el rendimiento; se conoce como cuello de botella de Von Neumann." },
+      { "texto": "La ALU deja de poder realizar operaciones aritméticas.", "es_correcta": false, "explicacion": "La ALU sigue realizando operaciones; la limitación descrita está en el acceso y transferencia de memoria." },
+      { "texto": "Los registros se convierten automáticamente en memoria secundaria.", "es_correcta": false, "explicacion": "La jerarquía de registros no cambia por compartir el bus entre instrucciones y datos." },
+      { "texto": "El programa pierde todas sus instrucciones al iniciar la ejecución.", "es_correcta": false, "explicacion": "Las instrucciones permanecen almacenadas; el problema potencial es la contención de acceso, no su pérdida." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Modelo de Von Neumann",
+    "titulo": "Separación de caminos de instrucción y datos",
+    "enunciado": "Un diseño busca reducir la contención entre la búsqueda de instrucciones y la lectura de operandos. ¿Qué cambio arquitectónico permite realizar esos accesos por caminos independientes?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Usar memorias o cachés de instrucciones y datos con rutas de acceso independientes, como en una organización Harvard o Harvard modificada.", "es_correcta": true, "explicacion": "Correcto. Separar los caminos de instrucción y datos permite accesos concurrentes y reduce la contención del modelo de bus único." },
+      { "texto": "Aumentar únicamente el tamaño del registro de estado.", "es_correcta": false, "explicacion": "El tamaño del registro de estado no crea rutas independientes hacia memoria." },
+      { "texto": "Eliminar el contador de programa para que la ALU lea las instrucciones.", "es_correcta": false, "explicacion": "El PC participa en la secuencia de instrucciones; eliminarlo no separa los caminos de memoria." },
+      { "texto": "Guardar todas las instrucciones en el acumulador.", "es_correcta": false, "explicacion": "El acumulador no sustituye una memoria o un bus independiente para instrucciones." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Registros del procesador",
+    "titulo": "Contenido del registro de direcciones de memoria",
+    "enunciado": "Durante la ejecución de LOAD R1, [0x300], ¿qué valor debe colocarse en el registro de direcciones de memoria (MAR) para iniciar la lectura del operando?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "0x300", "es_correcta": true, "explicacion": "Correcto. El MAR contiene la dirección de memoria que se va a leer, en este caso 0x300." },
+      { "texto": "El valor que ya contiene R1", "es_correcta": false, "explicacion": "R1 es el destino de la carga; el MAR debe recibir la dirección indicada entre corchetes." },
+      { "texto": "El código de operación LOAD", "es_correcta": false, "explicacion": "El código de operación está en la instrucción; el MAR guarda una dirección de memoria." },
+      { "texto": "La suma de todos los registros", "es_correcta": false, "explicacion": "El MAR no calcula ni almacena una suma de registros; mantiene la dirección del acceso." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Registros del procesador",
+    "titulo": "Secuencia de carga desde memoria",
+    "enunciado": "En un procesador sencillo, LOAD R1, [0x300] lee una palabra de memoria. ¿Qué secuencia describe correctamente el movimiento principal de datos, suponiendo que MDR es el registro de datos de memoria?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "MAR ← 0x300; MDR ← Memoria[MAR]; R1 ← MDR", "es_correcta": true, "explicacion": "Correcto. MAR selecciona la dirección; la palabra leída pasa por MDR y después se copia a R1." },
+      { "texto": "MDR ← 0x300; MAR ← R1; Memoria ← PC", "es_correcta": false, "explicacion": "El primer paso confunde una dirección con el dato leído y los siguientes no corresponden a la operación LOAD." },
+      { "texto": "R1 ← MAR; PC ← MDR; Memoria ← 0x300", "es_correcta": false, "explicacion": "La operación carga en R1 el contenido leído, no la dirección, y no requiere sustituir el PC por MDR." },
+      { "texto": "ALU ← 0x300; IR ← R1; MDR ← PC", "es_correcta": false, "explicacion": "Esta secuencia no realiza la lectura de memoria en la dirección 0x300 ni transfiere el dato a R1." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Memoria caché",
+    "titulo": "Localidad temporal y espacial",
+    "enunciado": "Un programa recorre un arreglo leyendo consecutivamente A[0], A[1], A[2] y A[3]. ¿Qué propiedad ayuda principalmente a que una caché aproveche este patrón?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Localidad espacial: es probable que se acceda pronto a direcciones cercanas.", "es_correcta": true, "explicacion": "Correcto. Los elementos contiguos del arreglo suelen almacenarse en direcciones próximas y una línea de caché puede incluir varios." },
+      { "texto": "Localidad temporal: se vuelve a leer necesariamente la misma dirección.", "es_correcta": false, "explicacion": "La secuencia describe direcciones cercanas distintas; eso es localidad espacial, no repetición de la misma dirección." },
+      { "texto": "Fragmentación externa de memoria.", "es_correcta": false, "explicacion": "La fragmentación externa se refiere a la disposición de bloques libres, no al patrón de acceso secuencial." },
+      { "texto": "Desbordamiento de pila.", "es_correcta": false, "explicacion": "El recorrido de un arreglo no implica por sí mismo desbordar la pila." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Memoria caché",
+    "titulo": "Tiempo medio de acceso a memoria",
+    "enunciado": "Una caché tiene tiempo de acierto de 2 ns, tasa de fallos del 5 % y penalización por fallo de 40 ns. Usando AMAT = tiempo de acierto + tasa de fallos × penalización, ¿cuál es el tiempo medio de acceso?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "4 ns", "es_correcta": true, "explicacion": "Correcto. AMAT = 2 + 0,05 × 40 = 2 + 2 = 4 ns." },
+      { "texto": "2,05 ns", "es_correcta": false, "explicacion": "Se multiplicó la tasa por 1 en lugar de por la penalización de 40 ns." },
+      { "texto": "42 ns", "es_correcta": false, "explicacion": "Se sumó toda la penalización como si cada acceso fuera un fallo, ignorando que la tasa es solo 5 %." },
+      { "texto": "80 ns", "es_correcta": false, "explicacion": "La penalización debe ponderarse por 0,05; no se multiplica el tiempo de acierto por la penalización." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Representación de datos y endianness",
+    "titulo": "Orden de bytes big-endian",
+    "enunciado": "El entero 0x1234 se almacena en memoria en formato big-endian desde la dirección 0x100. ¿Qué byte se encuentra en 0x100?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "0x12", "es_correcta": true, "explicacion": "Correcto. Big-endian coloca primero el byte más significativo en la dirección más baja." },
+      { "texto": "0x34", "es_correcta": false, "explicacion": "0x34 es el byte menos significativo; se almacena después en big-endian." },
+      { "texto": "0x21", "es_correcta": false, "explicacion": "El orden de bytes cambia unidades de byte completas; no se invierten los dígitos hexadecimales dentro del byte." },
+      { "texto": "0x00", "es_correcta": false, "explicacion": "El valor tiene dos bytes significativos, 0x12 y 0x34; el primer byte no es cero." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Representación de datos y endianness",
+    "titulo": "Reconstrucción de palabra little-endian",
+    "enunciado": "En una máquina little-endian, las direcciones consecutivas 0x200 a 0x203 contienen EF, BE, AD y DE, respectivamente. ¿Qué palabra de 32 bits se obtiene al leerlas como un entero?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "0xDEADBEEF", "es_correcta": true, "explicacion": "Correcto. En little-endian el byte de menor dirección es el menos significativo: los bytes se reconstruyen como DE AD BE EF." },
+      { "texto": "0xEFBEADDE", "es_correcta": false, "explicacion": "Ese orden concatena los bytes por dirección como si se tratara de big-endian." },
+      { "texto": "0xBEEFDEAD", "es_correcta": false, "explicacion": "La secuencia no respeta la inversión de bytes requerida por little-endian." },
+      { "texto": "0xADBEDEEF", "es_correcta": false, "explicacion": "Los bytes deben ordenarse desde el más significativo de la dirección mayor hasta el menos significativo de la menor." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Complemento a dos",
+    "titulo": "Rango de enteros con signo de 8 bits",
+    "enunciado": "¿Cuál es el rango representable de enteros con signo usando complemento a dos y exactamente 8 bits?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "De -128 a 127", "es_correcta": true, "explicacion": "Correcto. Para n=8, el rango es -2^(n-1) a 2^(n-1)-1, es decir, -128 a 127." },
+      { "texto": "De -127 a 127", "es_correcta": false, "explicacion": "Complemento a dos tiene un valor negativo adicional: -128." },
+      { "texto": "De 0 a 255", "es_correcta": false, "explicacion": "Ese es el rango de 8 bits sin signo, no el rango con signo en complemento a dos." },
+      { "texto": "De -255 a 255", "es_correcta": false, "explicacion": "Ocho bits no permiten representar esa magnitud con signo; el rango depende de 2^7." }
+    ]
+  },
+  {
+    "asignatura": "Arquitectura de Computadores",
+    "tema": "Complemento a dos",
+    "titulo": "Desbordamiento en suma con signo",
+    "enunciado": "En complemento a dos de 8 bits se suman +100 y +50. Si el resultado se conserva en 8 bits, ¿qué patrón se obtiene y qué ocurre?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "10010110; ocurre desbordamiento porque 150 supera el máximo 127.", "es_correcta": true, "explicacion": "Correcto. La suma binaria truncada produce 10010110, que interpretado con signo vale -106; el valor matemático 150 no es representable." },
+      { "texto": "010010110; no ocurre desbordamiento porque el resultado es positivo.", "es_correcta": false, "explicacion": "Ese patrón requiere 9 bits. Al guardar solo 8 bits se descarta el acarreo y se produce desbordamiento con signo." },
+      { "texto": "10010110; el resultado válido es -106 sin desbordamiento.", "es_correcta": false, "explicacion": "El patrón sí se interpreta como -106, pero la suma de dos positivos produjo un negativo, señal de desbordamiento." },
+      { "texto": "11101010; ocurre desbordamiento por acarreo de signo.", "es_correcta": false, "explicacion": "El patrón no corresponde a la suma binaria de 100 y 50; el resultado de 8 bits es 10010110." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Encapsulamiento",
+    "titulo": "Protección de invariantes del objeto",
+    "enunciado": "Una cuenta bancaria debe impedir que su saldo quede negativo. ¿Qué diseño encapsula mejor esa regla?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "Mantener saldo privado y validar en retirar que el monto no supere el saldo antes de modificarlo.", "es_correcta": true, "explicacion": "Correcto. El estado no puede modificarse directamente y la operación protege la invariante de saldo no negativo." },
+      { "texto": "Hacer saldo público y confiar en que todos los clientes validen antes de restar.", "es_correcta": false, "explicacion": "Cualquier cliente podría omitir la validación y dejar el objeto en un estado inválido." },
+      { "texto": "Permitir cualquier saldo y corregirlo cuando se cierre la aplicación.", "es_correcta": false, "explicacion": "La invariante debe mantenerse durante las operaciones, no solo al final del programa." },
+      { "texto": "Duplicar saldo en cada pantalla y actualizarlo manualmente.", "es_correcta": false, "explicacion": "Las copias independientes generan inconsistencias y no protegen el estado del objeto." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Encapsulamiento",
+    "titulo": "Defensa de una colección interna mutable",
+    "enunciado": "Una clase Registro guarda una lista interna de eventos. ¿Qué estrategia evita que código externo modifique esa lista sin pasar por las reglas de la clase?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Mantener la lista privada y devolver una copia inmutable o una vista no modificable.", "es_correcta": true, "explicacion": "Correcto. Así se evita que quien recibe la colección altere directamente el estado interno." },
+      { "texto": "Devolver la referencia mutable original y documentar que no debe cambiarse.", "es_correcta": false, "explicacion": "La documentación no impide que el cliente modifique la referencia compartida." },
+      { "texto": "Hacer pública la lista y renombrar sus métodos para ocultarla.", "es_correcta": false, "explicacion": "La visibilidad pública sigue permitiendo acceso directo; el nombre no aporta encapsulamiento." },
+      { "texto": "Crear una segunda referencia pública a la misma lista.", "es_correcta": false, "explicacion": "Otra referencia al mismo objeto mantiene la posibilidad de modificarlo externamente." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Sobrescritura y despacho dinámico",
+    "titulo": "Identificación del despacho dinámico",
+    "enunciado": "Se declara Animal animal = new Perro(); y ambos tipos definen emitirSonido(). ¿Qué concepto permite que animal.emitirSonido() ejecute la versión de Perro?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Despacho dinámico de un método sobrescrito", "es_correcta": true, "explicacion": "Correcto. La implementación se determina según el tipo real del objeto, que es Perro." },
+      { "texto": "Sobrecarga resuelta solo por el nombre de la variable", "es_correcta": false, "explicacion": "La sobrecarga depende de parámetros y suele resolverse estáticamente; aquí se describe sobrescritura." },
+      { "texto": "Conversión automática de Perro a una clase no relacionada", "es_correcta": false, "explicacion": "Perro es compatible porque es una subclase de Animal; no es una conversión a un tipo no relacionado." },
+      { "texto": "Recursividad entre Animal y Perro", "es_correcta": false, "explicacion": "La llamada no se invoca a sí misma; se selecciona una implementación sobrescrita." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Sobrescritura y despacho dinámico",
+    "titulo": "Métodos estáticos y ocultamiento",
+    "enunciado": "En Java, una subclase declara un método static con la misma firma que uno static de la superclase. ¿Cómo se determina la llamada hecha mediante una referencia de tipo Base que apunta a un objeto Hija?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "Se selecciona según el tipo de referencia; los métodos static se ocultan, no usan despacho dinámico.", "es_correcta": true, "explicacion": "Correcto. Los métodos static pertenecen a la clase y se resuelven usando el tipo de referencia, a diferencia de métodos de instancia sobrescritos." },
+      { "texto": "Siempre se ejecuta la versión de Hija porque el objeto real es Hija.", "es_correcta": false, "explicacion": "El tipo real decide el despacho dinámico de métodos de instancia, pero los métodos static se ocultan." },
+      { "texto": "Se ejecutan ambas versiones en secuencia.", "es_correcta": false, "explicacion": "La ocultación no ejecuta automáticamente los dos métodos." },
+      { "texto": "La llamada siempre produce una excepción en tiempo de ejecución.", "es_correcta": false, "explicacion": "La llamada es legal si se resuelve mediante un tipo compatible; no falla necesariamente en ejecución." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Sobrecarga de métodos",
+    "titulo": "Firmas válidas para sobrecarga",
+    "enunciado": "¿Qué cambio permite sobrecargar un método en una misma clase?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Cambiar la cantidad o los tipos de parámetros del método.", "es_correcta": true, "explicacion": "Correcto. La sobrecarga define métodos con el mismo nombre y listas de parámetros distintas." },
+      { "texto": "Cambiar solo el tipo de retorno manteniendo los mismos parámetros.", "es_correcta": false, "explicacion": "El tipo de retorno por sí solo no distingue una firma sobrecargada en lenguajes como Java." },
+      { "texto": "Cambiar únicamente el nombre de una variable local.", "es_correcta": false, "explicacion": "Las variables locales no forman parte de la firma del método." },
+      { "texto": "Cambiar solo el modificador private por public.", "es_correcta": false, "explicacion": "La visibilidad no crea una sobrecarga con parámetros idénticos." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Sobrecarga de métodos",
+    "titulo": "Ambigüedad con argumentos null",
+    "enunciado": "En Java existen los métodos mostrar(String) y mostrar(Integer), sin una sobrecarga para Object. ¿Qué ocurre al compilar mostrar(null)?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "DIFICIL",
+    "opciones": [
+      { "texto": "La llamada es ambigua porque null puede convertirse a String o Integer y ninguno es más específico que el otro.", "es_correcta": true, "explicacion": "Correcto. Ambas sobrecargas son aplicables y los tipos de referencia no están en una relación de subtipado entre sí." },
+      { "texto": "Siempre se selecciona mostrar(String) porque String es el tipo de texto.", "es_correcta": false, "explicacion": "La resolución no prioriza String por ser texto; no hay información en null que elija una de esas referencias." },
+      { "texto": "Se seleccionan ambas sobrecargas en tiempo de ejecución.", "es_correcta": false, "explicacion": "La sobrecarga se resuelve en compilación y una llamada no invoca simultáneamente ambas firmas." },
+      { "texto": "Se selecciona mostrar(Integer) porque null representa el número cero.", "es_correcta": false, "explicacion": "null significa ausencia de referencia; no es el valor numérico cero ni se convierte automáticamente en Integer." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Interfaces y abstracción",
+    "titulo": "Contrato común mediante una interfaz",
+    "enunciado": "Las clases InformePDF y ReporteCSV no comparten una superclase útil, pero ambas deben ofrecer exportar(). ¿Qué solución expresa mejor el contrato común?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Definir una interfaz Exportable con exportar() e implementarla en ambas clases.", "es_correcta": true, "explicacion": "Correcto. La interfaz permite que tipos distintos cumplan el mismo contrato y sean usados polimórficamente." },
+      { "texto": "Copiar todo el código de una clase dentro de la otra.", "es_correcta": false, "explicacion": "Copiar código genera duplicación y no define una abstracción común." },
+      { "texto": "Declarar exportar() como una variable global.", "es_correcta": false, "explicacion": "Una variable global no establece un contrato de comportamiento para las clases." },
+      { "texto": "Hacer que InformePDF herede de ReporteCSV aunque no sea un subtipo.", "es_correcta": false, "explicacion": "La herencia debe modelar una relación de subtipo; aquí ambas clases solo comparten una capacidad." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Interfaces y abstracción",
+    "titulo": "Implementación de una interfaz",
+    "enunciado": "Una interfaz define el método calcularTotal() sin implementación predeterminada. ¿Qué debe hacer una clase concreta que declara implementar esa interfaz?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "Proporcionar una implementación compatible de calcularTotal(), o declararse abstracta.", "es_correcta": true, "explicacion": "Correcto. Una clase concreta debe cumplir los métodos abstractos del contrato; una clase abstracta puede posponer su implementación." },
+      { "texto": "Cambiar el nombre de calcularTotal() en la interfaz sin modificar la clase.", "es_correcta": false, "explicacion": "Cambiar el nombre no satisface el contrato; debe implementarse la firma requerida." },
+      { "texto": "Implementar el método solo si el programa lo llama en ejecución.", "es_correcta": false, "explicacion": "La obligación de implementación se verifica por el lenguaje, no por si una ruta concreta invoca el método." },
+      { "texto": "Crear un atributo con el mismo nombre en lugar del método.", "es_correcta": false, "explicacion": "Un atributo no implementa una operación declarada como método en la interfaz." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Composición frente a herencia",
+    "titulo": "Relación de composición entre objetos",
+    "enunciado": "En un modelo de dominio, un automóvil utiliza un motor como uno de sus componentes. ¿Qué relación describe mejor “un automóvil tiene un motor”?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "FACIL",
+    "opciones": [
+      { "texto": "Composición o asociación de tipo has-a.", "es_correcta": true, "explicacion": "Correcto. Un automóvil contiene o usa un motor; no es un tipo de motor." },
+      { "texto": "Herencia de tipo is-a, porque automóvil es un motor.", "es_correcta": false, "explicacion": "La relación is-a sería falsa: un automóvil no es un motor." },
+      { "texto": "Sobrecarga, porque existen diferentes motores.", "es_correcta": false, "explicacion": "La sobrecarga se refiere a métodos con distintas listas de parámetros, no a relaciones entre objetos." },
+      { "texto": "Recursividad, porque el motor está dentro del automóvil.", "es_correcta": false, "explicacion": "La composición modela una relación entre objetos; no implica que un método se llame a sí mismo." }
+    ]
+  },
+  {
+    "asignatura": "Programación Orientada a Objetos",
+    "tema": "Composición frente a herencia",
+    "titulo": "Inyección de dependencias por composición",
+    "enunciado": "Un servicio de notificaciones debe poder usar EmailSender en producción y FakeSender durante una prueba. ¿Qué diseño basado en composición facilita este reemplazo?",
+    "tipo": "OPCION_MULTIPLE",
+    "dificultad": "MEDIO",
+    "opciones": [
+      { "texto": "Recibir por constructor una abstracción Sender y proporcionar la implementación necesaria en cada contexto.", "es_correcta": true, "explicacion": "Correcto. La composición con dependencia inyectada desacopla el servicio de una implementación concreta y facilita probarlo." },
+      { "texto": "Hacer que EmailSender herede de NotificationService y reemplazarlo durante la prueba.", "es_correcta": false, "explicacion": "EmailSender es una dependencia usada por el servicio, no necesariamente un subtipo del propio servicio." },
+      { "texto": "Crear EmailSender dentro de cada método y no permitir sustituirlo.", "es_correcta": false, "explicacion": "Instanciar una implementación concreta internamente acopla el servicio y dificulta usar un doble de prueba." },
+      { "texto": "Guardar el nombre de la clase en una cadena global y comparar texto en cada envío.", "es_correcta": false, "explicacion": "La selección global por cadenas agrega acoplamiento y no aprovecha una abstracción inyectable." }
+    ]
+  }
+]
