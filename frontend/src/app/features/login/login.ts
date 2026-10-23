@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 
@@ -10,7 +10,7 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrl: './login.css',
 })
 export class Login {
-  private readonly fb = inject(FormBuilder);
+  private readonly fb = inject(NonNullableFormBuilder);
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
 
@@ -18,9 +18,10 @@ export class Login {
   readonly error = signal<string | null>(null);
   readonly mostrarPass = signal(false);
 
-  readonly form = this.fb.nonNullable.group({
+  readonly form = this.fb.group({
     correo: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
+    recordar: [false],
   });
 
   get correo() {
@@ -40,17 +41,17 @@ export class Login {
       this.form.markAllAsTouched();
       return;
     }
+    if (this.cargando()) return;
+
     this.cargando.set(true);
     this.error.set(null);
     const { correo, password } = this.form.getRawValue();
+
     this.auth.login(correo, password).subscribe({
       next: (usuario) => {
-        const rol = usuario.rol ?? (usuario as any).rol_codigo;
-        if (rol === 'DOCENTE' || rol === 'ADMIN') {
-          this.router.navigateByUrl('/teacher-dashboard');
-        } else {
-          this.router.navigateByUrl('/catalogo');
-        }
+        const rol = usuario.rol ?? usuario.rol_codigo;
+        const destino = rol === 'DOCENTE' || rol === 'ADMIN' ? '/teacher-dashboard' : '/catalogo';
+        this.router.navigateByUrl(destino);
       },
       error: (err) => {
         this.cargando.set(false);
